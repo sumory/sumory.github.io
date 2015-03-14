@@ -1,0 +1,874 @@
+<!doctype html>
+<html class="theme-next use-motion">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.3.0rc5"/>
+
+
+
+
+	<meta name="keywords" content="ubuntu," />
+
+  <title> ubuntu12.04软件安装 // Sumory's Notes </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">Sumory's Notes</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              ubuntu12.04软件安装
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-01-18
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <h4 id="安装基本库">安装基本库</h4><pre><code>apt-<span class="built_in">get</span> install g++ curl libssl-<span class="built_in">dev</span> libexpat1-<span class="built_in">dev</span> expat libxml2-<span class="built_in">dev</span>
+</code></pre><h4 id="安装新主题">安装新主题</h4><pre><code><span class="preprocessor">#首先需要编辑 /etc/apt/sources.list 文件，在终端中输入：</span>
+    gksudo gedit /etc/apt/sources.list        
+<span class="preprocessor">#在其中加入以下源：</span>
+    deb http:<span class="comment">//ppa.launchpad.net/bisigi/ppa/ubuntu karmic main</span>
+    deb-src http:<span class="comment">//ppa.launchpad.net/bisigi/ppa/ubuntu karmic main    </span>
+<span class="preprocessor">#保存并且退出，然后加入KEY, 在终端中输入：</span>
+    gpg --keyserver hkp:<span class="comment">//keyserver.ubuntu.com:11371 --recv-key 881574DE &amp;&amp; gpg -a --export 881574DE | sudo apt-key add -    </span>
+<span class="preprocessor">#更新软件源列表：</span>
+    sudo aptitude update    （需要安装aptitude）
+<span class="preprocessor">#安装主题：    </span>
+    sudo aptitude install bamboo-zen-theme
+</code></pre><a id="more"></a>
+<h4 id="安装SSH">安装SSH</h4><pre><code>sudo apt-get install openssh-<span class="keyword">server</span> openssh-<span class="keyword">client</span>  
+sudo /etc/init.d/ssh restart <span class="preprocessor">#重启生效</span>
+</code></pre><h4 id="安装jdk6">安装jdk6</h4><pre><code>#使用jdk-<span class="number">6</span>u29-linux-x64.bin安装到/home/software下，然后配置环境变量，在/etc/profile中添加：
+
+JAVA_HOME=/home/software/jdk1.<span class="number">6.0</span>_29  
+CLASS_PATH=.:<span class="variable">$JAVA_HOME</span>/lib/<span class="tag">dt</span><span class="class">.jar</span>:<span class="variable">$JAVA_HOME</span>/lib/tools<span class="class">.jar</span>  
+PATH=<span class="string">"$JAVA_HOME/bin:$PATH"</span>  
+export JAVA_HOME CLASS_PATH PATH 
+
+#重启后，使用java -version检测是否安装成功。
+</code></pre><h4 id="安装mysql5-5-20">安装mysql5.5.20</h4><ul>
+<li>使用mysql-5.5.20-linux2.6-x86_64.tar.gz。安装之前先安装包libaio1和libaio-dev，否则会出错。</li>
+<li><p>要安装到的目录是/home/software/mysql-5.5.20，首先将压缩文件解压到该目录下，然后进行以下操作：</p>
+<pre><code>sudo groupadd mysql
+sudo useradd -r -g mysql mysql#非常重要，建立mysql用户组
+
+<span class="preprocessor">#进入/home/software/mysql-5.5.20,这里面已存放了解压后的所有文件,执行</span>
+sudo chown -R mysql .
+sudo chgrp -R mysql .
+<span class="preprocessor">#注意以上命令后面都有点</span>
+<span class="preprocessor">#打开lib目录，简单的赋予下面的文件权限</span>
+sudo chown -h mysql:mysql *
+
+<span class="preprocessor">#下面开始安装</span>
+sudo scripts/mysql_install_db --user=mysql --basedir=/home/software/mysql-<span class="number">5.5</span><span class="number">.20</span> --datadir=/home/software/mysql-<span class="number">5.5</span><span class="number">.20</span>/data
+<span class="preprocessor">#观察输出结果，可能会出现找不到libaio1或者log文件的错误，安装libaio1或建立相应log目录即可</span>
+
+<span class="comment">//将所有文件属性改为root用户,注意有点</span>
+sudo chown -R root .
+<span class="comment">//将数据目录属性改为mysql用户</span>
+sudo chown -R mysql data
+</code></pre></li>
+<li><p>安装初步完成，测试一下，启动服务：    <code>bin/mysqld_safe --user=mysql &amp;</code>,可能报错，配置文件中的basedir和datadir可能没配置好。进行以下配置：</p>
+<pre><code>cp support-files/mysql.server /etc/init.d/mysql
+chmod +x /etc/init.d/mysql
+vim mysql
+<span class="comment">#修改以下两个变量</span>
+basedir=/home/software/mysql-<span class="number">5.5</span><span class="number">.20</span>
+datadir=/home/software/mysql-<span class="number">5.5</span><span class="number">.20</span>/data
+然后执行 update-rc.d mysql defaults
+
+<span class="comment">#再使用service mysql start来尝试启动，报错：</span>
+<span class="comment">#Couldn't find MySQL server (/usr/bin/mysqld_safe)，路径不对，不应该到/usr/bin下寻找mysqld_safe，怀疑mysql启动时加载配置文件出错，mysql配置文件的读取顺序为:</span>
+
+/etc/<span class="keyword">my</span>.cnf /etc/mysql/<span class="keyword">my</span>.cnf /usr/<span class="keyword">local</span>/mysql/etc/<span class="keyword">my</span>.cnf ~/.<span class="keyword">my</span>.cnf
+
+<span class="comment">#挨个查看，发现 /etc/mysql/my.cnf中的以上两个对应值不正确，修改后测试，发现可用service mysql start来启动mysql</span>
+</code></pre></li>
+</ul>
+<ul>
+<li><p>安装mysql的最后一步，设置环境变量，使mysql命令方便使用</p>
+<pre><code>JAVA_HOME=/home/software/jdk1.<span class="number">6.0</span>_29
+MYSQL_HOME=/home/software/mysql-<span class="number">5.5</span>.<span class="number">20</span>
+CLASS_PATH=.:<span class="variable">$JAVA_HOME</span>/lib/<span class="tag">dt</span><span class="class">.jar</span>:<span class="variable">$JAVA_HOME</span>/lib/tools<span class="class">.jar</span>
+PATH=<span class="string">"$JAVA_HOME/bin:$MYSQL_HOME/bin:$PATH"</span>
+
+export JAVA_HOME MYSQL_HOME CLASS_PATH PATH
+</code></pre></li>
+<li><p>mysql主机与虚拟机间通信</p>
+<pre><code>#win7下使用navicat连接虚拟机里的mysql，win7的ip为192.168.1.102，我在navicat上建立用户名为root，密码为空的连接，然后再虚拟机里授权win7的ip权限，即可访问：
+
+<span class="operator"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> *.* <span class="keyword">to</span> root@<span class="number">192.168</span><span class="number">.1</span><span class="number">.102</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">''</span>;</span>
+<span class="operator"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span>
+</code></pre></li>
+</ul>
+<h4 id="挂载win7文件夹和硬盘">挂载win7文件夹和硬盘</h4><pre><code><span class="comment">#设置virtualbox的“数据空间”，比如我需要与ubuntu共享桌面和E盘，则建立两个固定分配desktop和epan。</span>
+<span class="comment">#然后进入ubuntu，可以选择在配置文件fstab中写入挂载的命令，但我试了几次基本不成功，可能环境有问题，最终使用的方法是写一个shell脚本，让它随ubuntu随机启动即可，脚本文件如下：</span>
+
+<span class="shebang">#!/bin/sh</span>
+<span class="built_in">echo</span> <span class="string">"挂载"</span>
+sudo mount -t vboxsf desktop /mnt/shared/desktop
+sudo mount -t vboxsf epan /mnt/shared/epan
+</code></pre><h4 id="安装nginx1-2-0">安装nginx1.2.0</h4><pre><code><span class="comment">#安装pcre-8.30</span>
+
+./configure <span class="variable">--prefix=</span>/home/software/nginx-<span class="number">1.2</span>.<span class="number">0</span> <span class="variable">--with-pcre=</span><span class="string">"/home/src/pcre-8.30/"</span>    
+
+<span class="comment">#注意指向pcre的源码目录，否则不能make</span>
+
+make
+make install
+</code></pre><h4 id="安装thrift-0-7-x">安装thrift-0.7.x</h4><pre><code>#到github下载源码（发生的一些错误可参考这个http://blog.csdn.net/imzkz/article/details/5637999）
+#按要求./bootstrap.sh，提示    Couldn't find libtoolize!，需先安装apt-get <span class="operator"><span class="keyword">install</span> libtool    
+#再执行./bootstrap.sh，提示/bootstrap.sh: <span class="number">41</span>: ./bootstrap.sh: autoscan: <span class="keyword">not</span> <span class="keyword">found</span>，安装apt-<span class="keyword">get</span> <span class="keyword">install</span> autoconf
+./configure <span class="comment">--prefix=/home/software/thrift-0.7    </span>
+
+make发生错误，提示 ylwrap: 行 <span class="number">113</span>: yacc: 未找到命令，安装apt-<span class="keyword">get</span> <span class="keyword">install</span> byacc
+
+继续make，错误，提示 行 <span class="number">52</span>: flex: 未找到命令，安装apt-<span class="keyword">get</span> <span class="keyword">install</span> flex
+
+再make还是错误
+
+重新./configure <span class="comment">--with-boost=/home/software/thrift-0.7，然后make，错误提示：致命错误： Python.h：没有那个文件或目录，安装python-dev</span>
+
+再make成功
+
+make <span class="keyword">install</span>
+
+记得修改/etc/<span class="keyword">profile</span>的环境变量</span>
+</code></pre><h4 id="安装rethinkdb">安装rethinkdb</h4><pre><code><span class="comment">#http://www.rethinkdb.com</span><span class="instruction">
+add-apt-repository </span>ppa:rethinkdb/ppa
+apt-get update
+apt-get install rethinkdb    
+</code></pre><h4 id="安装rvm和ruby1-9-3-head">安装rvm和ruby1.9.3-head</h4><h4 id="安装otcopress">安装otcopress</h4>
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/ubuntu/">
+                #ubuntu
+              </a>
+            
+          </div>
+        
+
+        
+          <div class="post-nav">
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2013/04/14/ubuntu12-oracle-problem/">Oracle11g在ubuntu12.04上使用时的若干问题</a>
+              
+            </div>
+
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2013/01/16/linux-svn-eclipse/">linux下安装svn，以及eclipse使用svn的各种问题</a>
+              
+            </div>
+          </div>
+        
+
+        
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    <div class="comments" id="comments">
+      
+    </div>
+  
+
+          </div>
+
+          
+        </div>
+
+        
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          站点概览
+        </li>
+      </ul>
+    
+
+    <div class="site-overview">
+      <div class="site-author motion-element">
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
+        <p class="site-author-name">Sumory Wu</p>
+      </div>
+      <p class="site-description motion-element"></p>
+      <div class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+            <span class="site-state-item-count">36</span>
+            <span class="site-state-item-name">标签</span>
+        </div>
+        <div class="site-state-item site-state-pages">
+            <span class="site-state-item-count">2</span>
+            <span class="site-state-item-name">页面</span>
+        </div>
+      </div>
+
+      
+
+      <div class="social-info motion-element">
+        
+      </div>
+
+    </div>
+
+    
+      <div class="post-toc sidebar-panel-active">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装基本库"><span class="nav-number">1.</span> <span class="nav-text">安装基本库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装新主题"><span class="nav-number">2.</span> <span class="nav-text">安装新主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装SSH"><span class="nav-number">3.</span> <span class="nav-text">安装SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装jdk6"><span class="nav-number">4.</span> <span class="nav-text">安装jdk6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装mysql5-5-20"><span class="nav-number">5.</span> <span class="nav-text">安装mysql5.5.20</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载win7文件夹和硬盘"><span class="nav-number">6.</span> <span class="nav-text">挂载win7文件夹和硬盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装nginx1-2-0"><span class="nav-number">7.</span> <span class="nav-text">安装nginx1.2.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装thrift-0-7-x"><span class="nav-number">8.</span> <span class="nav-text">安装thrift-0.7.x</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装rethinkdb"><span class="nav-number">9.</span> <span class="nav-text">安装rethinkdb</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装rvm和ruby1-9-3-head"><span class="nav-number">10.</span> <span class="nav-text">安装rvm和ruby1.9.3-head</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装otcopress"><span class="nav-number">11.</span> <span class="nav-text">安装otcopress</span></a></li></ol>
+      </div>
+    
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Sumory Wu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      $('.post').velocity('transition.slideDownIn', {stagger: 300, drag: true});
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+    }
+
+    function getTOCMaxHeight () {
+      // TODO: Make it beautiful
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+        parseInt($sidebarInner.css('padding-top'), 10) -
+        parseInt($sidebarInner.css('padding-bottom'), 10) -
+        $('.sidebar-nav').height() -
+        parseInt($tocSelector.css('margin-top'), 10) -
+        parseInt($tocSelector.css('margin-bottom'), 10);
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+      });
+    }
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if ($('.post-toc').html().trim().length > 0 && isDesktop()) {
+        //setTimeout(function () {
+        //  $('.sidebar-toggle').trigger('click');
+        //}, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sumory"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+  
+</body>
+</html>

@@ -1,0 +1,1280 @@
+<!doctype html>
+<html class="theme-next use-motion">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.3.0rc5"/>
+
+
+
+
+
+    <meta name="keywords" content="sumory,blog" />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.3.0rc5" />
+
+
+
+
+  <title> Sumory's Notes </title>
+</head>
+
+<body>
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">Sumory's Notes</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/03/19/java-synchronized/">
+                Java synchronized
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2014-03-18
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <h2 id="小记">小记</h2><ul>
+<li>synchronized可作用于instance变量、对象引用、static函数和class上。</li>
+<li><p>每个对象只有一个锁（lock）与之相关联。每一个类也对应一把锁，因此也可将类的静态成员函数声明为 synchronized，以控制其对<code>类</code>的静态成员变量的访问，注意这里会锁在“类”上，而不是实例上。</p>
+</li>
+<li><p>synchronized：三个线程（包括main线程）试图进入某个类的三个不同的方法的同步块中，虽然这些同步块处在不同的方法中，但由于是同步到同一个对象（如synchronized (this)），所以对它们的方法依然是互斥的。 但对于以下同步到三个不同的对象，则对临界资源的访问是独立的。</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Object</span> o1 = <span class="keyword">new</span> <span class="keyword">Object</span>();</span><br><span class="line"><span class="keyword">Object</span> o2 = <span class="keyword">new</span> <span class="keyword">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> m1()&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="comment">//..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> m2()&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (o1) &#123;</span><br><span class="line">        <span class="comment">//..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> m3()&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (o2) &#123;</span><br><span class="line">        <span class="comment">//..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="synchronized使用">synchronized使用</h2><ul>
+<li><code>synchronized method(){}</code> 对该类的同一个对象来说，只要一个线程访问了其中的一个synchronized方法，其它线程不能同时访问这个对象中任何一个synchronized方法。而不同的对象则是互不干扰的。</li>
+<li><code>synchronized static method{}</code> 对该类的所有对象起作用。</li>
+<li>synchronized关键字是不能继承的</li>
+</ul>
+<h2 id="synchronized实现原理">synchronized实现原理</h2><p>待续。</p>
+
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/java/">
+                #java
+              </a>
+            
+              <a href="/tags/多线程/">
+                #多线程
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/03/18/java-thread/">
+                Java wait()/notify()/notifyAll/死锁
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2014-03-18
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <blockquote>
+<p>多线程编程中要特别注意可能发生死锁的场景，java多线程中与锁相关的几个方法有wait()/notify()/sleep()/yeild()等。<br>这里由一个死锁为题引出几个方法使用时应注意的问题。</p>
+</blockquote>
+<p><img src="http://img.my.csdn.net/uploads/201209/21/1348241879_8124.jpg" alt="线程生命周期"></p>
+<h2 id="死锁案例：notify和notifyAll">死锁案例：notify和notifyAll</h2>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2014/03/18/java-thread/#more">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/java/">
+                #java
+              </a>
+            
+              <a href="/tags/多线程/">
+                #多线程
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/03/16/java-exception/">
+                Java异常处理
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2014-03-16
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <p>这篇文章主要用来对java异常处理一些容易模糊的概念做梳理。接受一个教训，有些基础理论知识、专业名词说不定哪天就会用到，还是多记一点的好。</p>
+<h2 id="概念">概念</h2><p>Thorwable类是所有异常和错误的超类，有两个子类Error和Exception。Error是程序无法处理的错误，比如OutOfMemoryError、ThreadDeath等。</p>
+<p><strong>运行时异常</strong>都是RuntimeException类及其子类异常，如NullPointerException、IndexOutOfBoundsException等。<br>这些异常是<strong>非检查异常</strong>，程序中可以选择捕获处理，也可以不处理。<br>这些异常一般是由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生。<br>RuntimeException体系包括错误的类型转换、数组越界访问和试图访问空指针等等。处理RuntimeException的原则是：如果出现，那么一定是程序的错误。例如，可以通过检查数组下标和数组边界来避免数组越界访问异常。 </p>
+<p><strong>非运行时异常</strong>是RuntimeException以外的异常，类型上都属于Exception类及其子类。<br>从程序语法角度讲是必须进行处理的异常，如果不处理，程序就不能编译通过。<br>如IOException、SQLException等以及用户自定义的Exception异常，一般情况下不自定义检查异常。<br>这类异常一般是外部错误，例如试图从文件尾后读取数据等，这并不是程序本身的错误，而是在应用环境中出现的外部错误。</p>
+<h2 id="处理原则">处理原则</h2><ul>
+<li>能处理就早处理，抛出不去还不能处理的就想法消化掉或者转换为RuntimeException处理。</li>
+<li>对于检查异常，如果不能行之有效的处理，还不如转换为RuntimeException抛出。这样也让上层的代码有选择的余地――可处理也可不处理。</li>
+<li>对于一个应用系统来说，应该有自己的一套异常处理框架，这样当异常发生时，也能得到统一的处理风格，将优雅的异常信息反馈给用户。</li>
+</ul>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2014/03/16/java-exception/#more">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/exception/">
+                #exception
+              </a>
+            
+              <a href="/tags/java/">
+                #java
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/02/15/id-generator/">
+                分布式系统中的ID生成
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2014-02-15
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <h2 id="问题"><strong>问题</strong></h2><p>在分布式系统中常遇到<strong>ID</strong>生成问题:</p>
+<ul>
+<li>场景1，在分库分表中需要保证某类ID唯一，这样使用主键自增的策略就不再合适</li>
+<li>场景2，需要某类ID需要具有同一特性来标识</li>
+</ul>
+<p>诸如此类。</p>
+<h2 id="方案"><strong>方案</strong></h2><p> 有很多解决方案，比如</p>
+<ol>
+<li>基于数据库主键自增策略（及其变种，如分片生成以提高效率、分库分表生成以解决单点问题等）</li>
+<li>UUID(简单但比较丑陋，生成的ID无规律，也有方案是基于UUID，但更简短</li>
+<li>基于MongoDB的id策略</li>
+<li>DIY的ID（以不同用途的字符组装到一起，然后做编码转换以满足需要）</li>
+</ol>
+<p>这里介绍一种方案4的实现，基本思想源于twitter的Snowflake方案，该实现可提供高性能、低延迟、高可用的ID生成。</p>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2014/02/15/id-generator/#more">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Memcached/">
+                #Memcached
+              </a>
+            
+              <a href="/tags/Thrift/">
+                #Thrift
+              </a>
+            
+              <a href="/tags/Zookeeper/">
+                #Zookeeper
+              </a>
+            
+              <a href="/tags/分布式/">
+                #分布式
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/02/03/merkle-hash-tree/">
+                Merkle-Hash-Tree
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2014-02-02
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <blockquote>
+<p>Merkle Tree, 也叫 Hash Tree. 它是Ralph Merkle在1979年创造的。据说最早Merkle创造Merkle Tree(MT)的目的是为了生成Lamport签名，一种一次性的数字签名.</p>
+</blockquote>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Hash_Tree.svg/300px-Hash_Tree.svg.png" alt=""></p>
+<p>上图(来自Wikipedia)给出了一个二进制的哈希树(二叉哈希树, 较常用的tiger hash tree也是这个形式). 据称哈希树经常应用在一些分布式系统或者分布式存储中的反熵机制(Anti-entropy),也有称做去熵的.这些应用包括 Amazon的Dynamo 还有Apache的Cassandra数据库, 通过去熵可以去做到各个不同节点的同步, 即保持各个节点的信息都是同步最新.</p>
+<p>哈希树的特点很鲜明: 叶子节点存储的是数据文件，而非叶子节点存储的是其子节点的哈希值(称为MessageDigest) 这些非叶子节点的Hash被称作路径哈希值, 叶子节点的Hash值是真实数据的Hash值. 因为使用了树形结构, MT的时间复杂度为 O(logn)<br>比如下图中, 我们如果使用SHA1算法来做校验值, 比如数据块8对应的哈希值是$H23$, 则按照这个路径来看应该有<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">H11=<span class="function"><span class="title">SHA1</span><span class="params">(H23∥H24)</span></span></span><br><span class="line">H5=<span class="function"><span class="title">SHA1</span><span class="params">(H11∥H12)</span></span></span><br><span class="line">H2=<span class="function"><span class="title">SHA1</span><span class="params">(H5∥H6)</span></span></span><br><span class="line">H0=<span class="function"><span class="title">SHA1</span><span class="params">(H1∥H2)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>其中$\parallel$是表联接的意思.</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/neoragex2002/temp/merkle.PNG" alt=""></p>
+<h3 id="应用举例">应用举例</h3><p>BitTorrent中应用</p>
+<p>在BT中, 通常种子文件中包含的信息是Root值, 此外还有文件长度、数据块长等重要信息. 当客户端下载数据块8时，在下载前，它将要求peer提供校验块8所需的全部路径哈希值：H24、H12、H6和H1. 下载完成后, 客户端就会开始校验, 它先计算它已经下载的数据块8的Hash值23, 记做 H23′ , 表示尚未验证. 随后会按照我在上一小节中给出的几个公式, 来依次求解 直到得到H0′ 并与H0做比较, 校验通过则下载无误. 校验通过的这些路径哈希值会被缓存下来, 当一定数量的路径哈希值被缓存之后，后继数据块的校验过程将被极大简化。此时我们可以直接利用校验路径上层次最低的已知路径哈希值来对数据块进行部分校验，而无需每次都校验至根哈希值H0.</p>
+<p>Amazon Dynamo中同步</p>
+<p>在Dynamo中，每个节点保存一个范围内的key值，不同节点间存在有相互交迭的key值范围。在去熵操作中，考虑的仅仅是某两个节点间共有的key值范围。MT的叶子节点即是这个共有的key值范围内每个key的hash，通过叶子节点的hash自底向上便可以构建出一颗MT。Dynamo首先比对MT根处的hash，如果一致则表示两者完全一致，否则将其子节点交换并继续比较的过程, 知道定位到有差异的数据块. 这种同步方式在分布式中有着节省网络传输量的优点.</p>
+<p>引用：</p>
+<blockquote>
+<p><a href="http://en.wikipedia.org/wiki/Hash_tree" target="_blank" rel="external">http://en.wikipedia.org/wiki/Hash_tree</a><br><a href="http://en.wikipedia.org/wiki/Lamport_signature" target="_blank" rel="external">http://en.wikipedia.org/wiki/Lamport_signature</a><br><a href="http://blog.csdn.net/starxu85/article/details/3859011" target="_blank" rel="external">http://blog.csdn.net/starxu85/article/details/3859011</a><br><a href="http://ultimatearchitecture.net/index.php/2010/09/12/merkle-tree/" target="_blank" rel="external">http://ultimatearchitecture.net/index.php/2010/09/12/merkle-tree/</a><br><a href="http://www.public.asu.edu/~rzhang46/" target="_blank" rel="external">http://www.public.asu.edu/~rzhang46/</a><br><a href="http://yishanhe.net/wiki/Secure-topk-query.html" target="_blank" rel="external">http://yishanhe.net/wiki/Secure-topk-query.html</a><br><a href="http://www.bittorrent.org/beps/bep_0030.html" target="_blank" rel="external">http://www.bittorrent.org/beps/bep_0030.html</a><br><a href="https://www.usenix.org/conference/osdi12/secure-offline-data-access-using-commodity-trusted-hardware" target="_blank" rel="external">https://www.usenix.org/conference/osdi12/secure-offline-data-access-using-commodity-trusted-hardware</a>  </p>
+</blockquote>
+
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Data-Structure/">
+                #Data Structure
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/12/04/lincell-editor-ide/">
+                发布一个轻型文件编辑器 - lincell，一行命令创建IDE
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-12-04
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <h3 id="1-_前言">1. 前言</h3><p>刚发布一个叫做<strong>lincell</strong>的模块，第一版放出来遛遛，可以通过npm安装使用。等下一版本会对代码做大的更改，不过使用者不用管，除非你要看代码，github地址在<a href="https://github.com/sumory/lincell">这里</a>，项目页面在<a href="http://sumory.com/lincell/">这里</a>。</p>
+<p>它的前端是通过<a href="https://github.com/coreh/nide">nide</a>改造的，我对整个代码做了较大更改，后面计划的功能更会改得面目全非，所以也没有fork，只是重开了一个项目命名为lincell，本来我更中意linc，但npm上的坑儿已经被占了，无奈。</p>
+<p>为什么要开发lincell：</p>
+<ul>
+<li>nide作者很懒，都一年多不维护了，估计我以后也会很懒</li>
+<li>nide不支持windows，有人问那你为什么需要windows，好吧，很苦逼的是我有一台windows主机要维护；还有个原因是，我在windows上做开发的时候也想用它，毕竟它足够轻量</li>
+<li>nide依赖的node和库版本都太老，我有喜新厌旧强迫症</li>
+<li>后台基于Event的处理有bug</li>
+<li>我特别想要的功能它没有，比如上传下载，代码折叠，多标签页显示，markdown预览等等</li>
+</ul>
+<p>分享publish到npm时的一个<strong>坑</strong>：</p>
+<ul>
+<li>问题：平常一般用linux开发，所以不会遇到文件格式或是编码的问题，但这次lincell的大部分代码是在windows上写的，所以发布到npm上后，在windows上安装使用都没问题，但在linux上就错了（找不到文件）</li>
+<li>解决：在程序入口文件app.js的头部添加<code>#!/usr/bin/env node</code>让linux知道用node去运行它，然后把文件格式改为<code>UNIX</code></li>
+</ul>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2013/12/04/lincell-editor-ide/#more">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/editor/">
+                #editor
+              </a>
+            
+              <a href="/tags/node-js/">
+                #node.js
+              </a>
+            
+              <a href="/tags/socket-io/">
+                #socket.io
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/11/03/userful-shell/">
+                Shell命令收集
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-11-02
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <ul>
+<li><p>rsync</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#运行这个命令以后，foo bar 这两个文件夹的内容就递归神同步了，内容没有变化的文件不会被同步，bar 里多余的文件会删除</span></span><br><span class="line"><span class="comment">#可以支持在后台默默运行或者在本地和远程机器上做同步</span></span><br><span class="line">rsync -rc --<span class="keyword">delete</span> foo<span class="regexp">/. bar/</span>.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>date</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">date</span> --<span class="keyword">date</span>=<span class="string">"1 hours ago"</span> +<span class="variable">%Y</span>.<span class="variable">%m</span>.<span class="variable">%d</span>.<span class="variable">%H</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>杀进程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="built_in">kill</span> `ps -ef | grep hudson.war | grep -v grep | awk <span class="string">'&#123; print $2 &#125;'</span>`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> . -maxdepth <span class="number">1</span> -name <span class="string">"@*"</span> </span><br><span class="line"><span class="keyword">find</span> /  -<span class="built_in">type</span> <span class="keyword">f</span> -size +<span class="number">500</span>M</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件大小</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -<span class="keyword">h</span> git --max-depth=1|<span class="keyword">sort</span> -<span class="keyword">n</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2013/11/03/userful-shell/#more">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/05/28/oracle-nodejs/">
+                oracle与node.js：使用与坑
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-05-28
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <p>前段时间要使用oracle，搜了下决定采用node-oracle这个库.</p>
+<ul>
+<li><p>坑一</p>
+<p> windows各种安不上</p>
+</li>
+<li><p>坑二</p>
+<p> npm上的版本有问题，需要到github下载它的源码包再手动安装.</p>
+</li>
+<li><p>坑三</p>
+<p> 如果使用pool的话，记得初始化时需要connection.setAutoCommit(true)，否则数据库刷不出记录.</p>
+</li>
+</ul>
+<p><strong>结论</strong>：</p>
+<ul>
+<li>虽然最终在windows上编译通过，但如果你也用了它，一旦编译不通过赶紧撤吧，去linux搞；</li>
+<li>遇到需要编译的第三方库，要清楚自己机器的配置（node版本、vs版本、环境变量）是否正确并满足编译要求；</li>
+<li>没事<strong>千万别用</strong>oracle.</li>
+</ul>
+
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/node-js/">
+                #node.js
+              </a>
+            
+              <a href="/tags/oracle/">
+                #oracle
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/05/24/git-bash-set/">
+                Git Bash设置显示中文
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-05-24
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <p>从GitHub安装的Git Bash工具默认不支持中文，ls中文目录显示也为？？？，需要另行配置。</p>
+<ul>
+<li><p>在安装根目录下的etc文件夹下找到inputrc这个文件，将相应配置更改如下：</p>
+  <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># disable/enable 8bit input</span></span><br><span class="line"><span class="built_in">set</span> meta-flag <span class="command"><span class="keyword">on</span></span></span><br><span class="line"><span class="built_in">set</span> input-meta <span class="command"><span class="keyword">on</span></span></span><br><span class="line"><span class="built_in">set</span> output-meta <span class="command"><span class="keyword">on</span></span></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">convert</span>-meta off</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>像在linux中一样设置环境变量，可以到etc文件夹下修改profile文件，比如</p>
+ <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> ll=<span class="string">'ls -lah'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="keyword">ls</span>=<span class="string">"/bin/ls --color=tty --show-control-chars"</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/git/">
+                #git
+              </a>
+            
+              <a href="/tags/mingw/">
+                #mingw
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/05/20/mysql-on-ubuntu/">
+                ubuntu12.04上mysql的安装、卸载
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-05-20
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <ol>
+<li><p>卸载mysql</p>
+<pre><code>sudo apt-<span class="keyword">get</span> autoremove --purge mysql-<span class="built_in">server</span>-<span class="number">5.0</span>
+sudo apt-<span class="keyword">get</span> remove mysql-<span class="built_in">server</span>
+sudo apt-<span class="keyword">get</span> autoremove mysql-<span class="built_in">server</span>
+sudo apt-<span class="keyword">get</span> remove mysql-common
+</code></pre></li>
+<li><p>清理残留数据</p>
+<pre><code><span class="title">dpkg</span> -l |grep<span class="regexp"> ^rc|awk</span> <span class="string">'{print <span class="variable">$2</span>}'</span> |sudo xargs dpkg -P
+</code></pre></li>
+<li><p>安装</p>
+<pre><code>sudo apt-get <span class="operator"><span class="keyword">install</span> mysql-<span class="keyword">server</span>
+sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> mysql-client
+sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> php5-mysql(安装php5-mysql 是将php和mysql连接起来 )</span>
+</code></pre></li>
+<li><p>验证</p>
+<pre><code><span class="built_in">ps</span> aux | grep mysql 查看是否已启动
+<span class="keyword">service</span> mysql <span class="literal">start</span>
+<span class="keyword">service</span> mysql <span class="literal">stop</span>
+</code></pre></li>
+<li><p>外网访问问题</p>
+<pre><code>找到<span class="keyword">my</span>.cnf配置，将其中的bind_address注释掉（服务器部署时注意改回来）
+</code></pre></li>
+</ol>
+
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/linux/">
+                #linux
+              </a>
+            
+              <a href="/tags/mysql/">
+                #mysql
+              </a>
+            
+              <a href="/tags/ubuntu/">
+                #ubuntu
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+
+          </div>
+
+          
+            <div class="pagination">
+              <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
+            </div>
+          
+        </div>
+
+        
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    
+
+    <div class="site-overview">
+      <div class="site-author motion-element">
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
+        <p class="site-author-name">Sumory Wu</p>
+      </div>
+      <p class="site-description motion-element"></p>
+      <div class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+            <span class="site-state-item-count">36</span>
+            <span class="site-state-item-name">标签</span>
+        </div>
+        <div class="site-state-item site-state-pages">
+            <span class="site-state-item-count">2</span>
+            <span class="site-state-item-name">页面</span>
+        </div>
+      </div>
+
+      
+
+      <div class="social-info motion-element">
+        
+      </div>
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Sumory Wu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" id="motion.page.home">
+    $(document).ready(function () {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200, sequenceQueue: false } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    });
+  </script>
+
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      $('.post').velocity('transition.slideDownIn', {stagger: 300, drag: true});
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sumory"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+  
+</body>
+</html>

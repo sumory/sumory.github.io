@@ -1,0 +1,802 @@
+<!doctype html>
+<html class="theme-next use-motion">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.3.0rc5"/>
+
+
+
+
+
+    <meta name="keywords" content="sumory,blog" />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.3.0rc5" />
+
+
+
+
+  <title> Shell命令收集 // Sumory's Notes </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">Sumory's Notes</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Shell命令收集
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-11-02
+            
+          </span>
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <ul>
+<li><p>rsync</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#运行这个命令以后，foo bar 这两个文件夹的内容就递归神同步了，内容没有变化的文件不会被同步，bar 里多余的文件会删除</span></span><br><span class="line"><span class="comment">#可以支持在后台默默运行或者在本地和远程机器上做同步</span></span><br><span class="line">rsync -rc --<span class="keyword">delete</span> foo<span class="regexp">/. bar/</span>.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>date</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">date</span> --<span class="keyword">date</span>=<span class="string">"1 hours ago"</span> +<span class="variable">%Y</span>.<span class="variable">%m</span>.<span class="variable">%d</span>.<span class="variable">%H</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>杀进程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="built_in">kill</span> `ps -ef | grep hudson.war | grep -v grep | awk <span class="string">'&#123; print $2 &#125;'</span>`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> . -maxdepth <span class="number">1</span> -name <span class="string">"@*"</span> </span><br><span class="line"><span class="keyword">find</span> /  -<span class="built_in">type</span> <span class="keyword">f</span> -size +<span class="number">500</span>M</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件大小</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -<span class="keyword">h</span> git --max-depth=1|<span class="keyword">sort</span> -<span class="keyword">n</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>nohup运行</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nohup ./<span class="tag">&lt;<span class="title">script_name</span>&gt;</span> &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">同时，可以通过：ps axl | grep <span class="tag">&lt;<span class="title">script_name</span>&gt;</span>来监视程序是否在仍后台运行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>awk</code>执行命令</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk '&#123;<span class="built_in">count</span>++;<span class="built_in">print</span> <span class="built_in">count</span><span class="string">" "</span>$<span class="number">1</span>;cmd=<span class="string">"bitcoind addnode "</span>$<span class="number">1</span><span class="string">" onetry"</span>;cmd|getline;&#125;' ip2.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当前目录下每个文本文件的第1-3列内容，输入到上层文件夹的同名文件</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> *.txt | xargs -i -<span class="keyword">n</span> 1 <span class="keyword">sh</span> -c <span class="string">"cut -f 1-3 &#123;&#125; &gt; ../&#123;&#125;"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成序列</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq <span class="number">1</span> <span class="number">5</span>`; <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span>; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找目录下大文件</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sk <span class="keyword">*</span> .??<span class="keyword">*</span> <span class="string">| sort -rn | head</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lsof</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">lsof是linux最常用的命令之一，通常的输出格式为：</span><br><span class="line"> </span><br><span class="line">引用</span><br><span class="line">COMMAND     PID   USER   FD      TYPE     DEVICE     SIZE       NODE NAME</span><br><span class="line"> </span><br><span class="line">常见包括如下几个字段：更多的可见manual。</span><br><span class="line"><span class="blockquote">&gt; COMMAND</span></span><br><span class="line">默认以9个字符长度显示的命令名称。可使用+c参数指定显示的宽度，若+c后跟的参数为零，则显示命令的全名</span><br><span class="line"><span class="blockquote">&gt; PID：进程的ID号</span></span><br><span class="line"><span class="blockquote">&gt; PPID</span></span><br><span class="line">父进程的IP号，默认不显示，当使用-R参数可打开。</span><br><span class="line"><span class="blockquote">&gt; PGID</span></span><br><span class="line">进程组的ID编号，默认也不会显示，当使用-g参数时可打开。</span><br><span class="line"><span class="blockquote">&gt; USER</span></span><br><span class="line">命令的执行UID或系统中登陆的用户名称。默认显示为用户名，当使用-l参数时，可显示UID。</span><br><span class="line"><span class="blockquote">&gt; FD</span></span><br><span class="line">是文件的File Descriptor number  </span><br><span class="line"></span><br><span class="line">lsof -i #用以显示符合条件的进程情况，语法: lsof -i[<span class="link_label">46</span>] [<span class="link_label">protocol</span>][<span class="link_reference">@hostname|hostaddr</span>][<span class="link_label">:service|port</span>]</span><br><span class="line">lsof -i :22 #查看22端口</span><br><span class="line"></span><br><span class="line">lsof -p 1 #看进程号为1的进程打开了哪些文件</span><br><span class="line"></span><br><span class="line">lsof +d /home/oracle #依照文件夹/home/oracle来搜寻，但不会打开子目录，用来显示目录下被进程开启的文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看端口、程序使用情况</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">lsof</span> -Pnl +M -i4</span><br><span class="line">COMMAND     PID     USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME</span><br><span class="line">ntpd       <span class="number">1055</span>      <span class="number">104</span>   16u  IPv4     <span class="number">8372</span>      0t0  UDP *:<span class="number">123</span> </span><br><span class="line">ntpd       <span class="number">1055</span>      <span class="number">104</span>   18u  IPv4     <span class="number">8379</span>      0t0  UDP <span class="number">127.0.0.1:123</span> </span><br><span class="line">ntpd       <span class="number">1055</span>      <span class="number">104</span>   19u  IPv4     <span class="number">8380</span>      0t0  UDP <span class="number">10.144.1.107:123</span> </span><br><span class="line">ntpd       <span class="number">1055</span>      <span class="number">104</span>   20u  IPv4     <span class="number">8381</span>      0t0  UDP <span class="number">115.28.10.145:123</span> </span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   19u  IPv4 <span class="number">10066800</span>      0t0  TCP <span class="number">127.0.0.1:59344</span>-&gt;<span class="number">127.0.0.1:8332</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   21u  IPv4  <span class="number">9186767</span>      0t0  TCP *:<span class="number">8888</span> (LISTEN)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   22u  IPv4 <span class="number">12818777</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.82:40155</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   26u  IPv4 <span class="number">12818779</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.82:40156</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   27u  IPv4 <span class="number">12818781</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.82:40157</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   30u  IPv4 <span class="number">12854984</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.81:46161</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   32u  IPv4 <span class="number">12714830</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.83:33566</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   33u  IPv4 <span class="number">12714832</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.83:33567</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   34u  IPv4 <span class="number">12714834</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.83:33568</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   35u  IPv4 <span class="number">12753641</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.83:47047</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   36u  IPv4 <span class="number">12753642</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.83:47048</span> (ESTABLISHED)</span><br><span class="line">python    <span class="number">12310</span>        <span class="number">0</span>   37u  IPv4 <span class="number">12753644</span>      0t0  TCP <span class="number">115.28.10.145:8888</span>-&gt;<span class="number">123.126.133.83:47049</span> (ESTABLISHED)</span><br><span class="line"></span><br><span class="line">-P : This option inhibits the conversion of port numbers to port names for network files. Inhibiting the conver-</span><br><span class="line">sion may make lsof run a little faster. It is also useful when port name lookup is not working properly.</span><br><span class="line">-n : This option inhibits the conversion of network numbers to host names for network files. Inhibiting conversion may make lsof run faster. It is also useful when host name lookup is not working properly.</span><br><span class="line">-l : This option inhibits the conversion of user ID numbers to login names. It is also useful when login name lookup is working improperly or slowly.</span><br><span class="line">+M : Enables the reporting of portmapper registrations for local TCP and UDP ports.</span><br><span class="line">-i4 : IPv4 listing only</span><br><span class="line">-i6 : IPv6 listing only</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">netstat -npl</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name</span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0.0.0:6881</span>            <span class="number">0.0.0.0</span>:*               LISTEN     <span class="number">6908</span>/python</span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0.0.1:631</span>           <span class="number">0.0.0.0</span>:*               LISTEN     <span class="number">5562</span>/cupsd</span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0.0.1:3128</span>          <span class="number">0.0.0.0</span>:*               LISTEN     <span class="number">6278</span>/(squid)</span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0.0.1:25</span>            <span class="number">0.0.0.0</span>:*               LISTEN     <span class="number">5854</span>/exim4</span><br><span class="line">udp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0.0.0:32769</span>           <span class="number">0.0.0.0</span>:*                          <span class="number">6278</span>/(squid)</span><br><span class="line">udp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0.0.0:3130</span>            <span class="number">0.0.0.0</span>:*                          <span class="number">6278</span>/(squid)</span><br><span class="line">udp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0.0.0:68</span>              <span class="number">0.0.0.0</span>:*                          <span class="number">4583</span>/dhclient3</span><br><span class="line">udp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0.0.0:6881</span>            <span class="number">0.0.0.0</span>:*                          <span class="number">6908</span>/python   </span><br><span class="line"></span><br><span class="line">-t : TCP port</span><br><span class="line">-u : UDP port</span><br><span class="line">-l : Show only listening sockets.</span><br><span class="line">-p : Show the PID and name of the program to which each socket / port belongs</span><br><span class="line">-n : No DNS lookup (speed up operation)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+
+        
+          <div class="post-nav">
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2013/12/04/lincell-editor-ide/">发布一个轻型文件编辑器 - lincell，一行命令创建IDE</a>
+              
+            </div>
+
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2013/05/28/oracle-nodejs/">oracle与node.js：使用与坑</a>
+              
+            </div>
+          </div>
+        
+
+        
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    <div class="comments" id="comments">
+      
+    </div>
+  
+
+          </div>
+
+          
+        </div>
+
+        
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          站点概览
+        </li>
+      </ul>
+    
+
+    <div class="site-overview">
+      <div class="site-author motion-element">
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
+        <p class="site-author-name">Sumory Wu</p>
+      </div>
+      <p class="site-description motion-element"></p>
+      <div class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+            <span class="site-state-item-count">36</span>
+            <span class="site-state-item-name">标签</span>
+        </div>
+        <div class="site-state-item site-state-pages">
+            <span class="site-state-item-count">2</span>
+            <span class="site-state-item-name">页面</span>
+        </div>
+      </div>
+
+      
+
+      <div class="social-info motion-element">
+        
+      </div>
+
+    </div>
+
+    
+      <div class="post-toc sidebar-panel-active">
+        
+      </div>
+    
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Sumory Wu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      $('.post').velocity('transition.slideDownIn', {stagger: 300, drag: true});
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+    }
+
+    function getTOCMaxHeight () {
+      // TODO: Make it beautiful
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+        parseInt($sidebarInner.css('padding-top'), 10) -
+        parseInt($sidebarInner.css('padding-bottom'), 10) -
+        $('.sidebar-nav').height() -
+        parseInt($tocSelector.css('margin-top'), 10) -
+        parseInt($tocSelector.css('margin-bottom'), 10);
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+      });
+    }
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if ($('.post-toc').html().trim().length > 0 && isDesktop()) {
+        //setTimeout(function () {
+        //  $('.sidebar-toggle').trigger('click');
+        //}, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sumory"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+  
+</body>
+</html>
