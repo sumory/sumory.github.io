@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion">
+<html class="theme-next use-motion theme-next-my-hexo-next">
 <head>
   
 
@@ -13,14 +13,15 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.3.0rc5"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.1"/>
 
 
 
 
 	<meta name="keywords" content="java,redis,spring," />
 
-  <title> Redis的sentinel使用及spring集成 // Sumory's Notes </title>
+  <meta name="baidu-site-verification" content="G9yMkDY5mG" />
+  <title> Redis的sentinel使用及spring集成 // Sumory.Notes </title>
 </head>
 
 <body>
@@ -30,57 +31,67 @@
     <div id="header" class="header">
       <div class="header-inner">
         <h1 class="site-meta">
-    <a href="/" class="brand">
-        <span class="logo">
-          <i class="icon-logo"></i>
-        </span>
-        <span class="site-title">Sumory's Notes</span>
-    </a>
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Sumory.Notes</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
 </h1>
 
 
   <ul id="menu" class="menu">
     
-      
-      <li class="menu-item menu-item-home">
+     
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-home">
         <a href="/">
           <i class="menu-item-icon icon-home"></i> <br />
           首页
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-archives">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-archives">
         <a href="/archives">
           <i class="menu-item-icon icon-archives"></i> <br />
           归档
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-pen">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-pen">
         <a href="/projects">
           <i class="menu-item-icon icon-pen"></i> <br />
           项目
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-tags">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-tags">
         <a href="/tags">
           <i class="menu-item-icon icon-tags"></i> <br />
           标签
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-about">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-about">
         <a href="/about">
           <i class="menu-item-icon icon-about"></i> <br />
           关于
         </a>
       </li>
+      
     
+  <!--增加high一下-->
+  
   </ul>
 
 
@@ -114,12 +125,26 @@
       
 
       <div class="post-meta">
-          <span class="post-time">
-            
-              发表于 2014-08-15
-            
-          </span>
+        <span class="post-time">
+          
+            发表于 2014-08-15
+            <!--增加编辑日期-->
+              &nbsp 更新于 2015-03-14
+          
+        </span>
+
         
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/08/15/spring-redis-sentinel/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/15/spring-redis-sentinel/"></span>
+            </a>
+          </span>
           
         
       </div>
@@ -132,7 +157,7 @@
         
 
         
-          <h3 id="1-_senital-conf文件">1. senital.conf文件</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">port <span class="number">26379</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#sentinel监控的redis的名字、IP和端口，最后一个数字是sentinel做决策的时候需要投赞同票的最少的sentinel的数量。</span></span><br><span class="line">sentinel monitor mymaster <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6379</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#如果多久没联系上redis-servevr，认为这个redis-server进入到失效（SDOWN）状态。</span></span><br><span class="line">sentinel down-after-milliseconds mymaster <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#可选的安全连接密码</span></span><br><span class="line"><span class="preprocessor">#sentinel auth-pass mymaster xxx</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover（提升一个slave成为master）过期时间，如果超过这个时间没触发成功failover，sentinel会认为failover失败。</span></span><br><span class="line">sentinel failover-timeout mymaster <span class="number">30000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#选项指定了在执行故障转移时， 最多可以有多少个从服务器同时对新的主服务器进行同步， 这个数字越小， 完成故障转移所需的时间就越长。</span></span><br><span class="line">sentinel config-epoch mymaster <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#当failover时，可以指定一个“通知”脚本用来告知当前集群的情况。</span></span><br><span class="line"><span class="preprocessor">#脚本被允许执行的最大时间为60秒，如果超时，脚本将会被终止(KILL)</span></span><br><span class="line"><span class="preprocessor">#sentinel notification-script mymaster /var/redis/notify.sh</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover之后重配置客户端</span></span><br><span class="line"><span class="preprocessor"># sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="preprocessor"># Generated by CONFIG REWRITE</span></span><br></pre></td></tr></table></figure>
+          <h3 id="1-_senital-conf文件">1. senital.conf文件</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">port <span class="number">26379</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#sentinel监控的redis的名字、IP和端口，最后一个数字是sentinel做决策的时候需要投赞同票的最少的sentinel的数量。</span></span><br><span class="line">sentinel monitor mymaster <span class="number">127.0</span>.0.1 <span class="number">6379</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#如果多久没联系上redis-servevr，认为这个redis-server进入到失效（SDOWN）状态。</span></span><br><span class="line">sentinel down-after-milliseconds mymaster <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#可选的安全连接密码</span></span><br><span class="line"><span class="preprocessor">#sentinel auth-pass mymaster xxx</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover（提升一个slave成为master）过期时间，如果超过这个时间没触发成功failover，sentinel会认为failover失败。</span></span><br><span class="line">sentinel failover-timeout mymaster <span class="number">30000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#选项指定了在执行故障转移时， 最多可以有多少个从服务器同时对新的主服务器进行同步， 这个数字越小， 完成故障转移所需的时间就越长。</span></span><br><span class="line">sentinel config-epoch mymaster <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#当failover时，可以指定一个“通知”脚本用来告知当前集群的情况。</span></span><br><span class="line"><span class="preprocessor">#脚本被允许执行的最大时间为60秒，如果超时，脚本将会被终止(KILL)</span></span><br><span class="line"><span class="preprocessor">#sentinel notification-script mymaster /var/redis/notify.sh</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover之后重配置客户端</span></span><br><span class="line"><span class="preprocessor"># sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="preprocessor"># Generated by CONFIG REWRITE</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-_步骤">2. 步骤</h3><p>spring配置：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"jedisPoolConfig"</span> <span class="attribute">class</span>=<span class="value">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"maxTotal"</span> <span class="attribute">value</span>=<span class="value">"200"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"maxIdle"</span> <span class="attribute">value</span>=<span class="value">"30"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"maxWaitMillis"</span> <span class="attribute">value</span>=<span class="value">"30000"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"testOnBorrow"</span> <span class="attribute">value</span>=<span class="value">"false"</span> /&gt;</span><span class="comment">&lt;!-- 向调用者输出“链接”资源时，是否检测是有有效，如果无效则从连接池中移除，并尝试获取继续获取。设为true，一个挂都不能用 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"testOnReturn"</span> <span class="attribute">value</span>=<span class="value">"true"</span> /&gt;</span><span class="comment">&lt;!-- 向连接池“归还”链接时，是否检测“链接”对象的有效性。 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"jedisPool"</span> <span class="attribute">class</span>=<span class="value">"redis.clients.jedis.JedisSentinelPool"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"0"</span> <span class="attribute">value</span>=<span class="value">"mymaster"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">set</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">value</span>&gt;</span>127.0.0.1:26379<span class="tag">&lt;/<span class="title">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">value</span>&gt;</span>127.0.0.1:36379<span class="tag">&lt;/<span class="title">value</span>&gt;</span><span class="comment">&lt;!--配置了两个哨兵 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">set</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">constructor-arg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"2"</span> <span class="attribute">ref</span>=<span class="value">"jedisPoolConfig"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-_步骤">3. 步骤</h3><p>启动sentinel：</p>
@@ -191,15 +216,39 @@
   </div>
 
 
-
   
     <div class="comments" id="comments">
+      
+        <!--多说分享start-->
+        <div class="ds-share" data-thread-key="2014/08/15/spring-redis-sentinel/" data-title="Redis的sentinel使用及spring集成"  data-content="来自他的小人国" data-url="http://sumory.com/2014/08/15/spring-redis-sentinel/">
+        <div class="ds-share-inline">
+        <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+      </div>
+      </div> 
+      <!--多说分享end-->
+      <!--多说评论start-->
+        <div class="ds-thread" data-thread-key="2014/08/15/spring-redis-sentinel/"
+             data-title="Redis的sentinel使用及spring集成" data-url="http://sumory.com/2014/08/15/spring-redis-sentinel/">
+        </div>
+      <!--多说评论end-->
+
+
       
     </div>
   
 
           </div>
-
+          <br/>
+          
+          
           
         </div>
 
@@ -217,7 +266,7 @@
 
     
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
           文章目录
         </li>
         <li class="sidebar-nav-overview" data-target="site-overview">
@@ -227,51 +276,93 @@
     
 
     <div class="site-overview">
-      <div class="site-author motion-element">
+      <div class="site-autsider motion-element">
         <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
         <p class="site-author-name">Sumory Wu</p>
       </div>
       <p class="site-description motion-element"></p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">24</span>
-          <span class="site-state-item-name">日志</span>
+          <a href="/archives">
+            <span class="site-state-item-count">24</span>
+            <span class="site-state-item-name">日志</span>
+          </a>
         </div>
+
+        <div class="site-state-item site-state-categories">
+          
+            <span class="site-state-item-count">0</span>
+            <span class="site-state-item-name">分类</span>
+          
+        </div>
+
         <div class="site-state-item site-state-tags">
+          <a href="/tags">
             <span class="site-state-item-count">36</span>
             <span class="site-state-item-name">标签</span>
+          </a>
         </div>
-        <div class="site-state-item site-state-pages">
-            <span class="site-state-item-count">2</span>
-            <span class="site-state-item-name">页面</span>
-        </div>
+
+      </div>
+      
+      <!-- 添加分类end-->
+      
+
+      <div class="links-of-author motion-element">
+        
+          
+            <span class="links-of-author-item">
+              <a href="https://github.com/sumory" target="_blank">GitHub</a>
+            </span>
+          
+            <span class="links-of-author-item">
+              <a href="http://weibo.com/mytreas" target="_blank">Weibo</a>
+            </span>
+          
+        
       </div>
 
       
-
-      <div class="social-info motion-element">
-        
-      </div>
+      
+        <div class="cc-license motion-element">
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+            <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+          </a>
+        </div>
+      
 
     </div>
 
     
-      <div class="post-toc sidebar-panel-active">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_senital-conf文件"><span class="nav-number">1.</span> <span class="nav-text">1. senital.conf文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_步骤"><span class="nav-number">2.</span> <span class="nav-text">2. 步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_步骤"><span class="nav-number">3.</span> <span class="nav-text">3. 步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_测试"><span class="nav-number">4.</span> <span class="nav-text">4. 测试</span></a></li></ol>
+      <div class="post-toc-wrap sidebar-panel-active">
+        <div class="post-toc-indicator-top post-toc-indicator"></div>
+        <div class="post-toc">
+          
+          
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_senital-conf文件"><span class="nav-number">1.</span> <span class="nav-text">1. senital.conf文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_步骤"><span class="nav-number">2.</span> <span class="nav-text">2. 步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_步骤"><span class="nav-number">3.</span> <span class="nav-text">3. 步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_测试"><span class="nav-number">4.</span> <span class="nav-text">4. 测试</span></a></li></ol></div>
+          
+        </div>
+        <div class="post-toc-indicator-bottom post-toc-indicator"></div>
       </div>
     
+
   </div>
 </div>
 
 
       </div>
+
+
+
     </div>
+
+    
 
     <div id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
+  &copy; &nbsp;  2012 - 
   2015
   <span class="with-love">
     <i class="icon-heart"></i>
@@ -283,10 +374,14 @@
   由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
 
-<div class="theme-info">
-  主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
-</div>
 
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/lzlun129/my-hexo-next">
+    Customized.NexT.Mist
+  </a>
+</div>
 
 
 
@@ -296,16 +391,37 @@
 
     <div class="back-to-top"></div>
   </div>
+  
+
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $(".fancybox").fancybox();
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
     });
   </script>
+
 
   <script type="text/javascript">
   function hasMobileUA () {
@@ -338,8 +454,6 @@
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  
-
   <script type="text/javascript" id="motion.global">
   $(document).ready(function () {
     var body = $('body');
@@ -367,6 +481,7 @@
     var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
     var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
 
+    LogoAndMenuMotion();
     sidebatToggleMotion();
     postsListMotion();
     backToTopMotion();
@@ -381,6 +496,19 @@
         sidebarContentMotion();
       })
       .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
 
 
     function backToTopMotion () {
@@ -427,7 +555,8 @@
     }
 
     function postsListMotion () {
-      $('.post').velocity('transition.slideDownIn', {stagger: 300, drag: true});
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
     }
 
     function sidebatToggleMotion () {
@@ -451,6 +580,8 @@
   });
 
 </script>
+
+
 
 
 
@@ -670,21 +801,30 @@
 
     function processTOC () {
       getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
     }
 
     function getTOCMaxHeight () {
-      // TODO: Make it beautiful
       var $sidebarInner = $('.sidebar-inner');
       var height = $('.sidebar').height() -
-        parseInt($sidebarInner.css('padding-top'), 10) -
-        parseInt($sidebarInner.css('padding-bottom'), 10) -
-        $('.sidebar-nav').height() -
-        parseInt($tocSelector.css('margin-top'), 10) -
-        parseInt($tocSelector.css('margin-bottom'), 10);
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
 
       $tocSelector.css('height', height);
 
       return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
     }
 
     $(document).on('sidebar.didShow', function () {
@@ -704,11 +844,21 @@
       element.on('mousewheel DOMMouseScroll', function (event) {
           var oe = event.originalEvent;
           var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
 
           this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
           event.preventDefault();
+
+          toggleTOCOverflowIndicators();
       });
     }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
   });
 </script>
 
@@ -749,10 +899,11 @@
       });
 
       // Expand sidebar on post detail page by default, when post has a toc.
-      if ($('.post-toc').html().trim().length > 0 && isDesktop()) {
-        //setTimeout(function () {
-        //  $('.sidebar-toggle').trigger('click');
-        //}, 800);
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          //$('.sidebar-toggle').trigger('click');
+        }, 800);
       }
     });
   </script>
@@ -763,11 +914,12 @@
   
 
   
+  
 
   
     
   
-
+  
   <script type="text/javascript">
     var duoshuoQuery = {short_name:"sumory"};
     (function() {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion">
+<html class="theme-next use-motion theme-next-my-hexo-next">
 <head>
   
 
@@ -13,14 +13,15 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.3.0rc5"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.1"/>
 
 
 
 
 	<meta name="keywords" content="exception,java," />
 
-  <title> Java异常处理 // Sumory's Notes </title>
+  <meta name="baidu-site-verification" content="G9yMkDY5mG" />
+  <title> Java异常处理 // Sumory.Notes </title>
 </head>
 
 <body>
@@ -30,57 +31,67 @@
     <div id="header" class="header">
       <div class="header-inner">
         <h1 class="site-meta">
-    <a href="/" class="brand">
-        <span class="logo">
-          <i class="icon-logo"></i>
-        </span>
-        <span class="site-title">Sumory's Notes</span>
-    </a>
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Sumory.Notes</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
 </h1>
 
 
   <ul id="menu" class="menu">
     
-      
-      <li class="menu-item menu-item-home">
+     
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-home">
         <a href="/">
           <i class="menu-item-icon icon-home"></i> <br />
           首页
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-archives">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-archives">
         <a href="/archives">
           <i class="menu-item-icon icon-archives"></i> <br />
           归档
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-pen">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-pen">
         <a href="/projects">
           <i class="menu-item-icon icon-pen"></i> <br />
           项目
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-tags">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-tags">
         <a href="/tags">
           <i class="menu-item-icon icon-tags"></i> <br />
           标签
         </a>
       </li>
-    
       
-      <li class="menu-item menu-item-about">
+    
+        
+      <li class="mw-harlem_shake_me im_first menu-item  menu-item-about">
         <a href="/about">
           <i class="menu-item-icon icon-about"></i> <br />
           关于
         </a>
       </li>
+      
     
+  <!--增加high一下-->
+  
   </ul>
 
 
@@ -114,12 +125,26 @@
       
 
       <div class="post-meta">
-          <span class="post-time">
-            
-              发表于 2014-03-16
-            
-          </span>
+        <span class="post-time">
+          
+            发表于 2014-03-16
+            <!--增加编辑日期-->
+              &nbsp 更新于 2015-03-14
+          
+        </span>
+
         
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/03/16/java-exception/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/16/java-exception/"></span>
+            </a>
+          </span>
           
         
       </div>
@@ -208,15 +233,39 @@
   </div>
 
 
-
   
     <div class="comments" id="comments">
+      
+        <!--多说分享start-->
+        <div class="ds-share" data-thread-key="2014/03/16/java-exception/" data-title="Java异常处理"  data-content="来自他的小人国" data-url="http://sumory.com/2014/03/16/java-exception/">
+        <div class="ds-share-inline">
+        <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+      </div>
+      </div> 
+      <!--多说分享end-->
+      <!--多说评论start-->
+        <div class="ds-thread" data-thread-key="2014/03/16/java-exception/"
+             data-title="Java异常处理" data-url="http://sumory.com/2014/03/16/java-exception/">
+        </div>
+      <!--多说评论end-->
+
+
       
     </div>
   
 
           </div>
-
+          <br/>
+          
+          
           
         </div>
 
@@ -234,7 +283,7 @@
 
     
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
           文章目录
         </li>
         <li class="sidebar-nav-overview" data-target="site-overview">
@@ -244,51 +293,93 @@
     
 
     <div class="site-overview">
-      <div class="site-author motion-element">
+      <div class="site-autsider motion-element">
         <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
         <p class="site-author-name">Sumory Wu</p>
       </div>
       <p class="site-description motion-element"></p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">24</span>
-          <span class="site-state-item-name">日志</span>
+          <a href="/archives">
+            <span class="site-state-item-count">24</span>
+            <span class="site-state-item-name">日志</span>
+          </a>
         </div>
+
+        <div class="site-state-item site-state-categories">
+          
+            <span class="site-state-item-count">0</span>
+            <span class="site-state-item-name">分类</span>
+          
+        </div>
+
         <div class="site-state-item site-state-tags">
+          <a href="/tags">
             <span class="site-state-item-count">36</span>
             <span class="site-state-item-name">标签</span>
+          </a>
         </div>
-        <div class="site-state-item site-state-pages">
-            <span class="site-state-item-count">2</span>
-            <span class="site-state-item-name">页面</span>
-        </div>
+
+      </div>
+      
+      <!-- 添加分类end-->
+      
+
+      <div class="links-of-author motion-element">
+        
+          
+            <span class="links-of-author-item">
+              <a href="https://github.com/sumory" target="_blank">GitHub</a>
+            </span>
+          
+            <span class="links-of-author-item">
+              <a href="http://weibo.com/mytreas" target="_blank">Weibo</a>
+            </span>
+          
+        
       </div>
 
       
-
-      <div class="social-info motion-element">
-        
-      </div>
+      
+        <div class="cc-license motion-element">
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+            <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+          </a>
+        </div>
+      
 
     </div>
 
     
-      <div class="post-toc sidebar-panel-active">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理原则"><span class="nav-number">2.</span> <span class="nav-text">处理原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常使用方法"><span class="nav-number">3.</span> <span class="nav-text">异常使用方法</span></a></li></ol>
+      <div class="post-toc-wrap sidebar-panel-active">
+        <div class="post-toc-indicator-top post-toc-indicator"></div>
+        <div class="post-toc">
+          
+          
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理原则"><span class="nav-number">2.</span> <span class="nav-text">处理原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常使用方法"><span class="nav-number">3.</span> <span class="nav-text">异常使用方法</span></a></li></ol></div>
+          
+        </div>
+        <div class="post-toc-indicator-bottom post-toc-indicator"></div>
       </div>
     
+
   </div>
 </div>
 
 
       </div>
+
+
+
     </div>
+
+    
 
     <div id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
+  &copy; &nbsp;  2012 - 
   2015
   <span class="with-love">
     <i class="icon-heart"></i>
@@ -300,10 +391,14 @@
   由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
 
-<div class="theme-info">
-  主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
-</div>
 
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/lzlun129/my-hexo-next">
+    Customized.NexT.Mist
+  </a>
+</div>
 
 
 
@@ -313,16 +408,37 @@
 
     <div class="back-to-top"></div>
   </div>
+  
+
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $(".fancybox").fancybox();
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
     });
   </script>
+
 
   <script type="text/javascript">
   function hasMobileUA () {
@@ -355,8 +471,6 @@
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  
-
   <script type="text/javascript" id="motion.global">
   $(document).ready(function () {
     var body = $('body');
@@ -384,6 +498,7 @@
     var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
     var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
 
+    LogoAndMenuMotion();
     sidebatToggleMotion();
     postsListMotion();
     backToTopMotion();
@@ -398,6 +513,19 @@
         sidebarContentMotion();
       })
       .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
 
 
     function backToTopMotion () {
@@ -444,7 +572,8 @@
     }
 
     function postsListMotion () {
-      $('.post').velocity('transition.slideDownIn', {stagger: 300, drag: true});
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
     }
 
     function sidebatToggleMotion () {
@@ -468,6 +597,8 @@
   });
 
 </script>
+
+
 
 
 
@@ -687,21 +818,30 @@
 
     function processTOC () {
       getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
     }
 
     function getTOCMaxHeight () {
-      // TODO: Make it beautiful
       var $sidebarInner = $('.sidebar-inner');
       var height = $('.sidebar').height() -
-        parseInt($sidebarInner.css('padding-top'), 10) -
-        parseInt($sidebarInner.css('padding-bottom'), 10) -
-        $('.sidebar-nav').height() -
-        parseInt($tocSelector.css('margin-top'), 10) -
-        parseInt($tocSelector.css('margin-bottom'), 10);
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
 
       $tocSelector.css('height', height);
 
       return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
     }
 
     $(document).on('sidebar.didShow', function () {
@@ -721,11 +861,21 @@
       element.on('mousewheel DOMMouseScroll', function (event) {
           var oe = event.originalEvent;
           var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
 
           this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
           event.preventDefault();
+
+          toggleTOCOverflowIndicators();
       });
     }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
   });
 </script>
 
@@ -766,10 +916,11 @@
       });
 
       // Expand sidebar on post detail page by default, when post has a toc.
-      if ($('.post-toc').html().trim().length > 0 && isDesktop()) {
-        //setTimeout(function () {
-        //  $('.sidebar-toggle').trigger('click');
-        //}, 800);
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          //$('.sidebar-toggle').trigger('click');
+        }, 800);
       }
     });
   </script>
@@ -780,11 +931,12 @@
   
 
   
+  
 
   
     
   
-
+  
   <script type="text/javascript">
     var duoshuoQuery = {short_name:"sumory"};
     (function() {

@@ -4,9 +4,9 @@
 <p>Copyright (c) 2012 Janis Skarnelis - janis@fancyapps.com</p>
 <h2 id="How_to_use">How to use</h2><p>To get started, download the plugin, unzip it and copy files to your website/application directory.<br>Load files in the <head> section of your HTML document. Make sure you also add the jQuery library.</p>
 <pre><code><span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
     <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"/fancybox/jquery.fancybox.css"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">media</span>=<span class="value">"screen"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/fancybox/jquery.fancybox.pack.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/fancybox/jquery.fancybox.pack.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
 </code></pre><p>Create your links with a <code>title</code> if you want a title to be shown, and add a class:</p>
 <pre><code>&lt;a <span class="variable">href=</span><span class="string">"large_image.jpg"</span> <span class="variable">class=</span><span class="string">"fancybox"</span> <span class="variable">title=</span><span class="string">"Sample title"</span>&gt;&lt;img <span class="variable">src=</span><span class="string">"small_image.jpg"</span> /&gt;&lt;/a&gt;
@@ -29,7 +29,7 @@
     });
 </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 </code></pre><p>Tip: Automatically group and apply fancyBox to all images:</p>
-<pre><code>$(<span class="string">"a[href$='</span>.<span class="transposed_variable">jpg'</span>],a<span class="matrix">[href$=<span class="string">'.jpeg'</span>]</span>,a<span class="matrix">[href$=<span class="string">'.png'</span>]</span>,a<span class="matrix">[href$=<span class="string">'.gif'</span>]</span><span class="string">").attr('</span><span class="transposed_variable">rel'</span>, <span class="string">'gallery'</span>).fancybox();
+<pre><code><span class="char">$(</span><span class="comment">"a[href$='.jpg'],a[href$='.jpeg'],a[href$='.png'],a[href$='.gif']"</span>).attr(<span class="string">'rel'</span>, <span class="string">'gallery'</span>).fancybox();
 </code></pre><p>Script uses the <code>href</code> attribute of the matched elements to obtain the location of the content and to figure out content type you want to display.<br>You can specify type directly by adding classname (fancybox.image, fancybox.iframe, etc) or <code>data-fancybox-type</code> attribute:</p>
 <pre><code><span class="comment">//Ajax:</span>
 &lt;a href=<span class="string">"/example.html"</span> <span class="class"><span class="keyword">class</span>=</span><span class="string">"fancybox fancybox.ajax"</span>&gt;<span class="type">Example</span>&lt;/a&gt;
@@ -138,21 +138,21 @@ $<span class="class">.fancybox</span><span class="class">.inner</span>
 </code></pre><p>You can override CSS to customize the look. For example, make navigation arrows always visible,<br>change width and move them outside of area (use this snippet after including fancybox.css):</p>
 <pre><code><span class="class">.fancybox-nav</span> <span class="tag">span</span> <span class="rules">{
     <span class="rule"><span class="attribute">visibility</span>:<span class="value"> visible</span></span>;
-<span class="rule">}</span></span>
+}</span>
 
 <span class="class">.fancybox-nav</span> <span class="rules">{
     <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80px</span></span></span>;
-<span class="rule">}</span></span>
+}</span>
 
 <span class="class">.fancybox-prev</span> <span class="rules">{
     <span class="rule"><span class="attribute">left</span>:<span class="value"> -<span class="number">80px</span></span></span>;
-<span class="rule">}</span></span>
+}</span>
 
 <span class="class">.fancybox-next</span> <span class="rules">{
     <span class="rule"><span class="attribute">right</span>:<span class="value"> -<span class="number">80px</span></span></span>;
-<span class="rule">}</span></span>
+}</span>
 </code></pre><p>In that case, you might want to increase space around box:</p>
 <pre><code>$("<span class="class">.fancybox</span>")<span class="class">.fancybox</span>(<span class="rules">{
     <span class="rule"><span class="attribute">margin </span>:<span class="value"> [<span class="number">20</span>, <span class="number">60</span>, <span class="number">20</span>, <span class="number">60</span>]
-</span></span></span>});
+})</span></span>;</span>
 </code></pre><h2 id="Bug_tracker">Bug tracker</h2><p>Have a bug? Please create an issue on GitHub at <a href="https://github.com/fancyapps/fancyBox/issues">https://github.com/fancyapps/fancyBox/issues</a></p>
