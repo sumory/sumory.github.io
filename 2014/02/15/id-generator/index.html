@@ -1,154 +1,241 @@
-<!doctype html>
-<html class="theme-next use-motion theme-next-my-hexo-next">
+<!DOCTYPE html>
+<html>
 <head>
+  <meta charset="utf-8">
   
+  <title>分布式系统中的ID生成 | Sumory.Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题在分布式系统中常遇到ID生成问题:
 
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+场景1，在分库分表中需要保证某类ID唯一，这样使用主键自增的策略就不再合适
+场景2，需要某类ID需要具有同一特性来标识
 
+诸如此类。
+方案 有很多解决方案，比如
 
+基于数据库主键自增策略（及其变种，如分片生成以提高效率、分库分表生成以解决单点问题等）
+UUID(简单但比较丑陋，生成的ID无规律，也有方案是基于UUID，但更简短
+基于MongoDB的id策略">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式系统中的ID生成">
+<meta property="og:url" content="http://sumory.com/2014/02/15/id-generator/index.html">
+<meta property="og:site_name" content="Sumory.Notes">
+<meta property="og:description" content="问题在分布式系统中常遇到ID生成问题:
 
+场景1，在分库分表中需要保证某类ID唯一，这样使用主键自增的策略就不再合适
+场景2，需要某类ID需要具有同一特性来标识
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+诸如此类。
+方案 有很多解决方案，比如
 
+基于数据库主键自增策略（及其变种，如分片生成以提高效率、分库分表生成以解决单点问题等）
+UUID(简单但比较丑陋，生成的ID无规律，也有方案是基于UUID，但更简短
+基于MongoDB的id策略">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分布式系统中的ID生成">
+<meta name="twitter:description" content="问题在分布式系统中常遇到ID生成问题:
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.1"/>
+场景1，在分库分表中需要保证某类ID唯一，这样使用主键自增的策略就不再合适
+场景2，需要某类ID需要具有同一特性来标识
 
+诸如此类。
+方案 有很多解决方案，比如
 
-
-
-	<meta name="keywords" content="Memcached,Thrift,Zookeeper,分布式," />
-
-  <meta name="baidu-site-verification" content="G9yMkDY5mG" />
-  <title> 分布式系统中的ID生成 // Sumory.Notes </title>
+基于数据库主键自增策略（及其变种，如分片生成以提高效率、分库分表生成以解决单点问题等）
+UUID(简单但比较丑陋，生成的ID无规律，也有方案是基于UUID，但更简短
+基于MongoDB的id策略">
+  
+    <link rel="alternative" href="/atom.xml" title="Sumory.Notes" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
-
 <body>
-  <div class="container one-column page-post-detail">
-    <div class="headband"></div>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+		</a>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
-      <span class="logo">
-        <i class="icon-logo"></i>
-      </span>
-      <span class="site-title">Sumory.Notes</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Sumory Wu</a></h1>
+		</hgroup>
 
+		
 
-  <ul id="menu" class="menu">
-    
-     
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-home">
-        <a href="/">
-          <i class="menu-item-icon icon-home"></i> <br />
-          首页
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          归档
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-pen">
-        <a href="/projects">
-          <i class="menu-item-icon icon-pen"></i> <br />
-          项目
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-about">
-        <a href="/about">
-          <i class="menu-item-icon icon-about"></i> <br />
-          关于
-        </a>
-      </li>
-      
-    
-  <!--增加high一下-->
-  
-  </ul>
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
 
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+							<li><a href="/tags/">标签</a></li>
+				        
+							<li><a href="/projects/">项目</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a><a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a><a href="/tags/NAT/" style="font-size: 10px;">NAT</a><a href="/tags/Thrift/" style="font-size: 10px;">Thrift</a><a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a><a href="/tags/Zookeeper/" style="font-size: 10px;">Zookeeper</a><a href="/tags/ant/" style="font-size: 10px;">ant</a><a href="/tags/btrace/" style="font-size: 10px;">btrace</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/build/" style="font-size: 10px;">build</a><a href="/tags/cloud/" style="font-size: 10px;">cloud</a><a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a><a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a><a href="/tags/editor/" style="font-size: 12.5px;">editor</a><a href="/tags/exception/" style="font-size: 10px;">exception</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/https/" style="font-size: 10px;">https</a><a href="/tags/iOS/" style="font-size: 10px;">iOS</a><a href="/tags/iphone/" style="font-size: 10px;">iphone</a><a href="/tags/java/" style="font-size: 20px;">java</a><a href="/tags/linux/" style="font-size: 15px;">linux</a><a href="/tags/mingw/" style="font-size: 10px;">mingw</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/node-js/" style="font-size: 17.5px;">node.js</a><a href="/tags/openssl/" style="font-size: 10px;">openssl</a><a href="/tags/oracle/" style="font-size: 12.5px;">oracle</a><a href="/tags/redis/" style="font-size: 10px;">redis</a><a href="/tags/rest-api/" style="font-size: 10px;">rest api</a><a href="/tags/socket-io/" style="font-size: 10px;">socket.io</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/svn/" style="font-size: 10px;">svn</a><a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a><a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a><a href="/tags/分布式/" style="font-size: 10px;">分布式</a><a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a><a href="/tags/安全/" style="font-size: 10px;">安全</a>
+					</div>
+				</section>
+				
+				
+				
 
-      </div>
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">读过书、创过业、挖过矿、务过农，现在正在做一名“光荣的人民教师”</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
     </div>
-
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
-            
-          
-
-          <div id="posts" class="posts-expand">
-            
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Sumory Wu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Sumory Wu</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+					<li><a href="/tags/">标签</a></li>
+		        
+					<li><a href="/projects/">项目</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-id-generator" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/02/15/id-generator/" class="article-date">
+  	<time datetime="2014-02-15T04:11:53.000Z" itemprop="datePublished">2014-02-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      分布式系统中的ID生成
+    </h1>
   
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
+      </header>
       
-      
-        <h1 class="post-title">
-          
-          
-            
-              分布式系统中的ID生成
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-02-15
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memcached/">Memcached</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thrift/">Thrift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zookeeper/">Zookeeper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
+	</div>
 
         
-          
-        
 
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/02/15/id-generator/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/02/15/id-generator/"></span>
-            </a>
-          </span>
-          
-        
+        <div class="clearfix"></div>
       </div>
-    </div>
-
+      
     
-      <div class="post-body">
-
-        
-        
-
-        
-          <h2 id="问题"><strong>问题</strong></h2><p>在分布式系统中常遇到<strong>ID</strong>生成问题:</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><strong>问题</strong></h2><p>在分布式系统中常遇到<strong>ID</strong>生成问题:</p>
 <ul>
 <li>场景1，在分库分表中需要保证某类ID唯一，这样使用主键自增的策略就不再合适</li>
 <li>场景2，需要某类ID需要具有同一特性来标识</li>
@@ -172,774 +259,123 @@
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="javadoc">/**</span><br><span class="line"> * 42位的时间前缀+10位的节点标识+12位的sequence避免并发的数字（12位不够用时强制得到新的时间前缀）</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * &lt;b&gt;对系统时间的依赖性非常强，需要关闭ntp的时间同步功能，或者当检测到ntp时间调整后，拒绝分配id。</span><br><span class="line"> * </span><br><span class="line"> *<span class="javadoctag"> @author</span> sumory.wu</span><br><span class="line"> *<span class="javadoctag"> @date</span> 2012-2-26 下午6:40:28</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IdWorker</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(IdWorker.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> workerId;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> snsEpoch = <span class="number">1330328109047</span>L;<span class="comment">// 起始标记点，作为基准</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> sequence = <span class="number">0</span>L;<span class="comment">// 0，并发控制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> workerIdBits = <span class="number">10</span>L;<span class="comment">// 只允许workid的范围为：0-1023</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxWorkerId = -<span class="number">1</span>L ^ -<span class="number">1</span>L &lt;&lt; <span class="keyword">this</span>.workerIdBits;<span class="comment">// 1023,1111111111,10位</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> sequenceBits = <span class="number">12</span>L;<span class="comment">// sequence值控制在0-4095</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> workerIdShift = <span class="keyword">this</span>.sequenceBits;<span class="comment">// 12</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> timestampLeftShift = <span class="keyword">this</span>.sequenceBits + <span class="keyword">this</span>.workerIdBits;<span class="comment">// 22</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> sequenceMask = -<span class="number">1</span>L ^ -<span class="number">1</span>L &lt;&lt; <span class="keyword">this</span>.sequenceBits;<span class="comment">// 4095,111111111111,12位</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> lastTimestamp = -<span class="number">1</span>L;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IdWorker</span><span class="params">(<span class="keyword">long</span> workerId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">if</span> (workerId &gt; <span class="keyword">this</span>.maxWorkerId || workerId &lt; <span class="number">0</span>) &#123;<span class="comment">// workid &lt; 1024[10位：2的10次方]</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(String.format(<span class="string">"worker Id can't be greater than %d or less than 0"</span>, <span class="keyword">this</span>.maxWorkerId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.workerId = workerId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="function"><span class="keyword">long</span> <span class="title">nextId</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = <span class="keyword">this</span>.timeGen();</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.lastTimestamp == timestamp) &#123;<span class="comment">// 如果上一个timestamp与新产生的相等，则sequence加一(0-4095循环)，下次再使用时sequence是新值</span></span><br><span class="line">            <span class="comment">//System.out.println("lastTimeStamp:" + lastTimestamp);</span></span><br><span class="line">            <span class="keyword">this</span>.sequence = <span class="keyword">this</span>.sequence + <span class="number">1</span> &amp; <span class="keyword">this</span>.sequenceMask;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.sequence == <span class="number">0</span>) &#123;</span><br><span class="line">                timestamp = <span class="keyword">this</span>.tilNextMillis(<span class="keyword">this</span>.lastTimestamp);<span class="comment">// 重新生成timestamp</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.sequence = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (timestamp &lt; <span class="keyword">this</span>.lastTimestamp) &#123;</span><br><span class="line">            logger.<span class="keyword">error</span>(String.format(<span class="string">"Clock moved backwards.Refusing to generate id for %d milliseconds"</span>, (<span class="keyword">this</span>.lastTimestamp - timestamp)));</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(String.format(<span class="string">"Clock moved backwards.Refusing to generate id for %d milliseconds"</span>, (<span class="keyword">this</span>.lastTimestamp - timestamp)));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.lastTimestamp = timestamp;</span><br><span class="line">        <span class="comment">// 生成的timestamp</span></span><br><span class="line">        <span class="keyword">return</span> timestamp - <span class="keyword">this</span>.snsEpoch &lt;&lt; <span class="keyword">this</span>.timestampLeftShift | <span class="keyword">this</span>.workerId &lt;&lt; <span class="keyword">this</span>.workerIdShift | <span class="keyword">this</span>.sequence;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 保证返回的毫秒数在参数之后</span><br><span class="line">     * </span><br><span class="line">     *<span class="javadoctag"> @param</span> lastTimestamp</span><br><span class="line">     *<span class="javadoctag"> @return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">long</span> <span class="title">tilNextMillis</span><span class="params">(<span class="keyword">long</span> lastTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = <span class="keyword">this</span>.timeGen();</span><br><span class="line">        <span class="keyword">while</span> (timestamp &lt;= lastTimestamp) &#123;</span><br><span class="line">            timestamp = <span class="keyword">this</span>.timeGen();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> timestamp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 获得系统当前毫秒数</span><br><span class="line">     * </span><br><span class="line">     *<span class="javadoctag"> @return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">long</span> <span class="title">timeGen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">return</span> System.<span class="title">currentTimeMillis</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        IdWorker iw1 = <span class="keyword">new</span> IdWorker(<span class="number">1</span>);</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(iw1.nextId());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="实际应用"><strong>实际应用</strong></h2><p>一个用于处理分布式系统中ID生成，唯一性字段值管理的通用模块<a href="https://github.com/sumory/uc" target="_blank" rel="external"><strong>UC</strong></a></p>
 
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/Memcached/">
-                #Memcached
-              </a>
-            
-              <a href="/tags/Thrift/">
-                #Thrift
-              </a>
-            
-              <a href="/tags/Zookeeper/">
-                #Zookeeper
-              </a>
-            
-              <a href="/tags/分布式/">
-                #分布式
-              </a>
-            
-          </div>
-        
-
-        
-          <div class="post-nav">
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2014/03/16/java-exception/">Java异常处理</a>
-              
-            </div>
-
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2014/02/03/merkle-hash-tree/">Merkle-Hash-Tree</a>
-              
-            </div>
-          </div>
-        
-
-        
-        
-      </div>
-    
-  </div>
-
-
-  
-    <div class="comments" id="comments">
-      
-        <!--多说分享start-->
-        <div class="ds-share" data-thread-key="2014/02/15/id-generator/" data-title="分布式系统中的ID生成"  data-content="来自他的小人国" data-url="http://sumory.com/2014/02/15/id-generator/">
-        <div class="ds-share-inline">
-        <ul  class="ds-share-icons-16">
-        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
-      </div>
-      </div> 
-      <!--多说分享end-->
-      <!--多说评论start-->
-        <div class="ds-thread" data-thread-key="2014/02/15/id-generator/"
-             data-title="分布式系统中的ID生成" data-url="http://sumory.com/2014/02/15/id-generator/">
-        </div>
-      <!--多说评论end-->
-
-
       
     </div>
-  
-
-          </div>
-          <br/>
-          
-          
-          
-        </div>
-
-        
-<div class="sidebar-toggle">
-  <div class="sidebar-toggle-line-wrap">
-    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-  </div>
-</div>
-
-<div id="sidebar" class="sidebar">
-  <div class="sidebar-inner">
-
     
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview" data-target="site-overview">
-          站点概览
-        </li>
-      </ul>
-    
-
-    <div class="site-overview">
-      <div class="site-autsider motion-element">
-        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
-        <p class="site-author-name">Sumory Wu</p>
-      </div>
-      <p class="site-description motion-element"></p>
-      <div class="site-state motion-element">
-        <div class="site-state-item site-state-posts">
-          <a href="/archives">
-            <span class="site-state-item-count">24</span>
-            <span class="site-state-item-name">日志</span>
-          </a>
-        </div>
-
-        <div class="site-state-item site-state-categories">
-          
-            <span class="site-state-item-count">0</span>
-            <span class="site-state-item-name">分类</span>
-          
-        </div>
-
-        <div class="site-state-item site-state-tags">
-          
-            <span class="site-state-item-count">36</span>
-            <span class="site-state-item-name">标签</span>
-          
-        </div>
-
-      </div>
-      
-      <!-- 添加分类end-->
-      
-
-      <div class="links-of-author motion-element">
-        
-          
-            <span class="links-of-author-item">
-              <a href="https://github.com/sumory" target="_blank">GitHub</a>
-            </span>
-          
-            <span class="links-of-author-item">
-              <a href="http://weibo.com/mytreas" target="_blank">Weibo</a>
-            </span>
-          
-        
-      </div>
-
-      
-      
-        <div class="cc-license motion-element">
-          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-            <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-          </a>
-        </div>
-      
-
-    </div>
-
-    
-      <div class="post-toc-wrap sidebar-panel-active">
-        <div class="post-toc-indicator-top post-toc-indicator"></div>
-        <div class="post-toc">
-          
-          
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际应用"><span class="nav-number">4.</span> <span class="nav-text">实际应用</span></a></li></ol></div>
-          
-        </div>
-        <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-      </div>
-    
-
-  </div>
-</div>
-
-
-      </div>
-
-
-
-    </div>
-
-    
-
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; &nbsp;  2012 - 
-  2015
-  <span class="with-love">
-    <i class="icon-heart"></i>
-  </span>
-  <span class="author">Sumory Wu</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/lzlun129/my-hexo-next">
-    Customized.NexT.Mist
-  </a>
-</div>
-
-
-
-
-      </div>
-    </div>
-
-    <div class="back-to-top"></div>
   </div>
   
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2014/03/16/java-exception/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Java异常处理
+        
+      </div>
+    </a>
   
   
+    <a href="/2014/02/03/merkle-hash-tree/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Merkle-Hash-Tree</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.content img').each(function () {
-        var $image = $(this);
-        var $imageWrapLink = $image.parent('a');
-
-        if ($imageWrapLink.size() < 1) {
-          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
-        }
-        $imageWrapLink.addClass('fancybox');
-      });
-    });
-    $('.fancybox').fancybox({
-      helpers: {
-        overlay: {
-          locked: false
-        }
-      }
-    });
-  </script>
+</article>
 
 
-  <script type="text/javascript">
-  function hasMobileUA () {
-    var nav = window.navigator;
-    var ua = nav.userAgent;
-    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-    return pa.test(ua);
-  }
 
-  function isDesktop () {
-    return screen.width > 991 && !hasMobileUA();
-  }
 
-  function isTablet () {
-    return screen.width < 992 && screen.width > 767 && hasMobileUA();
-  }
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="id-generator" data-title="分布式系统中的ID生成" data-url="http://sumory.com/2014/02/15/id-generator/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"sumory"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-  function isMobile () {
-    return screen.width < 767 && hasMobileUA();
-  }
 
-  function escapeSelector (selector) {
-    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
-  }
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Sumory Wu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" id="motion.global">
-  $(document).ready(function () {
-    var body = $('body');
-    var isSidebarVisible = false;
-    var sidebarToggle = $('.sidebar-toggle');
-    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
-    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
-    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
-    var sidebar = $('.sidebar');
-
-    var SIDEBAR_WIDTH = '320px';
-    var SIDEBAR_DISPLAY_DURATION = 300;
-
-    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
-
-    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
-    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
-
-    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
-    var sidebarToogleLine2ndStatusClose = {opacity: 0};
-
-    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
-    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
-
-    LogoAndMenuMotion();
-    sidebatToggleMotion();
-    postsListMotion();
-    backToTopMotion();
-
-
-    $(document)
-      .on('sidebar.isShowing', function () {
-        isDesktop() && body.velocity(
-          {paddingRight: SIDEBAR_WIDTH},
-          SIDEBAR_DISPLAY_DURATION
-        );
-        sidebarContentMotion();
-      })
-      .on('sidebar.isHiding', function () {});
-
-    function LogoAndMenuMotion() {
-      $.Velocity.RunSequence([
-        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
-        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
-        
-        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
-        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
-        
-        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
-      ]);
-      $('.menu-item').velocity('transition.slideDownIn', {display: null});
-    }
-
-
-    function backToTopMotion () {
-      var b2top = $('.back-to-top');
-      b2top.on('click', function () {
-        body.velocity('scroll');
-      });
-    }
-
-    function sidebarShowMotion () {
-
-      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
-      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
-      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
-
-      sidebar.velocity({width: SIDEBAR_WIDTH}, {
-        display: 'block',
-        duration: SIDEBAR_DISPLAY_DURATION,
-        complete: function () {
-          sidebar.addClass('sidebar-active');
-          sidebar.trigger('sidebar.didShow');
-        }
-      });
-      sidebar.trigger('sidebar.isShowing');
-    }
-
-    function sidebarHideMotion () {
-      isDesktop() && body.velocity({paddingRight: 0});
-      sidebar.velocity('reverse');
-
-      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
-      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
-      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
-
-      sidebar.removeClass('sidebar-active');
-      sidebar.trigger('sidebar.isHiding');
-    };
-
-    function sidebarContentMotion () {
-      $('.sidebar .motion-element').velocity(
-        'transition.slideRightIn',
-        {stagger: 50, drag: true}
-      );
-    }
-
-    function postsListMotion () {
-      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
-      $('.post').velocity('transition.slideDownIn', postMotionOptions);
-    }
-
-    function sidebatToggleMotion () {
-      sidebarToggle.on('click', function () {
-        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
-        isSidebarVisible = !isSidebarVisible;
-      });
-
-      sidebarToggle.hover(function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
-      }, function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
-      });
-    }
-  });
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
 
-
-
-
-
-  
-  
-<script type="text/javascript" id="bootstrap.scrollspy.custom">
-  /* ========================================================================
-  * Bootstrap: scrollspy.js v3.3.2
-  * http://getbootstrap.com/javascript/#scrollspy
-  * ========================================================================
-  * Copyright 2011-2015 Twitter, Inc.
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-  * ======================================================================== */
-
-  /**
-   * Custom by iissnan
-   *
-   * - Add a `clear.bs.scrollspy` event.
-   * - Esacpe targets selector.
-   */
-
-
-  +function ($) {
-    'use strict';
-
-    // SCROLLSPY CLASS DEFINITION
-    // ==========================
-
-    function ScrollSpy(element, options) {
-      this.$body          = $(document.body)
-      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
-      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-      this.selector       = (this.options.target || '') + ' .nav li > a'
-      this.offsets        = []
-      this.targets        = []
-      this.activeTarget   = null
-      this.scrollHeight   = 0
-
-      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
-      this.refresh()
-      this.process()
-    }
-
-    ScrollSpy.VERSION  = '3.3.2'
-
-    ScrollSpy.DEFAULTS = {
-      offset: 10
-    }
-
-    ScrollSpy.prototype.getScrollHeight = function () {
-      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
-    }
-
-    ScrollSpy.prototype.refresh = function () {
-      var that          = this
-      var offsetMethod  = 'offset'
-      var offsetBase    = 0
-
-      this.offsets      = []
-      this.targets      = []
-      this.scrollHeight = this.getScrollHeight()
-
-      if (!$.isWindow(this.$scrollElement[0])) {
-        offsetMethod = 'position'
-        offsetBase   = this.$scrollElement.scrollTop()
-      }
-
-      this.$body
-        .find(this.selector)
-        .map(function () {
-          var $el   = $(this)
-          var href  = $el.data('target') || $el.attr('href')
-          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
-
-          return ($href
-            && $href.length
-            && $href.is(':visible')
-            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
-        })
-        .sort(function (a, b) { return a[0] - b[0] })
-        .each(function () {
-          that.offsets.push(this[0])
-          that.targets.push(this[1])
-        })
-
-
-    }
-
-    ScrollSpy.prototype.process = function () {
-      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
-      var scrollHeight = this.getScrollHeight()
-      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
-      var offsets      = this.offsets
-      var targets      = this.targets
-      var activeTarget = this.activeTarget
-      var i
-
-      if (this.scrollHeight != scrollHeight) {
-        this.refresh()
-      }
-
-      if (scrollTop >= maxScroll) {
-        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
-      }
-
-      if (activeTarget && scrollTop < offsets[0]) {
-        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
-        this.activeTarget = null
-        return this.clear()
-      }
-
-      for (i = offsets.length; i--;) {
-        activeTarget != targets[i]
-          && scrollTop >= offsets[i]
-          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
-          && this.activate(targets[i])
-      }
-    }
-
-    ScrollSpy.prototype.activate = function (target) {
-      this.activeTarget = target
-
-      this.clear()
-
-      var selector = this.selector +
-        '[data-target="' + target + '"],' +
-        this.selector + '[href="' + target + '"]'
-
-      var active = $(selector)
-        .parents('li')
-        .addClass('active')
-
-      if (active.parent('.dropdown-menu').length) {
-        active = active
-          .closest('li.dropdown')
-          .addClass('active')
-      }
-
-      active.trigger('activate.bs.scrollspy')
-    }
-
-    ScrollSpy.prototype.clear = function () {
-      $(this.selector)
-        .parentsUntil(this.options.target, '.active')
-        .removeClass('active')
-    }
-
-
-    // SCROLLSPY PLUGIN DEFINITION
-    // ===========================
-
-    function Plugin(option) {
-      return this.each(function () {
-        var $this   = $(this)
-        var data    = $this.data('bs.scrollspy')
-        var options = typeof option == 'object' && option
-
-        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-        if (typeof option == 'string') data[option]()
-      })
-    }
-
-    var old = $.fn.scrollspy
-
-    $.fn.scrollspy             = Plugin
-    $.fn.scrollspy.Constructor = ScrollSpy
-
-
-    // SCROLLSPY NO CONFLICT
-    // =====================
-
-    $.fn.scrollspy.noConflict = function () {
-      $.fn.scrollspy = old
-      return this
-    }
-
-
-    // SCROLLSPY DATA-API
-    // ==================
-
-    $(window).on('load.bs.scrollspy.data-api', function () {
-      $('[data-spy="scroll"]').each(function () {
-        var $spy = $(this)
-        Plugin.call($spy, $spy.data())
-      })
-    })
-
-  }(jQuery);
-</script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.didShow', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-          var self = this;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      $(indicator).velocity('stop').velocity({
-        opacity: action === 'show' ? 0.4 : 0
-      }, { duration: 100 });
-    }
-
-  });
-</script>
-
-
-  <script type="text/javascript" id="sidebar.nav">
-    $(document).ready(function () {
-      var html = $('html');
-
-      $('.sidebar-nav li').on('click', function () {
-        var item = $(this);
-        var activeTabClassName = 'sidebar-nav-active';
-        var activePanelClassName = 'sidebar-panel-active';
-        if (item.hasClass(activeTabClassName)) {
-          return;
-        }
-
-        var currentTarget = $('.' + activePanelClassName);
-        var target = $('.' + item.data('target'));
-
-        currentTarget.velocity('transition.slideUpOut', 200, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', 200)
-            .addClass(activePanelClassName);
-        });
-
-        item.siblings().removeClass(activeTabClassName);
-        item.addClass(activeTabClassName);
-      });
-
-      $('.post-toc a').on('click', function (e) {
-        e.preventDefault();
-        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        });
-      });
-
-      // Expand sidebar on post detail page by default, when post has a toc.
-      var $tocContent = $('.post-toc-content');
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
-        setTimeout(function () {
-          //$('.sidebar-toggle').trigger('click');
-        }, 800);
-      }
-    });
-  </script>
-
-
-
-
-  
-
-  
-  
-
-  
-    
-  
-  
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sumory"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-  
+  </div>
 </body>
 </html>

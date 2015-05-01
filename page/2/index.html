@@ -1,170 +1,202 @@
-<!doctype html>
-<html class="theme-next use-motion theme-next-my-hexo-next">
+<!DOCTYPE html>
+<html>
 <head>
+  <meta charset="utf-8">
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.1"/>
-
-
-
-
-
-    <meta name="keywords" content="Hexo,next" />
-
-
-
-
-
-    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.1" />
-
-
-
-
-  <meta name="baidu-site-verification" content="G9yMkDY5mG" />
-  <title> Sumory.Notes </title>
+  <title>Sumory.Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sumory.Notes">
+<meta property="og:url" content="http://sumory.com/page/2/index.html">
+<meta property="og:site_name" content="Sumory.Notes">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sumory.Notes">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="Sumory.Notes" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
-
 <body>
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+		</a>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
-      <span class="logo">
-        <i class="icon-logo"></i>
-      </span>
-      <span class="site-title">Sumory.Notes</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Sumory Wu</a></h1>
+		</hgroup>
 
+		
 
-  <ul id="menu" class="menu">
-    
-     
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-home">
-        <a href="/">
-          <i class="menu-item-icon icon-home"></i> <br />
-          首页
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          归档
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-pen">
-        <a href="/projects">
-          <i class="menu-item-icon icon-pen"></i> <br />
-          项目
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-about">
-        <a href="/about">
-          <i class="menu-item-icon icon-about"></i> <br />
-          关于
-        </a>
-      </li>
-      
-    
-  <!--增加high一下-->
-  
-  </ul>
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
 
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+							<li><a href="/tags/">标签</a></li>
+				        
+							<li><a href="/projects/">项目</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a><a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a><a href="/tags/NAT/" style="font-size: 10px;">NAT</a><a href="/tags/Thrift/" style="font-size: 10px;">Thrift</a><a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a><a href="/tags/Zookeeper/" style="font-size: 10px;">Zookeeper</a><a href="/tags/ant/" style="font-size: 10px;">ant</a><a href="/tags/btrace/" style="font-size: 10px;">btrace</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/build/" style="font-size: 10px;">build</a><a href="/tags/cloud/" style="font-size: 10px;">cloud</a><a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a><a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a><a href="/tags/editor/" style="font-size: 12.5px;">editor</a><a href="/tags/exception/" style="font-size: 10px;">exception</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/https/" style="font-size: 10px;">https</a><a href="/tags/iOS/" style="font-size: 10px;">iOS</a><a href="/tags/iphone/" style="font-size: 10px;">iphone</a><a href="/tags/java/" style="font-size: 20px;">java</a><a href="/tags/linux/" style="font-size: 15px;">linux</a><a href="/tags/mingw/" style="font-size: 10px;">mingw</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/node-js/" style="font-size: 17.5px;">node.js</a><a href="/tags/openssl/" style="font-size: 10px;">openssl</a><a href="/tags/oracle/" style="font-size: 12.5px;">oracle</a><a href="/tags/redis/" style="font-size: 10px;">redis</a><a href="/tags/rest-api/" style="font-size: 10px;">rest api</a><a href="/tags/socket-io/" style="font-size: 10px;">socket.io</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/svn/" style="font-size: 10px;">svn</a><a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a><a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a><a href="/tags/分布式/" style="font-size: 10px;">分布式</a><a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a><a href="/tags/安全/" style="font-size: 10px;">安全</a>
+					</div>
+				</section>
+				
+				
+				
 
-      </div>
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">读过书、创过业、挖过矿、务过农，现在正在做一名“光荣的人民教师”</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
     </div>
-
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
-            
-          
-
-          <div id="posts" class="posts-expand">
-            
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Sumory Wu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Sumory Wu</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+					<li><a href="/tags/">标签</a></li>
+		        
+					<li><a href="/projects/">项目</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/03/19/java-synchronized/">
-                Java synchronized
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-03-18
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/03/19/java-synchronized/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/19/java-synchronized/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-java-synchronized" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/19/java-synchronized/" class="article-date">
+  	<time datetime="2014-03-18T17:33:06.000Z" itemprop="datePublished">2014-03-19</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/19/java-synchronized/">Java synchronized</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <h2 id="小记">小记</h2><ul>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="小记">小记</h2><ul>
 <li>synchronized可作用于instance变量、对象引用、static函数和class上。</li>
 <li><p>每个对象只有一个锁（lock）与之相关联。每一个类也对应一把锁，因此也可将类的静态成员函数声明为 synchronized，以控制其对<code>类</code>的静态成员变量的访问，注意这里会锁在“类”上，而不是实例上。</p>
 </li>
@@ -179,189 +211,118 @@
 </ul>
 <h2 id="synchronized实现原理">synchronized实现原理</h2><p>待续。</p>
 
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/java/">
-                #java
-              </a>
-            
-              <a href="/tags/多线程/">
-                #多线程
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/03/18/java-thread/">
-                Java wait()/notify()/notifyAll/死锁
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-03-18
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/03/18/java-thread/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/18/java-thread/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-java-thread" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/18/java-thread/" class="article-date">
+  	<time datetime="2014-03-18T14:29:10.000Z" itemprop="datePublished">2014-03-18</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/18/java-thread/">Java wait()/notify()/notifyAll/死锁</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <blockquote>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
 <p>多线程编程中要特别注意可能发生死锁的场景，java多线程中与锁相关的几个方法有wait()/notify()/sleep()/yeild()等。<br>这里由一个死锁为题引出几个方法使用时应注意的问题。</p>
 </blockquote>
 <p><img src="http://img.my.csdn.net/uploads/201209/21/1348241879_8124.jpg" alt="线程生命周期"></p>
 <h2 id="死锁案例：notify和notifyAll">死锁案例：notify和notifyAll</h2>
-            <div class="post-more-link text-center">
-              <a class="btn" href="/2014/03/18/java-thread/#more">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/java/">
-                #java
-              </a>
-            
-              <a href="/tags/多线程/">
-                #多线程
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/03/18/java-thread/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/03/16/java-exception/">
-                Java异常处理
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-03-16
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/03/16/java-exception/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/16/java-exception/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-java-exception" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/16/java-exception/" class="article-date">
+  	<time datetime="2014-03-16T02:50:28.000Z" itemprop="datePublished">2014-03-16</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/16/java-exception/">Java异常处理</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p>这篇文章主要用来对java异常处理一些容易模糊的概念做梳理。接受一个教训，有些基础理论知识、专业名词说不定哪天就会用到，还是多记一点的好。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇文章主要用来对java异常处理一些容易模糊的概念做梳理。接受一个教训，有些基础理论知识、专业名词说不定哪天就会用到，还是多记一点的好。</p>
 <h2 id="概念">概念</h2><p>Thorwable类是所有异常和错误的超类，有两个子类Error和Exception。Error是程序无法处理的错误，比如OutOfMemoryError、ThreadDeath等。</p>
 <p><strong>运行时异常</strong>都是RuntimeException类及其子类异常，如NullPointerException、IndexOutOfBoundsException等。<br>这些异常是<strong>非检查异常</strong>，程序中可以选择捕获处理，也可以不处理。<br>这些异常一般是由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生。<br>RuntimeException体系包括错误的类型转换、数组越界访问和试图访问空指针等等。处理RuntimeException的原则是：如果出现，那么一定是程序的错误。例如，可以通过检查数组下标和数组边界来避免数组越界访问异常。 </p>
 <p><strong>非运行时异常</strong>是RuntimeException以外的异常，类型上都属于Exception类及其子类。<br>从程序语法角度讲是必须进行处理的异常，如果不处理，程序就不能编译通过。<br>如IOException、SQLException等以及用户自定义的Exception异常，一般情况下不自定义检查异常。<br>这类异常一般是外部错误，例如试图从文件尾后读取数据等，这并不是程序本身的错误，而是在应用环境中出现的外部错误。</p>
@@ -370,98 +331,62 @@
 <li>对于检查异常，如果不能行之有效的处理，还不如转换为RuntimeException抛出。这样也让上层的代码有选择的余地――可处理也可不处理。</li>
 <li>对于一个应用系统来说，应该有自己的一套异常处理框架，这样当异常发生时，也能得到统一的处理风格，将优雅的异常信息反馈给用户。</li>
 </ul>
-            <div class="post-more-link text-center">
-              <a class="btn" href="/2014/03/16/java-exception/#more">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exception/">exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/exception/">
-                #exception
-              </a>
-            
-              <a href="/tags/java/">
-                #java
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/03/16/java-exception/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/02/15/id-generator/">
-                分布式系统中的ID生成
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-02-15
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/02/15/id-generator/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/02/15/id-generator/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-id-generator" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/02/15/id-generator/" class="article-date">
+  	<time datetime="2014-02-15T04:11:53.000Z" itemprop="datePublished">2014-02-15</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/15/id-generator/">分布式系统中的ID生成</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <h2 id="问题"><strong>问题</strong></h2><p>在分布式系统中常遇到<strong>ID</strong>生成问题:</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><strong>问题</strong></h2><p>在分布式系统中常遇到<strong>ID</strong>生成问题:</p>
 <ul>
 <li>场景1，在分库分表中需要保证某类ID唯一，这样使用主键自增的策略就不再合适</li>
 <li>场景2，需要某类ID需要具有同一特性来标识</li>
@@ -475,106 +400,62 @@
 <li>DIY的ID（以不同用途的字符组装到一起，然后做编码转换以满足需要）</li>
 </ol>
 <p>这里介绍一种方案4的实现，基本思想源于twitter的Snowflake方案，该实现可提供高性能、低延迟、高可用的ID生成。</p>
-            <div class="post-more-link text-center">
-              <a class="btn" href="/2014/02/15/id-generator/#more">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memcached/">Memcached</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thrift/">Thrift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zookeeper/">Zookeeper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/Memcached/">
-                #Memcached
-              </a>
-            
-              <a href="/tags/Thrift/">
-                #Thrift
-              </a>
-            
-              <a href="/tags/Zookeeper/">
-                #Zookeeper
-              </a>
-            
-              <a href="/tags/分布式/">
-                #分布式
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/02/15/id-generator/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/02/03/merkle-hash-tree/">
-                Merkle-Hash-Tree
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-02-02
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/02/03/merkle-hash-tree/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/02/03/merkle-hash-tree/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-merkle-hash-tree" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/02/03/merkle-hash-tree/" class="article-date">
+  	<time datetime="2014-02-02T17:04:52.000Z" itemprop="datePublished">2014-02-03</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/03/merkle-hash-tree/">Merkle-Hash-Tree</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <blockquote>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
 <p>Merkle Tree, 也叫 Hash Tree. 它是Ralph Merkle在1979年创造的。据说最早Merkle创造Merkle Tree(MT)的目的是为了生成Lamport签名，一种一次性的数字签名.</p>
 </blockquote>
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Hash_Tree.svg/300px-Hash_Tree.svg.png" alt=""></p>
@@ -591,89 +472,58 @@
 <p><a href="http://en.wikipedia.org/wiki/Hash_tree" target="_blank" rel="external">http://en.wikipedia.org/wiki/Hash_tree</a><br><a href="http://en.wikipedia.org/wiki/Lamport_signature" target="_blank" rel="external">http://en.wikipedia.org/wiki/Lamport_signature</a><br><a href="http://blog.csdn.net/starxu85/article/details/3859011" target="_blank" rel="external">http://blog.csdn.net/starxu85/article/details/3859011</a><br><a href="http://ultimatearchitecture.net/index.php/2010/09/12/merkle-tree/" target="_blank" rel="external">http://ultimatearchitecture.net/index.php/2010/09/12/merkle-tree/</a><br><a href="http://www.public.asu.edu/~rzhang46/" target="_blank" rel="external">http://www.public.asu.edu/~rzhang46/</a><br><a href="http://yishanhe.net/wiki/Secure-topk-query.html" target="_blank" rel="external">http://yishanhe.net/wiki/Secure-topk-query.html</a><br><a href="http://www.bittorrent.org/beps/bep_0030.html" target="_blank" rel="external">http://www.bittorrent.org/beps/bep_0030.html</a><br><a href="https://www.usenix.org/conference/osdi12/secure-offline-data-access-using-commodity-trusted-hardware" target="_blank" rel="external">https://www.usenix.org/conference/osdi12/secure-offline-data-access-using-commodity-trusted-hardware</a>  </p>
 </blockquote>
 
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/">Data Structure</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/Data-Structure/">
-                #Data Structure
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/12/04/lincell-editor-ide/">
-                发布一个轻型文件编辑器 - lincell，一行命令创建IDE
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2013-12-04
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/12/04/lincell-editor-ide/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/04/lincell-editor-ide/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-lincell-editor-ide" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/12/04/lincell-editor-ide/" class="article-date">
+  	<time datetime="2013-12-04T06:54:14.000Z" itemprop="datePublished">2013-12-04</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/12/04/lincell-editor-ide/">发布一个轻型文件编辑器 - lincell，一行命令创建IDE</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <h3 id="1-_前言">1. 前言</h3><p>刚发布一个叫做<strong>lincell</strong>的模块，第一版放出来遛遛，可以通过npm安装使用。等下一版本会对代码做大的更改，不过使用者不用管，除非你要看代码，github地址在<a href="https://github.com/sumory/lincell">这里</a>，项目页面在<a href="http://sumory.com/lincell/">这里</a>。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_前言">1. 前言</h3><p>刚发布一个叫做<strong>lincell</strong>的模块，第一版放出来遛遛，可以通过npm安装使用。等下一版本会对代码做大的更改，不过使用者不用管，除非你要看代码，github地址在<a href="https://github.com/sumory/lincell">这里</a>，项目页面在<a href="http://sumory.com/lincell/">这里</a>。</p>
 <p>它的前端是通过<a href="https://github.com/coreh/nide">nide</a>改造的，我对整个代码做了较大更改，后面计划的功能更会改得面目全非，所以也没有fork，只是重开了一个项目命名为lincell，本来我更中意linc，但npm上的坑儿已经被占了，无奈。</p>
 <p>为什么要开发lincell：</p>
 <ul>
@@ -688,102 +538,62 @@
 <li>问题：平常一般用linux开发，所以不会遇到文件格式或是编码的问题，但这次lincell的大部分代码是在windows上写的，所以发布到npm上后，在windows上安装使用都没问题，但在linux上就错了（找不到文件）</li>
 <li>解决：在程序入口文件app.js的头部添加<code>#!/usr/bin/env node</code>让linux知道用node去运行它，然后把文件格式改为<code>UNIX</code></li>
 </ul>
-            <div class="post-more-link text-center">
-              <a class="btn" href="/2013/12/04/lincell-editor-ide/#more">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/editor/">editor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket-io/">socket.io</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/editor/">
-                #editor
-              </a>
-            
-              <a href="/tags/node-js/">
-                #node.js
-              </a>
-            
-              <a href="/tags/socket-io/">
-                #socket.io
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2013/12/04/lincell-editor-ide/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/11/03/userful-shell/">
-                Shell命令收集
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2013-11-02
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/11/03/userful-shell/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/03/userful-shell/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-userful-shell" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/11/03/userful-shell/" class="article-date">
+  	<time datetime="2013-11-02T17:09:02.000Z" itemprop="datePublished">2013-11-03</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/03/userful-shell/">Shell命令收集</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <ul>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
 <li><p>rsync</p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#运行这个命令以后，foo bar 这两个文件夹的内容就递归神同步了，内容没有变化的文件不会被同步，bar 里多余的文件会删除</span></span><br><span class="line"><span class="comment">#可以支持在后台默默运行或者在本地和远程机器上做同步</span></span><br><span class="line">rsync -rc --<span class="keyword">delete</span> foo<span class="regexp">/. bar/</span>.</span><br></pre></td></tr></table></figure>
 </li>
@@ -800,86 +610,58 @@
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -<span class="keyword">h</span> git --max-depth=1|<span class="keyword">sort</span> -<span class="keyword">n</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-            <div class="post-more-link text-center">
-              <a class="btn" href="/2013/11/03/userful-shell/#more">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+      
 
-    
-      <div class="post-footer">
-        
-
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2013/11/03/userful-shell/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/05/28/oracle-nodejs/">
-                oracle与node.js：使用与坑
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2013-05-28
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/05/28/oracle-nodejs/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/05/28/oracle-nodejs/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-oracle-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/05/28/oracle-nodejs/" class="article-date">
+  	<time datetime="2013-05-28T03:50:13.000Z" itemprop="datePublished">2013-05-28</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/05/28/oracle-nodejs/">oracle与node.js：使用与坑</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p>前段时间要使用oracle，搜了下决定采用node-oracle这个库.</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前段时间要使用oracle，搜了下决定采用node-oracle这个库.</p>
 <ul>
 <li><p>坑一</p>
 <p> windows各种安不上</p>
@@ -898,93 +680,58 @@
 <li>没事<strong>千万别用</strong>oracle.</li>
 </ul>
 
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/node-js/">
-                #node.js
-              </a>
-            
-              <a href="/tags/oracle/">
-                #oracle
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/05/24/git-bash-set/">
-                Git Bash设置显示中文
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2013-05-24
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/05/24/git-bash-set/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/05/24/git-bash-set/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-git-bash-set" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/05/24/git-bash-set/" class="article-date">
+  	<time datetime="2013-05-24T06:21:14.000Z" itemprop="datePublished">2013-05-24</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/05/24/git-bash-set/">Git Bash设置显示中文</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p>从GitHub安装的Git Bash工具默认不支持中文，ls中文目录显示也为？？？，需要另行配置。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从GitHub安装的Git Bash工具默认不支持中文，ls中文目录显示也为？？？，需要另行配置。</p>
 <ul>
 <li><p>在安装根目录下的etc文件夹下找到inputrc这个文件，将相应配置更改如下：</p>
   <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># disable/enable 8bit input</span></span><br><span class="line"><span class="built_in">set</span> meta-flag <span class="command"><span class="keyword">on</span></span></span><br><span class="line"><span class="built_in">set</span> input-meta <span class="command"><span class="keyword">on</span></span></span><br><span class="line"><span class="built_in">set</span> output-meta <span class="command"><span class="keyword">on</span></span></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">convert</span>-meta off</span><br></pre></td></tr></table></figure>
@@ -993,93 +740,58 @@
  <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> ll=<span class="string">'ls -lah'</span></span><br><span class="line"><span class="keyword">alias</span> <span class="keyword">ls</span>=<span class="string">"/bin/ls --color=tty --show-control-chars"</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mingw/">mingw</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/git/">
-                #git
-              </a>
-            
-              <a href="/tags/mingw/">
-                #mingw
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/05/20/mysql-on-ubuntu/">
-                ubuntu12.04上mysql的安装、卸载
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2013-05-20
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/05/20/mysql-on-ubuntu/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/05/20/mysql-on-ubuntu/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-mysql-on-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/05/20/mysql-on-ubuntu/" class="article-date">
+  	<time datetime="2013-05-20T09:56:00.000Z" itemprop="datePublished">2013-05-20</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/05/20/mysql-on-ubuntu/">ubuntu12.04上mysql的安装、卸载</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <ol>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
 <li><p>卸载mysql</p>
 <pre><code>sudo apt-<span class="keyword">get</span> autoremove --purge mysql-<span class="built_in">server</span>-<span class="number">5.0</span>
 sudo apt-<span class="keyword">get</span> remove mysql-<span class="built_in">server</span>
@@ -1104,394 +816,86 @@ sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> p
 </code></pre></li>
 </ol>
 
-          
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/linux/">
-                #linux
-              </a>
-            
-              <a href="/tags/mysql/">
-                #mysql
-              </a>
-            
-              <a href="/tags/ubuntu/">
-                #ubuntu
-              </a>
-            
-          </div>
-        
-
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
-    
-  </div>
-
-
-  
-
-          </div>
-          <br/>
-          
-          
-          
-            <div class="pagination">
-              <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
-            </div>
-          
-        </div>
-
-        
-<div class="sidebar-toggle">
-  <div class="sidebar-toggle-line-wrap">
-    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-  </div>
-</div>
-
-<div id="sidebar" class="sidebar">
-  <div class="sidebar-inner">
-
-    
-
-    <div class="site-overview">
-      <div class="site-autsider motion-element">
-        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
-        <p class="site-author-name">Sumory Wu</p>
-      </div>
-      <p class="site-description motion-element"></p>
-      <div class="site-state motion-element">
-        <div class="site-state-item site-state-posts">
-          <a href="/archives">
-            <span class="site-state-item-count">24</span>
-            <span class="site-state-item-name">日志</span>
-          </a>
-        </div>
-
-        <div class="site-state-item site-state-categories">
-          
-            <span class="site-state-item-count">0</span>
-            <span class="site-state-item-name">分类</span>
-          
-        </div>
-
-        <div class="site-state-item site-state-tags">
-          
-            <span class="site-state-item-count">36</span>
-            <span class="site-state-item-name">标签</span>
-          
-        </div>
-
-      </div>
       
-      <!-- 添加分类end-->
-      
-
-      <div class="links-of-author motion-element">
-        
-          
-            <span class="links-of-author-item">
-              <a href="https://github.com/sumory" target="_blank">GitHub</a>
-            </span>
-          
-            <span class="links-of-author-item">
-              <a href="http://weibo.com/mytreas" target="_blank">Weibo</a>
-            </span>
-          
-        
-      </div>
-
-      
-      
-        <div class="cc-license motion-element">
-          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-            <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-          </a>
-        </div>
-      
-
     </div>
-
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+	</div>
 
-  </div>
-</div>
+      
 
-
-      </div>
-
-
-
+      
+      <div class="clearfix"></div>
     </div>
-
     
-
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; &nbsp;  2012 - 
-  2015
-  <span class="with-love">
-    <i class="icon-heart"></i>
-  </span>
-  <span class="author">Sumory Wu</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/lzlun129/my-hexo-next">
-    Customized.NexT.Mist
-  </a>
-</div>
-
-
-
-
-      </div>
-    </div>
-
-    <div class="back-to-top"></div>
   </div>
   
+</article>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+
+
 
   
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    </nav>
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.content img').each(function () {
-        var $image = $(this);
-        var $imageWrapLink = $image.parent('a');
-
-        if ($imageWrapLink.size() < 1) {
-          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
-        }
-        $imageWrapLink.addClass('fancybox');
-      });
-    });
-    $('.fancybox').fancybox({
-      helpers: {
-        overlay: {
-          locked: false
-        }
-      }
-    });
-  </script>
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Sumory Wu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
-  <script type="text/javascript">
-  function hasMobileUA () {
-    var nav = window.navigator;
-    var ua = nav.userAgent;
-    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
 
-    return pa.test(ua);
-  }
 
-  function isDesktop () {
-    return screen.width > 991 && !hasMobileUA();
-  }
 
-  function isTablet () {
-    return screen.width < 992 && screen.width > 767 && hasMobileUA();
-  }
 
-  function isMobile () {
-    return screen.width < 767 && hasMobileUA();
-  }
 
-  function escapeSelector (selector) {
-    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
-  }
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" id="motion.global">
-  $(document).ready(function () {
-    var body = $('body');
-    var isSidebarVisible = false;
-    var sidebarToggle = $('.sidebar-toggle');
-    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
-    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
-    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
-    var sidebar = $('.sidebar');
-
-    var SIDEBAR_WIDTH = '320px';
-    var SIDEBAR_DISPLAY_DURATION = 300;
-
-    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
-
-    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
-    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
-
-    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
-    var sidebarToogleLine2ndStatusClose = {opacity: 0};
-
-    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
-    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
-
-    LogoAndMenuMotion();
-    sidebatToggleMotion();
-    postsListMotion();
-    backToTopMotion();
-
-
-    $(document)
-      .on('sidebar.isShowing', function () {
-        isDesktop() && body.velocity(
-          {paddingRight: SIDEBAR_WIDTH},
-          SIDEBAR_DISPLAY_DURATION
-        );
-        sidebarContentMotion();
-      })
-      .on('sidebar.isHiding', function () {});
-
-    function LogoAndMenuMotion() {
-      $.Velocity.RunSequence([
-        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
-        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
-        
-        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
-        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
-        
-        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
-      ]);
-      $('.menu-item').velocity('transition.slideDownIn', {display: null});
-    }
-
-
-    function backToTopMotion () {
-      var b2top = $('.back-to-top');
-      b2top.on('click', function () {
-        body.velocity('scroll');
-      });
-    }
-
-    function sidebarShowMotion () {
-
-      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
-      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
-      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
-
-      sidebar.velocity({width: SIDEBAR_WIDTH}, {
-        display: 'block',
-        duration: SIDEBAR_DISPLAY_DURATION,
-        complete: function () {
-          sidebar.addClass('sidebar-active');
-          sidebar.trigger('sidebar.didShow');
-        }
-      });
-      sidebar.trigger('sidebar.isShowing');
-    }
-
-    function sidebarHideMotion () {
-      isDesktop() && body.velocity({paddingRight: 0});
-      sidebar.velocity('reverse');
-
-      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
-      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
-      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
-
-      sidebar.removeClass('sidebar-active');
-      sidebar.trigger('sidebar.isHiding');
-    };
-
-    function sidebarContentMotion () {
-      $('.sidebar .motion-element').velocity(
-        'transition.slideRightIn',
-        {stagger: 50, drag: true}
-      );
-    }
-
-    function postsListMotion () {
-      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
-      $('.post').velocity('transition.slideDownIn', postMotionOptions);
-    }
-
-    function sidebatToggleMotion () {
-      sidebarToggle.on('click', function () {
-        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
-        isSidebarVisible = !isSidebarVisible;
-      });
-
-      sidebarToggle.hover(function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
-      }, function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
-      });
-    }
-  });
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
 
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-    
-  
-  
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sumory"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-  
+  </div>
 </body>
 </html>

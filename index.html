@@ -1,596 +1,432 @@
-<!doctype html>
-<html class="theme-next use-motion theme-next-my-hexo-next">
+<!DOCTYPE html>
+<html>
 <head>
+  <meta charset="utf-8">
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.1"/>
-
-
-
-
-
-    <meta name="keywords" content="Hexo,next" />
-
-
-
-
-
-    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.1" />
-
-
-
-
-  <meta name="baidu-site-verification" content="G9yMkDY5mG" />
-  <title> Sumory.Notes </title>
+  <title>Sumory.Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sumory.Notes">
+<meta property="og:url" content="http://sumory.com/index.html">
+<meta property="og:site_name" content="Sumory.Notes">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sumory.Notes">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="Sumory.Notes" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
-
 <body>
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+		</a>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
-      <span class="logo">
-        <i class="icon-logo"></i>
-      </span>
-      <span class="site-title">Sumory.Notes</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Sumory Wu</a></h1>
+		</hgroup>
 
+		
 
-  <ul id="menu" class="menu">
-    
-     
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-home">
-        <a href="/">
-          <i class="menu-item-icon icon-home"></i> <br />
-          首页
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          归档
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-pen">
-        <a href="/projects">
-          <i class="menu-item-icon icon-pen"></i> <br />
-          项目
-        </a>
-      </li>
-      
-    
-        
-      <li class="mw-harlem_shake_me im_first menu-item  menu-item-about">
-        <a href="/about">
-          <i class="menu-item-icon icon-about"></i> <br />
-          关于
-        </a>
-      </li>
-      
-    
-  <!--增加high一下-->
-  
-  </ul>
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
 
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+							<li><a href="/tags/">标签</a></li>
+				        
+							<li><a href="/projects/">项目</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a><a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a><a href="/tags/NAT/" style="font-size: 10px;">NAT</a><a href="/tags/Thrift/" style="font-size: 10px;">Thrift</a><a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a><a href="/tags/Zookeeper/" style="font-size: 10px;">Zookeeper</a><a href="/tags/ant/" style="font-size: 10px;">ant</a><a href="/tags/btrace/" style="font-size: 10px;">btrace</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/build/" style="font-size: 10px;">build</a><a href="/tags/cloud/" style="font-size: 10px;">cloud</a><a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a><a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a><a href="/tags/editor/" style="font-size: 12.5px;">editor</a><a href="/tags/exception/" style="font-size: 10px;">exception</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/https/" style="font-size: 10px;">https</a><a href="/tags/iOS/" style="font-size: 10px;">iOS</a><a href="/tags/iphone/" style="font-size: 10px;">iphone</a><a href="/tags/java/" style="font-size: 20px;">java</a><a href="/tags/linux/" style="font-size: 15px;">linux</a><a href="/tags/mingw/" style="font-size: 10px;">mingw</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/node-js/" style="font-size: 17.5px;">node.js</a><a href="/tags/openssl/" style="font-size: 10px;">openssl</a><a href="/tags/oracle/" style="font-size: 12.5px;">oracle</a><a href="/tags/redis/" style="font-size: 10px;">redis</a><a href="/tags/rest-api/" style="font-size: 10px;">rest api</a><a href="/tags/socket-io/" style="font-size: 10px;">socket.io</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/svn/" style="font-size: 10px;">svn</a><a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a><a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a><a href="/tags/分布式/" style="font-size: 10px;">分布式</a><a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a><a href="/tags/安全/" style="font-size: 10px;">安全</a>
+					</div>
+				</section>
+				
+				
+				
 
-      </div>
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">读过书、创过业、挖过矿、务过农，现在正在做一名“光荣的人民教师”</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
     </div>
-
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
-            
-          
-
-          <div id="posts" class="posts-expand">
-            
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Sumory Wu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Sumory Wu</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+					<li><a href="/tags/">标签</a></li>
+		        
+					<li><a href="/projects/">项目</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/02/03/btrace-case/">
-                Btrace简单使用
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2015-02-03
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/02/03/btrace-case/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/03/btrace-case/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-btrace-case" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/02/03/btrace-case/" class="article-date">
+  	<time datetime="2015-02-03T05:53:59.000Z" itemprop="datePublished">2015-02-03</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/03/btrace-case/">Btrace简单使用</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <h3 id="介绍">介绍</h3><p><a href="https://kenai.com/projects/btrace/downloads/directory/releases/release-1.2.5.1" target="_blank" rel="external">Btrace</a>是什么，能做什么，这里不予介绍，网上一搜一大片。本文只介绍Btrace的基本用法和示例，用作备忘。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍">介绍</h3><p><a href="https://kenai.com/projects/btrace/downloads/directory/releases/release-1.2.5.1">Btrace</a>是什么，能做什么，这里不予介绍，网上一搜一大片。本文只介绍Btrace的基本用法和示例，用作备忘。</p>
 <p>目前最新的版本为1.2.5.1，除了单独使用（支持mac、windows和linux）之外，还可以在jvisualvm上安装插件，通过GUI使用。</p>
 <p>下载linux版本，解压后，主要目录如下，bin是命令目录，build中是实现btrace的jara包，samples目录下有大量脚本示例可供参考：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">├── bin</span><br><span class="line">│   ├── btrace</span><br><span class="line">│   ├── btrace<span class="class">.bat</span></span><br><span class="line">│   ├── btracec</span><br><span class="line">│   ├── btracec<span class="class">.bat</span></span><br><span class="line">│   ├── btracer</span><br><span class="line">│   └── btracer<span class="class">.bat</span></span><br><span class="line">├── build</span><br><span class="line">│   ├── btrace-agent<span class="class">.jar</span></span><br><span class="line">│   ├── btrace-boot<span class="class">.jar</span></span><br><span class="line">│   └── btrace-client<span class="class">.jar</span></span><br><span class="line">└── samples</span><br><span class="line">    ├── AWTEventTracer<span class="class">.java</span></span><br><span class="line">    ├── AllCalls1<span class="class">.java</span></span><br><span class="line">    ├── AllCalls2<span class="class">.java</span></span><br><span class="line">    ├── AllCalls3<span class="class">.java</span></span><br><span class="line">    ├── AllLines<span class="class">.java</span></span><br><span class="line">    ├── AllMethods<span class="class">.java</span></span><br><span class="line">    ├── AllSync<span class="class">.java</span></span><br><span class="line">    ├── ArgArray<span class="class">.java</span></span><br><span class="line">    ├── Classload<span class="class">.java</span></span><br><span class="line">    ├── CommandArg<span class="class">.java</span></span><br><span class="line">    ├── DTraceInline<span class="class">.java</span></span><br><span class="line">    ├── DTraceRefDemo<span class="class">.java</span></span><br><span class="line">    ├── Deadlock<span class="class">.java</span></span><br><span class="line">    ...</span><br><span class="line">    └── syscalls.d</span><br></pre></td></tr></table></figure>
-<h3 id="使用示例">使用示例</h3><p>示例java代码：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tmp;</span><br><span class="line"><span class="keyword">public</span> class Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"abcde"</span>);</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="built_in">print</span>(<span class="keyword">String</span> abc) &#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(abc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>btrace脚本：</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.sun.btrace.annotations.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> com.sun.btrace.<span class="type">BTraceUtils</span>.*;</span><br><span class="line"></span><br><span class="line">@<span class="type">BTrace</span></span><br><span class="line">public class <span class="type">TracingScript</span> &#123;</span><br><span class="line">	/* put your code here */</span><br><span class="line">    @<span class="type">TLS</span></span><br><span class="line">    <span class="keyword">static</span> long beginTime;</span><br><span class="line"></span><br><span class="line">    @<span class="type">OnMethod</span>(clazz=<span class="string">"tmp.Test"</span>,<span class="keyword">method</span>=<span class="string">"print"</span>)</span><br><span class="line">    public <span class="keyword">static</span> <span class="type">void</span> begin()&#123;</span><br><span class="line">        println(<span class="string">"start"</span>);</span><br><span class="line">        beginTime = timeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="type">OnMethod</span>(clazz=<span class="string">"tmp.Test"</span>,<span class="keyword">method</span>=<span class="string">"print"</span>,location=@<span class="type">Location</span>(<span class="type">Kind</span>.<span class="type">RETURN</span>))</span><br><span class="line">    public <span class="keyword">static</span> <span class="type">void</span> after()&#123;</span><br><span class="line">        jstack();//打印方法栈</span><br><span class="line">        println(<span class="string">"done"</span>);</span><br><span class="line">        println(strcat(strcat(<span class="string">"Test Execute Time:"</span>, str(timeMillis() - beginTime)), <span class="string">"ms"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="使用jvisualvm">使用jvisualvm</h4><p>安装btrace插件，使用jvisualvm插件管理器安装或者直接从kenai.com下载安装，右键单击选择<code>Trace application</code>，即可。</p>
-<p><img src="http://7vih7p.com1.z0.glb.clouddn.com/jvisualvm-btrace.png-690v1000v50" alt=""></p>
-<p>启动java示例代码，点击<code>start</code>启动btrace脚本，观察输出如下：</p>
-<p><img src="http://7vih7p.com1.z0.glb.clouddn.com/jvisualvm-btrace-result.png-690v1000v50" alt=""></p>
-<h4 id="服务端使用">服务端使用</h4><p>上传btrace脚本文件，然后<code>btrace &lt;pid&gt; 脚本文件</code>，观察输出即可。</p>
-<p>更多高级特性参看btrace示例脚本。</p>
-
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btrace/">btrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/btrace/">
-                #btrace
-              </a>
-            
-              <a href="/tags/java/">
-                #java
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2015/02/03/btrace-case/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/08/15/spring-redis-sentinel/">
-                Redis的sentinel使用及spring集成
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-08-15
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/08/15/spring-redis-sentinel/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/15/spring-redis-sentinel/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-spring-redis-sentinel" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/08/15/spring-redis-sentinel/" class="article-date">
+  	<time datetime="2014-08-15T06:43:23.000Z" itemprop="datePublished">2014-08-15</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
-
-        
-        
-
-        
-          
-            <h3 id="1-_senital-conf文件">1. senital.conf文件</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">port <span class="number">26379</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#sentinel监控的redis的名字、IP和端口，最后一个数字是sentinel做决策的时候需要投赞同票的最少的sentinel的数量。</span></span><br><span class="line">sentinel monitor mymaster <span class="number">127.0</span>.0.1 <span class="number">6379</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#如果多久没联系上redis-servevr，认为这个redis-server进入到失效（SDOWN）状态。</span></span><br><span class="line">sentinel down-after-milliseconds mymaster <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#可选的安全连接密码</span></span><br><span class="line"><span class="preprocessor">#sentinel auth-pass mymaster xxx</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover（提升一个slave成为master）过期时间，如果超过这个时间没触发成功failover，sentinel会认为failover失败。</span></span><br><span class="line">sentinel failover-timeout mymaster <span class="number">30000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#选项指定了在执行故障转移时， 最多可以有多少个从服务器同时对新的主服务器进行同步， 这个数字越小， 完成故障转移所需的时间就越长。</span></span><br><span class="line">sentinel config-epoch mymaster <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#当failover时，可以指定一个“通知”脚本用来告知当前集群的情况。</span></span><br><span class="line"><span class="preprocessor">#脚本被允许执行的最大时间为60秒，如果超时，脚本将会被终止(KILL)</span></span><br><span class="line"><span class="preprocessor">#sentinel notification-script mymaster /var/redis/notify.sh</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover之后重配置客户端</span></span><br><span class="line"><span class="preprocessor"># sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="preprocessor"># Generated by CONFIG REWRITE</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-_步骤">2. 步骤</h3><p>spring配置：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"jedisPoolConfig"</span> <span class="attribute">class</span>=<span class="value">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"maxTotal"</span> <span class="attribute">value</span>=<span class="value">"200"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"maxIdle"</span> <span class="attribute">value</span>=<span class="value">"30"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"maxWaitMillis"</span> <span class="attribute">value</span>=<span class="value">"30000"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"testOnBorrow"</span> <span class="attribute">value</span>=<span class="value">"false"</span> /&gt;</span><span class="comment">&lt;!-- 向调用者输出“链接”资源时，是否检测是有有效，如果无效则从连接池中移除，并尝试获取继续获取。设为true，一个挂都不能用 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"testOnReturn"</span> <span class="attribute">value</span>=<span class="value">"true"</span> /&gt;</span><span class="comment">&lt;!-- 向连接池“归还”链接时，是否检测“链接”对象的有效性。 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"jedisPool"</span> <span class="attribute">class</span>=<span class="value">"redis.clients.jedis.JedisSentinelPool"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"0"</span> <span class="attribute">value</span>=<span class="value">"mymaster"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">set</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">value</span>&gt;</span>127.0.0.1:26379<span class="tag">&lt;/<span class="title">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">value</span>&gt;</span>127.0.0.1:36379<span class="tag">&lt;/<span class="title">value</span>&gt;</span><span class="comment">&lt;!--配置了两个哨兵 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">set</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">constructor-arg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"2"</span> <span class="attribute">ref</span>=<span class="value">"jedisPoolConfig"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-_步骤">3. 步骤</h3><p>启动sentinel：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server ./sentinel<span class="class">.conf</span> --sentinel</span><br></pre></td></tr></table></figure>
-<p>也可以单独指定端口，这里启动两个哨兵</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">redis</span><span class="literal">-</span><span class="comment">server</span> <span class="string">.</span><span class="comment">/sentinel</span><span class="string">.</span><span class="comment">conf</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">sentinel</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port</span> <span class="comment">26379</span></span><br><span class="line"><span class="comment">redis</span><span class="literal">-</span><span class="comment">server</span> <span class="string">.</span><span class="comment">/sentinel</span><span class="string">.</span><span class="comment">conf</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">sentinel</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port</span> <span class="comment">36379</span></span><br></pre></td></tr></table></figure>
-<p>启动redis主从，初始启动6379的redis实例为主，7379为从：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-server <span class="comment">--port 6379</span></span><br><span class="line">redis-server <span class="comment">--port 7379</span></span><br></pre></td></tr></table></figure></p>
-<p>通过redis-cli将7379配置为6379的从：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -<span class="tag">p</span> <span class="number">7379</span></span><br><span class="line">&gt; SLAVEOF <span class="number">127.0</span>.<span class="number">0.1</span> <span class="number">6379</span></span><br></pre></td></tr></table></figure></p>
-<p>在哨兵26379中查看当前主服务器相关信息：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p <span class="number">26379</span></span><br><span class="line"><span class="prompt">127.0.0.1:26379&gt;</span> sentinel masters</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-_测试">4. 测试</h3><p>随意杀掉两个哨兵和两个redis主从实例的一个查看是否工作正常。</p>
-
-          
-        
-      </div>
+      <input type="hidden" class="isFancy" />
     
-
     
-      <div class="post-footer">
+      <header class="article-header">
         
-          <div class="post-tags">
-            
-              <a href="/tags/java/">
-                #java
-              </a>
-            
-              <a href="/tags/redis/">
-                #redis
-              </a>
-            
-              <a href="/tags/spring/">
-                #spring
-              </a>
-            
-          </div>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/15/spring-redis-sentinel/">Redis的sentinel使用及spring集成</a>
+    </h1>
+  
 
-        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_senital-conf文件">1. senital.conf文件</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">port <span class="number">26379</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#sentinel监控的redis的名字、IP和端口，最后一个数字是sentinel做决策的时候需要投赞同票的最少的sentinel的数量。</span></span><br><span class="line">sentinel monitor mymaster <span class="number">127.0</span>.0.1 <span class="number">6379</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#如果多久没联系上redis-servevr，认为这个redis-server进入到失效（SDOWN）状态。</span></span><br><span class="line">sentinel down-after-milliseconds mymaster <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#可选的安全连接密码</span></span><br><span class="line"><span class="preprocessor">#sentinel auth-pass mymaster xxx</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover（提升一个slave成为master）过期时间，如果超过这个时间没触发成功failover，sentinel会认为failover失败。</span></span><br><span class="line">sentinel failover-timeout mymaster <span class="number">30000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#选项指定了在执行故障转移时， 最多可以有多少个从服务器同时对新的主服务器进行同步， 这个数字越小， 完成故障转移所需的时间就越长。</span></span><br><span class="line">sentinel config-epoch mymaster <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#当failover时，可以指定一个“通知”脚本用来告知当前集群的情况。</span></span><br><span class="line"><span class="preprocessor">#脚本被允许执行的最大时间为60秒，如果超时，脚本将会被终止(KILL)</span></span><br><span class="line"><span class="preprocessor">#sentinel notification-script mymaster /var/redis/notify.sh</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover之后重配置客户端</span></span><br><span class="line"><span class="preprocessor"># sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="preprocessor"># Generated by CONFIG REWRITE</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+	</div>
 
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2014/08/15/spring-redis-sentinel/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/07/14/cocoapods-guide/">
-                OSX 10.9使用cocoapods遇到的问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-07-14
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/07/14/cocoapods-guide/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/14/cocoapods-guide/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-cocoapods-guide" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/14/cocoapods-guide/" class="article-date">
+  	<time datetime="2014-07-14T04:03:34.000Z" itemprop="datePublished">2014-07-14</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/14/cocoapods-guide/">OSX 10.9使用cocoapods遇到的问题</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p><a href="http://cocoapods.org/" target="_blank" rel="external">cocoapods</a>用于管理iOS项目库依赖，类似于nodejs的npm、java的maven、python的pip等工具，它基于ruby（ruby的配置和库管理向来让我很头痛）。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://cocoapods.org/">cocoapods</a>用于管理iOS项目库依赖，类似于nodejs的npm、java的maven、python的pip等工具，它基于ruby（ruby的配置和库管理向来让我很头痛）。</p>
 <h3 id="修改ruby源">修改ruby源</h3><p>要使用ruby，第一件事是更改ruby源，在国内，rubygems.org镜像基本处于不可用状态。这里改为淘宝提供的免费ruby镜像：</p>
 <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --remove https://rubygems.org/</span><br><span class="line">$ gem sources -a https://ruby.taobao.org/</span><br><span class="line">$ gem sources -l</span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span> CURRENT SOURCES <span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">https://ruby.taobao.org</span><br></pre></td></tr></table></figure>
 <h3 id="安装cocoapods">安装cocoapods</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> cocoapods</span><br></pre></td></tr></table></figure>
-<h3 id="生成Podfile">生成Podfile</h3><p>进入项目根目录，使用命令<code>pod init</code>生成默认的<code>Podfile</code>,如下：</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Uncomment this line to define a global platform for your project</span></span><br><span class="line"><span class="comment"># platform :ios, "6.0"</span></span><br><span class="line"></span><br><span class="line">target <span class="string">"Weather"</span> <span class="built_in">do</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br><span class="line"></span><br><span class="line">target <span class="string">"WeatherTests"</span> <span class="built_in">do</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br></pre></td></tr></table></figure>
-<p>期间可能遇到root账户不能使用pod命令的问题，这是因为较新版本的cocoapods限制了root账户，遇到这个问题不用四处查或者想让root也支持，直接切换到其他普通账户即可，我这里切换到账户sumory，<code>su - sumory</code></p>
-<h3 id="尝试install">尝试install</h3><p>可能遇到的第一个问题，编码，不要忽视这个问题，不然后面可能会遇到莫名其妙的错误。</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">sumory<span class="variable">@sumory</span><span class="symbol">:/data/swift-project/Weather</span> <span class="variable">$ </span>pod install</span><br><span class="line"><span class="constant">WARNING:</span> <span class="constant">CocoaPods </span>requires your terminal to be using <span class="constant">UTF-</span><span class="number">8</span> encoding.</span><br><span class="line"><span class="constant">See </span><span class="symbol">https:</span>/<span class="regexp">/github.com/</span><span class="constant">CocoaPods/</span>guides.cocoapods.org/issues/<span class="number">26</span> <span class="keyword">for</span></span><br><span class="line">possible solutions.</span><br><span class="line"></span><br><span class="line"><span class="constant">Analyzing </span>dependencies</span><br><span class="line"><span class="constant">Downloading </span>dependencies</span><br><span class="line"><span class="constant">Installing SCLAlertView </span>(<span class="number">0</span>.<span class="number">2.1</span>)</span><br><span class="line"></span><br><span class="line">――― <span class="constant">MARKDOWN TEMPLATE </span>―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</span><br><span class="line"></span><br><span class="line"><span class="comment">### Report</span></span><br><span class="line"></span><br><span class="line">* <span class="constant">What </span>did you <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line">* <span class="constant">What </span>did you expect to happen?</span><br><span class="line"></span><br><span class="line">* <span class="constant">What </span>happened instead?</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>解决：把Podfile的编码改为utf8，然后运行相关pod命令前<code>export LANG=en_US.UTF-8</code>，或者直接加到shell相关配置的地方都可以。</p>
-<h3 id="添加依赖并安装">添加依赖并安装</h3><p>以添加<code>SCLAlertView</code>（一个自定义的弹出框组件）为例，Podfile如下（注意这样写会引发错误）：</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Uncomment this line to define a global platform for your project</span></span><br><span class="line"><span class="comment"># platform :ios, "6.0"</span></span><br><span class="line"></span><br><span class="line">target <span class="string">"Weather"</span> <span class="built_in">do</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br><span class="line"></span><br><span class="line">target <span class="string">"WeatherTests"</span> <span class="built_in">do</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br><span class="line"></span><br><span class="line">pod <span class="string">'SCLAlertView'</span></span><br></pre></td></tr></table></figure>
-<p>会遇到这个错误（那一大坨就不贴出来了，主要错误提示就是下面这个）：</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">NoMethodError</span> - undefined <span class="keyword">method</span> `add_dependency' <span class="keyword">for</span> <span class="keyword">nil</span>:<span class="type">NilClass</span></span><br></pre></td></tr></table></figure>
-<p>解决：参考issue<a href="https://github.com/CocoaPods/CocoaPods/issues/1720" target="_blank" rel="external">#1720</a>，将Podfile修改为：</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Uncomment this line to define a global platform for your project</span></span><br><span class="line"><span class="comment"># platform :ios, "6.0"</span></span><br><span class="line"></span><br><span class="line">target <span class="string">"Weather"</span> <span class="built_in">do</span></span><br><span class="line">    pod <span class="string">'SCLAlertView'</span></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br><span class="line"></span><br><span class="line">target <span class="string">"WeatherTests"</span> <span class="built_in">do</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br></pre></td></tr></table></figure>
-<p>出错原因可参看该issue评论。</p>
-<p>至此再运行<code>pod install</code>即可成功。</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sumory<span class="variable">@sumory</span><span class="symbol">:/data/swift-project/Weather</span> <span class="variable">$ </span>pod install</span><br><span class="line"><span class="constant">Analyzing </span>dependencies</span><br><span class="line"><span class="constant">Downloading </span>dependencies</span><br><span class="line"><span class="constant">Installing SCLAlertView </span>(<span class="number">0</span>.<span class="number">2.1</span>)</span><br><span class="line"><span class="constant">Generating Pods </span>project</span><br><span class="line"><span class="constant">Integrating </span>client project</span><br><span class="line"></span><br><span class="line">[!] <span class="constant">From </span>now on <span class="keyword">use</span> `<span class="constant">Weather.</span>xcworkspace`.</span><br></pre></td></tr></table></figure>
-<h3 id="总结">总结</h3><p>需注意以下几点（再次体会到npm才是用过的最优秀的包管理工具）</p>
-<ul>
-<li>安装时更换ruby源，不要浪费生命在GFW上</li>
-<li>root账户问题</li>
-<li>编码问题要注意，这个与具体机器环境有关</li>
-<li>编写Podfile的规范等</li>
-</ul>
-
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cocoapods/">cocoapods</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iphone/">iphone</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/cocoapods/">
-                #cocoapods
-              </a>
-            
-              <a href="/tags/iOS/">
-                #iOS
-              </a>
-            
-              <a href="/tags/iphone/">
-                #iphone
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/07/14/cocoapods-guide/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/05/09/nat/">
-                NAT穿透的详细讲解及分析
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-05-09
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/05/09/nat/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/09/nat/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-nat" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/05/09/nat/" class="article-date">
+  	<time datetime="2014-05-09T09:37:53.000Z" itemprop="datePublished">2014-05-09</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/09/nat/">NAT穿透的详细讲解及分析</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p>前几天在做一个网络视频应用的原型，选来选去，决定采用WebRTC作为临时方案先顶着，优点是连接建立后不需要服务端转发流量，方案实现相对简单。缺点是该技术还不成熟，表现在浏览器API完善程度、浏览器版本支持、硬件资源支持等方面有较多限制。期间遇到了<code>NAT</code>和<code>STUN</code>相关的问题，这里转载了一篇对<code>NAT</code>详细通俗介绍的一篇文章。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天在做一个网络视频应用的原型，选来选去，决定采用WebRTC作为临时方案先顶着，优点是连接建立后不需要服务端转发流量，方案实现相对简单。缺点是该技术还不成熟，表现在浏览器API完善程度、浏览器版本支持、硬件资源支持等方面有较多限制。期间遇到了<code>NAT</code>和<code>STUN</code>相关的问题，这里转载了一篇对<code>NAT</code>详细通俗介绍的一篇文章。</p>
 <p>以下内容转自<a href="http://bbs.pediy.com/showthread.php?t=131961">NAT穿透的详细讲解及分析</a>，这里只做了重新排版，让易读性更好一点。</p>
-<h2 id="一、什么是NAT？为什么要使用NAT？">一、什么是NAT？为什么要使用NAT？</h2><p>NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地址。NAT的出现完美地解决了lP地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。  </p>
-<h2 id="二、NAT的分类">二、NAT的分类</h2><p>STUN标准中，根据内部终端的地址(LocalIP:LocalPort)到NAT出口的公网地址(PublicIP:PublicPort)的影射方式，把NAT分为四种类型：</p>
-<ol>
-<li><p>Full Cone NAT: 内网主机建立一个socket(LocalIP:LocalPort) 第一次使用这个socket给外部主机发送数据时NAT会给其分配一个公网(PublicIP:PublicPort),以后用这个socket向外面任何主机发送数据都将使用这对(PublicIP:PublicPort)。此外，任何外部主机只要知道这个(PublicIP:PublicPort)就可以发送数据给(PublicIP:PublicPort)，内网的主机就能收到这个数据包。 </p>
-</li>
-<li><p>Restricted Cone NAT: 内网主机建立一个socket(LocalIP:LocalPort) 第一次使用这个socket给外部主机发送数据时NAT会给其分配一个公网(PublicIP:PublicPort),以后用这个socket向外面任何主机发送数据都将使用这对(PublicIP:PublicPort)。此外，如果任何外部主机想要发送数据给这个内网主机，只要知道这个(PublicIP:PublicPort)并且内网主机之前用这个socket曾向这个外部主机IP发送过数据。只要满足这两个条件，这个外部主机就可以用自己的(IP,任何端口)发送数据给(PublicIP:PublicPort)，内网的主机就能收到这个数据包。</p>
-</li>
-<li><p>Port Restricted Cone NAT: 内网主机建立一个socket(LocalIP:LocalPort) 第一次使用这个socket给外部主机发送数据时NAT会给其分配一个公网(PublicIP:PublicPort),以后用这个socket向外面任何主机发送数据都将使用这对(PublicIP:PublicPort)。此外，如果任何外部主机想要发送数据给这个内网主机，只要知道这个(PublicIP:PublicPort)并且内网主机之前用这个socket曾向这个外部主机(IP,Port)发送过数据。只要满足这两个条件，这个外部主机就可以用自己的(IP,Port)发送数据给(PublicIP:PublicPort)，内网的主机就能收到这个数据包。</p>
-</li>
-<li><p>Symmetric NAT: 内网主机建立一个socket(LocalIP,LocalPort),当用这个socket第一次发数据给外部主机1时,NAT为其映射一个(PublicIP-1,Port-1),以后内网主机发送给外部主机1的所有数据都是用这个(PublicIP-1,Port-1)，如果内网主机同时用这个socket给外部主机2发送数据，NAT会为其分配一个(PublicIP-2,Port-2), 以后内网主机发送给外部主机2的所有数据都是用这个(PublicIP-2,Port-2).如果NAT有多于一个公网IP，则PublicIP-1和PublicIP-2可能不同，如果NAT只有一个公网IP,则Port-1和Port-2肯定不同，也就是说一定不能是PublicIP-1等于 PublicIP-2且Port-1等于Port-2。此外，如果任何外部主机想要发送数据给这个内网主机，那么它首先应该收到内网主机发给他的数据，然后才能往回发送，否则即使他知道内网主机的一个(PublicIP,Port)也不能发送数据给内网主机，这种NAT无法实现P2P通信，但是如果另一方是Full Cone NAT，还是可以实现穿透的，下面我会详细分析各种类型NAT穿透的情况。</p>
-</li>
-</ol>
-<p>NAT 功能通常被集成到路由器、防火墙、ISDN路由器或者单独的NAT设备中。所以我们大家很少会知道NAT，上面NAT类型的概念描述是比较通俗的，但为了更便于理解，我再举例阐述一下NAT的原理。</p>
-            <div class="post-more-link text-center">
-              <a class="btn" href="/2014/05/09/nat/#more">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NAT/">NAT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebRTC/">WebRTC</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/NAT/">
-                #NAT
-              </a>
-            
-              <a href="/tags/WebRTC/">
-                #WebRTC
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/05/09/nat/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/20/loopback/">
-                LoopBack
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-04-20
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/04/20/loopback/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/20/loopback/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-loopback" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/20/loopback/" class="article-date">
+  	<time datetime="2014-04-20T14:24:21.000Z" itemprop="datePublished">2014-04-20</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/20/loopback/">LoopBack</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p><strong>LoopBack</strong>是<a href="http://strongloop.com/" target="_blank" rel="external">Strongloop</a>推出的可在远端和本地部署的用于手机后端开发的node.js框架。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>LoopBack</strong>是<a href="http://strongloop.com/" target="_blank" rel="external">Strongloop</a>推出的可在远端和本地部署的用于手机后端开发的node.js框架。</p>
 <p>它包含：</p>
 <ul>
 <li>一个node.js库，用于连接web或是手机端到数据源，比如REST APIs和数据库。</li>
@@ -604,93 +440,58 @@
 <li>使用LoopBack客户端SDK的手机端。</li>
 </ul>
 
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest-api/">rest api</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/node-js/">
-                #node.js
-              </a>
-            
-              <a href="/tags/rest-api/">
-                #rest api
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/13/cloud-intro/">
-                云计算初探
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-04-13
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/04/13/cloud-intro/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/13/cloud-intro/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-cloud-intro" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/13/cloud-intro/" class="article-date">
+  	<time datetime="2014-04-13T08:42:51.000Z" itemprop="datePublished">2014-04-13</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/13/cloud-intro/">云计算初探</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <h3 id="云计算概念">云计算概念</h3><p>技术领域的”云“发展到现在已经是人云亦云，网上充斥着大量的或偏概念或偏实用或标准或偏激的各种关于”云“的论调。笔者个人观点是，云并没有想象中的那么遥远那么神秘，需要我们用多么专业装逼的词汇去描述，其实我们生活中或多或少的都在享受”云“的服务，它的本质就是”按需供给“、”弹性扩展“。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="云计算概念">云计算概念</h3><p>技术领域的”云“发展到现在已经是人云亦云，网上充斥着大量的或偏概念或偏实用或标准或偏激的各种关于”云“的论调。笔者个人观点是，云并没有想象中的那么遥远那么神秘，需要我们用多么专业装逼的词汇去描述，其实我们生活中或多或少的都在享受”云“的服务，它的本质就是”按需供给“、”弹性扩展“。</p>
 <h3 id="云计算分类及典型代表">云计算分类及典型代表</h3><p>云计算发展到目前，已涌现大量的国内外公司，他们提供的产品不一而足、种类繁多。甚至不能简单的将其归为IaaS/PaaS/SaaS中的一种，往往是各种服务有所交杂，各有优势。这里我调研了几个比较典型的服务提供商，略作总结。</p>
 <h4 id="1-_IaaS">1. IaaS</h4><p>Infrastructure-as-a-Service， 即基础设施即服务。IaaS提供服务器，存储和网络硬件、带宽等等基础设施。可以在这之上构建操作系统、运行时、中间件等等，对这些基础设施的使用可按需实现弹性扩展。</p>
 <p>这个领域比较大的国外公司有Amazon, Microsoft, VMWare, Rackspace和Red Hat等、国内诸如阿里云、百度云等。整体层面上可以认为它处于云的最底层，提供云计算基石，再形象简陋一点，可以把它理解为一台台机器、一条条网线等这些硬件或虚拟设施。</p>
@@ -730,89 +531,58 @@
 <li>VMWare 商业成熟</li>
 </ul>
 
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloud/">cloud</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/cloud/">
-                #cloud
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/08/ant-build-bug/">
-                Ant编译导致的Java bug问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-04-08
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/04/08/ant-build-bug/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/08/ant-build-bug/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-ant-build-bug" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/08/ant-build-bug/" class="article-date">
+  	<time datetime="2014-04-08T05:48:37.000Z" itemprop="datePublished">2014-04-08</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/08/ant-build-bug/">Ant编译导致的Java bug问题</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p>最近在开发机装了<code>jenkins</code>做持续集成和自动部署上线。使用<code>ant</code>脚本做编译打包。遇到了一个问题，分享下。<br>本质上这个问题不是ant的问题，但在平常使用中很容易被忽略掉，导致排查问题浪费时间。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在开发机装了<code>jenkins</code>做持续集成和自动部署上线。使用<code>ant</code>脚本做编译打包。遇到了一个问题，分享下。<br>本质上这个问题不是ant的问题，但在平常使用中很容易被忽略掉，导致排查问题浪费时间。</p>
 <p>举个例子，场景是这样的，在Spring MVC中我们常用到注解来简化代码，以Controller为例，有两种写法：</p>
 <ol>
 <li><p>写法1</p>
@@ -822,340 +592,178 @@
  <figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">RequestMapping</span>(<span class="keyword">method</span> = <span class="type">RequestMethod</span>.<span class="type">POST</span>, value = <span class="string">"/modify"</span>)</span><br><span class="line">public <span class="type">String</span> modify(<span class="type">HttpServletRequest</span> request,</span><br><span class="line">    <span class="type">String</span> name,</span><br><span class="line">    <span class="type">ModelMap</span> model) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>两种写法的区别是，一个添加了注解<code>@RequestParam(&quot;name&quot;)</code>，而另一个没有，以默认的名字<code>name</code>作为RequestParam。</p>
-<p>很多人为了图方便使用写法2的方式。但是遇到使用ant做打包时就要特别注意了。</p>
-<p>可能会出现这个问题：<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring java.lang.IllegalArgumentException: Name <span class="keyword">for</span> argument <span class="keyword">type</span> [java.lang.<span class="keyword">String</span>]</span><br><span class="line">Name <span class="keyword">for</span> argument <span class="keyword">type</span> [java.lang.<span class="keyword">String</span>] <span class="keyword">not</span> available, <span class="keyword">and</span> parameter name information <span class="keyword">not</span> found <span class="keyword">in</span> <span class="keyword">class</span> <span class="keyword">file</span> either</span><br></pre></td></tr></table></figure></p>
-<p>出错原因是没有通过@RequestParam(“name”)明确告诉Spring MVC使用name进行入参。action的参数标注默认是debug级别，而在linux下编译时是忽略了这些标注，导致请求时就会找不到name的参数。</p>
-<p>修复这个问题也很容易，不用修改代码，只要在开发工具中配置“Java Compiler”，如eclipse只要将“Add variable attributes to generated class files”勾选，意思是将局部变量信息添加到类文件中。</p>
-<p>如果使用的是ant脚本，可参考以下配置，这个问题是由于忽略了<code>vars</code>导致的：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  建立build/classes 路径，并编译class 文件到build/classes 路径下--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"compile"</span> <span class="attribute">depends</span>=<span class="value">"clean"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">mkdir</span> <span class="attribute">dir</span>=<span class="value">"$&#123;classes&#125;"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">javac</span> <span class="attribute">encoding</span>=<span class="value">"utf-8"</span> <span class="attribute">srcdir</span>=<span class="value">"$&#123;basedir&#125;/src"</span> <span class="attribute">destdir</span>=<span class="value">"$&#123;classes&#125;"</span> <span class="attribute">classpathref</span>=<span class="value">"project.classpath"</span> <span class="attribute">includeantruntime</span>=<span class="value">"false"</span> <span class="attribute">debug</span>=<span class="value">"true"</span> <span class="attribute">debuglevel</span>=<span class="value">"lines,vars,source"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">target</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>这里还有篇类似的文章可以参考：</p>
-<blockquote>
-<p><a href="http://blog.csdn.net/liuguanghaoputin/article/details/8695600" target="_blank" rel="external">http://blog.csdn.net/liuguanghaoputin/article/details/8695600</a></p>
-</blockquote>
-
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant/">ant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/build/">build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/ant/">
-                #ant
-              </a>
-            
-              <a href="/tags/bug/">
-                #bug
-              </a>
-            
-              <a href="/tags/build/">
-                #build
-              </a>
-            
-              <a href="/tags/java/">
-                #java
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/04/08/ant-build-bug/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/08/openssl-bug/">
-                OpenSSL的严重bug
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-04-08
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/04/08/openssl-bug/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/08/openssl-bug/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-openssl-bug" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/08/openssl-bug/" class="article-date">
+  	<time datetime="2014-04-08T05:09:44.000Z" itemprop="datePublished">2014-04-08</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/08/openssl-bug/">OpenSSL的严重bug</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p><strong>OpenSSL</strong>今天曝出一严重Bug，牵连的版本非常多，多个linux发行版中招。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>OpenSSL</strong>今天曝出一严重Bug，牵连的版本非常多，多个linux发行版中招。</p>
 <h3 id="Bug详情">Bug详情</h3><p>OpenSSL v1.0.1到1.0.1f中发现了一个非常严重bug(CVE-2014-0160)，该bug允许攻击者读取存在bug的系统的64kb处理内存，暴露加密流量的密钥，用户的名字和密码，以及访问的内容。攻击者可以利用该bug窃听通信，直接从服务和用户窃取数据。OpenSSL已经发布了1.0.1g修正bug，Debian发行版也在半小时修复了bug，Fedora发布了一个权宜的修正方案。</p>
-<p>该bug是在2011年引入到OpenSSL中，使用OpenSSL 0.9.8的发行版不受影响，但Debian Wheezy、Ubuntu 12.04.4、 Centos 6.5、Fedora 18、SuSE 12.2、OpenBSD 5.4、FreeBSD 8.4和NetBSD 5.0.2之后的版本都受到影响。如果你运行存在该bug的系统，那么最好废除所有密钥。【摘自<a href="http://www.solidot.org/story?sid=39042" target="_blank" rel="external">OpenSSL严重bug允许攻击者读取64k内存，Debian半小时修复</a>】</p>
+<p>该bug是在2011年引入到OpenSSL中，使用OpenSSL 0.9.8的发行版不受影响，但Debian Wheezy、Ubuntu 12.04.4、 Centos 6.5、Fedora 18、SuSE 12.2、OpenBSD 5.4、FreeBSD 8.4和NetBSD 5.0.2之后的版本都受到影响。如果你运行存在该bug的系统，那么最好废除所有密钥。【摘自<a href="http://www.solidot.org/story?sid=39042">OpenSSL严重bug允许攻击者读取64k内存，Debian半小时修复</a>】</p>
 <h3 id="查看系统OpenSSL情况">查看系统OpenSSL情况</h3><p><code>openssl version -a</code>命令查看版本，如果发现版本号刚好处于v1.0.1到v1.0.1f间，恭喜！躺着中枪的感觉。赶紧升级版本吧！</p>
-<h3 id="升级">升级</h3><p>目前centos和ubuntu各软件源均未添加修复版升级，可自行去<a href="http://www.openssl.org/source/" target="_blank" rel="external">OpenSSL官网</a>下载最新的<code>1.0.1g</code>版本安装。</p>
-<p>遇到问题，可参看：<a href="http://wenku.baidu.com/link?url=jmqw5lzOIi63tdCbmozHIEFe8u2mw-YUPLkvz5WV4w8UE6k-rPB0DY14sIBR2ZOujFJhyxStuT78Nx67IQBpCEur4TuRY09QDkbDtsqbpdu" target="_blank" rel="external">O​p​e​n​s​s​l​ ​升​级​遇​到​的​问​题</a>，其他问题google即可。</p>
-<h3 id="详细解决方案">详细解决方案</h3><p>截止4月9日，各大安全厂商和平台陆续推出升级方案，这里总结如下：</p>
-<p>存在此漏洞的版本OpenSSL 1.0.1 和OpenSSL 1.0.2-beta存在此漏洞，更老版本OpenSSL(1.0.0和0.9.8)不受影响 ，但官网有相关patch，所以建议升级。</p>
-<p>检查相关服务是否有此漏洞：</p>
-<ul>
-<li><a href="http://filippo.io/Heartbleed/" target="_blank" rel="external">http://filippo.io/Heartbleed/</a> </li>
-<li><a href="http://wangzhan.360.cn/heartbleed" target="_blank" rel="external">http://wangzhan.360.cn/heartbleed</a></li>
-</ul>
-<p>修补方法：</p>
-<ul>
-<li>如果为OpenSSL 1.0.1版本，应尽快升级到OpenSSL 1.0.1g(已修复漏洞) </li>
-<li>无法立即升级的用户可以加-DOPENSSL_NO_HEARTBEATS参数重新编译OpenSSL </li>
-<li>如果为OpenSSL 1.0.2-beta版本，建议暂时用OpenSSL 1.0.1g替代，等OpenSSL 1.0.2-beta2修复版本发布，再更新至OpenSSL 1.0.2-beta2 </li>
-</ul>
-<p>具体实施： </p>
-<ul>
-<li>希望安装OpenSSL 1.0.1g，则按如下方式操作<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="comment">//www.openssl.org/source/openssl-1.0.1g.tar.gz </span></span><br><span class="line">tar -zxvf openssl-<span class="number">1.0</span>.<span class="number">1</span>g<span class="class">.tar</span><span class="class">.gz</span> &amp;&amp; cd openssl-<span class="number">1.0</span>.<span class="number">1</span>g/ </span><br><span class="line">./config </span><br><span class="line">make &amp;&amp; make install </span><br><span class="line">echo <span class="string">"/usr/local/ssl/lib"</span> &gt;&gt; /etc/ld<span class="class">.so</span><span class="class">.conf</span> </span><br><span class="line">ldconfig -v </span><br><span class="line">openssl version -<span class="tag">a</span> #验证版本正确升级</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- 如果不方便立即升级，建议重新下载源码加-DOPENSSL_NO_HEARTBEATS参数编译安装（OpenSSL <span class="number">1.0</span>.<span class="number">1</span>e为例）</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>wget <a href="http://www.openssl.org/source/openssl-1.0.1e.tar.gz" target="_blank" rel="external">http://www.openssl.org/source/openssl-1.0.1e.tar.gz</a><br>tar -zxvf openssl-1.0.1e.tar.gz &amp;&amp; cd openssl-1.0.1e/<br>./config -DOPENSSL_NO_HEARTBEATS<br>make &amp;&amp; make install<br>echo “/usr/local/ssl/lib” &gt;&gt; /etc/ld.so.conf<br>ldconfig -v<br>openssl version -a | grep DOPENSSL_NO_HEARTBEATS #验证版本正确升级<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>确认依赖OpenSSL库的服务，例如nginx, apache等web服务，如果是静态编译了openssl库的，需要在升级完OpenSSL后重新编译服务程序，使用动态链接库的，需要重启一下服务</span><br></pre></td></tr></table></figure></p>
-<p>mv /usr/bin/openssl{,.OFF}<br>mv /usr/include/openssl{,.OFF}<br>ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl<br>ln -s /usr/local/ssl/include/openssl /usr/include/openssl<br>echo “/usr/local/ssl/lib” &gt;&gt; /etc/ld.so.conf<br>ldconfig -v<br>openssl version -a #验证版本正确升级<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 如果发现升级出现问题可以采用一下方法进行回滚OpenSSL </span><br><span class="line">```shell</span><br><span class="line">rm -rf <span class="regexp">/usr/</span>bin<span class="regexp">/openssl /</span>usr<span class="regexp">/include/</span>openssl </span><br><span class="line">mv <span class="regexp">/usr/</span>bin/openssl&#123;.OFF,&#125; </span><br><span class="line">mv <span class="regexp">/usr/</span>include/openssl&#123;.OFF,&#125; </span><br><span class="line">sed s#<span class="regexp">/usr/</span>local<span class="regexp">/ssl/</span>lib##g <span class="regexp">/etc/</span>ld.so.conf </span><br><span class="line">ldconfig -v</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openssl/">openssl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/https/">
-                #https
-              </a>
-            
-              <a href="/tags/openssl/">
-                #openssl
-              </a>
-            
-              <a href="/tags/安全/">
-                #安全
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/04/08/openssl-bug/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/01/java-deploy-tomcat-error/">
-                一次坑死爹的Java项目tomcat7部署异常
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-04-01
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/04/01/java-deploy-tomcat-error/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/01/java-deploy-tomcat-error/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-java-deploy-tomcat-error" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/01/java-deploy-tomcat-error/" class="article-date">
+  	<time datetime="2014-04-01T08:26:56.000Z" itemprop="datePublished">2014-04-01</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/01/java-deploy-tomcat-error/">一次坑死爹的Java项目tomcat7部署异常</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <p>刚接手一台开发机，已经使用过比较久的时间，可能前后经历的人比较多，所以环境比较杂，不熟悉。场景是这样的，我的本地环境是OSX10.9的Java7，代码都在本地开发，已经部署测试完毕，使用的是tomcat7版本。然后eclipse使用ant编译成war包后准备服务器部署，问题来了。</p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>刚接手一台开发机，已经使用过比较久的时间，可能前后经历的人比较多，所以环境比较杂，不熟悉。场景是这样的，我的本地环境是OSX10.9的Java7，代码都在本地开发，已经部署测试完毕，使用的是tomcat7版本。然后eclipse使用ant编译成war包后准备服务器部署，问题来了。</p>
 <h3 id="问题1">问题1</h3><p>部署后启动tomcat，程序不能运行，<code>Unsupported major.minor version 51.0</code>，大体意思是提示编译问题，然后查看开发机Java环境，发现是1.6，本地修改eclipse的Java Compiler的Compiler compliance level为1.6即可。</p>
-<h3 id="问题2">问题2</h3><p>修改后继续部署，发现还是无法启动，理论上来说已经不存在编译问题。不过考虑本机确实没有Java1.6环境，装一个也未尝不可，所以开始尝试在OSX10.9.2上安装JDK6，然后就开始了Google、百度，无果，Oracle官网不提供JDK1.6的安装版，在低版本的OSX中JDK1.6是自带的，到Apple开发者网站上也没找到JDK1.6安装程序，只有升级包。</p>
-<p>这里提示下，如果你也遇到类似问题，别去想着在OSX上安装JDK1.6了，如果不是线上版本更换成本太大，建议换Java7以上版本。</p>
-<p>总之，妄想在最新版的OS X上安装低版本JDK不成（低版本的OS X自带JDK6），又回到问题上来。</p>
-<p><strong><span style="color:#A33C3C;">【请注意】</span></strong>，这里还没有解决编译版本问题，有的场景按照<code>问题1</code>描述更改后可以，有些不可以，待本文最后再说如何解决编译问题。</p>
-<h3 id="问题3">问题3</h3><p>先抛开<strong>问题2</strong>，查看Tomcat各个日志，发现另一个错误：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java<span class="class">.lang</span><span class="class">.NoSuchMethodException</span>: org<span class="class">.apache</span><span class="class">.catalina</span><span class="class">.deploy</span><span class="class">.WebXml</span> addFilter</span><br></pre></td></tr></table></figure>
-<p>Google下，网上的解决方案为<a href="http://nvry.iteye.com/blog/1726163" target="_blank" rel="external">Tomacat7启动报错-org.apache.catalina.deploy.WebXml addFilter</a></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在Tomacat7的context.xml文件里的<span class="tag">&lt;<span class="title">Context</span>&gt;</span>中加上<span class="tag">&lt;<span class="title">Loader</span> <span class="attribute">delegate</span>=<span class="value">"true"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<p>修改后仍无法启动，这时候已经开始狂躁了 -_-!! 继续查日志。</p>
-<h3 id="问题4">问题4</h3><p><code>catalina.out</code>中发现另一个错误<code>SEVERE: Error listenerStart</code>，隐藏极深，只有一行，仅此一句，无其他提示，尼玛啊。继续google，找到这个<a href="http://xpenxpen.iteye.com/blog/1545648" target="_blank" rel="external">Tomcat启动报Error listenerStart错误</a></p>
-<p>不过并没有按照正文里操作，而是在日志<code>localhost.日期.log</code>里找到了错误原因。由此引出问题5</p>
-<h3 id="问题5">问题5</h3><p>在日志<code>localhost.日期.log</code>中找到了坑爹的具体出错（SEVERE: Error listenerStart）原因，罪魁祸首就是<code>Log4jConfigListener</code>的配置以及<code>web.xml</code>的问题。</p>
-<p>可以参看这里<a href="http://blog.csdn.net/lzzyok/article/details/7571727" target="_blank" rel="external">http://blog.csdn.net/lzzyok/article/details/7571727</a></p>
-<p>大体原因是Log4jConfigListener的contextInitialized方法最终会调用WebUtils.setWebAppRootSystemProperty来设置webapp.root，如果root已经存在就会抛出异常。需要修改web.xml。</p>
-<p>至此已无力吐槽，以前都是通过log4j.properties来配置log4j，第一次接手别人用xml的配置文件来用的就死里面了，一步就迈进去了啊。因为原来项目配置文件、目录结构太过错乱，我已经花时间重新整理过了，单单漏下了这个该死的log4j.xml配置，擦屁股的事情真是不好做。</p>
-<h3 id="问题6">问题6</h3><p>再次启动查看问题5是否已经不存在，如果按问题5里的描述修改web.xml后还不行，果断删掉log4j.xml配置，使用log4j.properties的形式。不得不说下Java的臃肿了，和臃肿的XML真是天生一对难兄难弟啊。</p>
-<h2 id="总结">总结</h2><p>好吧，说到这里，除了问题2，其他的按各问题描述方法修改后，相应错误已经不再出现。但如果仍出现编译问题，就说明你中了大奖了。这里提供几个解决方案：</p>
-<ul>
-<li>统一所有环境，开发机、测试机、线上机，如果线上机修改成本不大，建议换用高版本JDK。以此来尽量保证开发、编译、运行环境一致。</li>
-<li>如果本地不好更新JDK，比如我的机器装不上JDK6，那么就不要使用本地编译的版本，可以服务器搭建jenkins编译。</li>
-<li>还不行的话，把电脑砸了，把服务器删了，然后出门潇洒去吧。。</li>
-</ul>
-
-          
-        
-      </div>
+      
+    </div>
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+	</div>
 
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/java/">
-                #java
-              </a>
-            
-              <a href="/tags/tomcat/">
-                #tomcat
-              </a>
-            
-          </div>
-        
+      
 
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
+      
+        <p class="article-more-link">
+          <a  href="/2014/04/01/java-deploy-tomcat-error/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
   </div>
+  
+</article>
+
+
+
+
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/03/29/sublime-run-nodejs/">
-                Sublime text2编译运行node.js程序
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            发表于 2014-03-29
-            <!--增加编辑日期-->
-              &nbsp 更新于 2015-03-14
-          
-        </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/03/29/sublime-run-nodejs/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/29/sublime-run-nodejs/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+    <article id="post-sublime-run-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/29/sublime-run-nodejs/" class="article-date">
+  	<time datetime="2014-03-29T04:59:56.000Z" itemprop="datePublished">2014-03-29</time>
+</a>
     </div>
-
+  
+  <div class="article-inner">
     
-      <div class="post-body">
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/29/sublime-run-nodejs/">Sublime text2编译运行node.js程序</a>
+    </h1>
+  
 
-        
-        
-
-        
-          
-            <h3 id="安装插件">安装插件</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/tanepiper/SublimeText-Nodejs.git <span class="special">~</span>/Library/Application<span class="command">\ </span>Support/Sublime<span class="command">\ </span>Text<span class="command">\ </span>2/Packages/Nodejs</span><br></pre></td></tr></table></figure>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装插件">安装插件</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/tanepiper/SublimeText-Nodejs.git <span class="special">~</span>/Library/Application<span class="command">\ </span>Support/Sublime<span class="command">\ </span>Text<span class="command">\ </span>2/Packages/Nodejs</span><br></pre></td></tr></table></figure>
 <h3 id="配置">配置</h3><p><code>/private/var/root/Library/Application Support/Sublime Text 2/Packages</code>下修改连个配置文件：  </p>
 <p>Nodejs.sublime-settings:</p>
 <figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">&#123;</span></span><br><span class="line">  // save <span class="literal">before</span> <span class="literal">running</span> commands</span><br><span class="line">  <span class="string">"save_first"</span>: <span class="keyword">true</span>,</span><br><span class="line">  // <span class="keyword">if</span> <span class="literal">present</span>, <span class="literal">use</span> this <span class="literal">command</span> instead of plain <span class="string">"node"</span></span><br><span class="line">  // e.g. <span class="string">"/usr/bin/node"</span> <span class="keyword">or</span> <span class="string">"C:\bin\node.exe"</span></span><br><span class="line">  <span class="string">"node_command"</span>: <span class="string">"/usr/local/bin/node"</span>,</span><br><span class="line">  // <span class="constant">Same</span> for <span class="constant">N</span>PM <span class="literal">command</span></span><br><span class="line">  <span class="string">"npm_command"</span>: <span class="string">"/usr/local/bin/npm"</span>,</span><br><span class="line">  // as <span class="string">'NODE_PATH'</span> <span class="literal">environment</span> variable for <span class="keyword">node</span> runtime</span><br><span class="line">  <span class="string">"node_path"</span>: <span class="keyword">false</span>,</span><br><span class="line"></span><br><span class="line">  <span class="string">"expert_mode"</span>: <span class="keyword">false</span>,</span><br><span class="line"></span><br><span class="line">  <span class="string">"ouput_to_new_tab"</span>: <span class="keyword">false</span></span><br><span class="line"><span class="keyword">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -1164,386 +772,86 @@
 <p>shell配为false</p>
 <h3 id="运行">运行</h3><p>ctrl+b即可，或者右键.</p>
 
-          
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/node-js/">
-                #node.js
-              </a>
-            
-          </div>
-        
-
-        
-
-        
-        
-          <div class="post-eof"></div>
-        
-      </div>
-    
-  </div>
-
-
-  
-
-          </div>
-          <br/>
-          
-          
-          
-            <div class="pagination">
-              <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
-            </div>
-          
-        </div>
-
-        
-<div class="sidebar-toggle">
-  <div class="sidebar-toggle-line-wrap">
-    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-  </div>
-</div>
-
-<div id="sidebar" class="sidebar">
-  <div class="sidebar-inner">
-
-    
-
-    <div class="site-overview">
-      <div class="site-autsider motion-element">
-        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Sumory Wu" />
-        <p class="site-author-name">Sumory Wu</p>
-      </div>
-      <p class="site-description motion-element"></p>
-      <div class="site-state motion-element">
-        <div class="site-state-item site-state-posts">
-          <a href="/archives">
-            <span class="site-state-item-count">24</span>
-            <span class="site-state-item-name">日志</span>
-          </a>
-        </div>
-
-        <div class="site-state-item site-state-categories">
-          
-            <span class="site-state-item-count">0</span>
-            <span class="site-state-item-name">分类</span>
-          
-        </div>
-
-        <div class="site-state-item site-state-tags">
-          
-            <span class="site-state-item-count">36</span>
-            <span class="site-state-item-name">标签</span>
-          
-        </div>
-
-      </div>
       
-      <!-- 添加分类end-->
-      
-
-      <div class="links-of-author motion-element">
-        
-          
-            <span class="links-of-author-item">
-              <a href="https://github.com/sumory" target="_blank">GitHub</a>
-            </span>
-          
-            <span class="links-of-author-item">
-              <a href="http://weibo.com/mytreas" target="_blank">Weibo</a>
-            </span>
-          
-        
-      </div>
-
-      
-      
-        <div class="cc-license motion-element">
-          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-            <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-          </a>
-        </div>
-      
-
     </div>
-
     
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+	</div>
 
-  </div>
-</div>
+      
 
-
-      </div>
-
-
-
+      
+      <div class="clearfix"></div>
     </div>
-
     
-
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; &nbsp;  2012 - 
-  2015
-  <span class="with-love">
-    <i class="icon-heart"></i>
-  </span>
-  <span class="author">Sumory Wu</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/lzlun129/my-hexo-next">
-    Customized.NexT.Mist
-  </a>
-</div>
-
-
-
-
-      </div>
-    </div>
-
-    <div class="back-to-top"></div>
   </div>
   
+</article>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+
+
 
   
   
-
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.content img').each(function () {
-        var $image = $(this);
-        var $imageWrapLink = $image.parent('a');
-
-        if ($imageWrapLink.size() < 1) {
-          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
-        }
-        $imageWrapLink.addClass('fancybox');
-      });
-    });
-    $('.fancybox').fancybox({
-      helpers: {
-        overlay: {
-          locked: false
-        }
-      }
-    });
-  </script>
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Sumory Wu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
-  <script type="text/javascript">
-  function hasMobileUA () {
-    var nav = window.navigator;
-    var ua = nav.userAgent;
-    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
 
-    return pa.test(ua);
-  }
 
-  function isDesktop () {
-    return screen.width > 991 && !hasMobileUA();
-  }
 
-  function isTablet () {
-    return screen.width < 992 && screen.width > 767 && hasMobileUA();
-  }
 
-  function isMobile () {
-    return screen.width < 767 && hasMobileUA();
-  }
 
-  function escapeSelector (selector) {
-    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
-  }
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" id="motion.global">
-  $(document).ready(function () {
-    var body = $('body');
-    var isSidebarVisible = false;
-    var sidebarToggle = $('.sidebar-toggle');
-    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
-    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
-    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
-    var sidebar = $('.sidebar');
-
-    var SIDEBAR_WIDTH = '320px';
-    var SIDEBAR_DISPLAY_DURATION = 300;
-
-    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
-
-    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
-    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
-
-    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
-    var sidebarToogleLine2ndStatusClose = {opacity: 0};
-
-    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
-    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
-
-    LogoAndMenuMotion();
-    sidebatToggleMotion();
-    postsListMotion();
-    backToTopMotion();
-
-
-    $(document)
-      .on('sidebar.isShowing', function () {
-        isDesktop() && body.velocity(
-          {paddingRight: SIDEBAR_WIDTH},
-          SIDEBAR_DISPLAY_DURATION
-        );
-        sidebarContentMotion();
-      })
-      .on('sidebar.isHiding', function () {});
-
-    function LogoAndMenuMotion() {
-      $.Velocity.RunSequence([
-        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
-        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
-        
-        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
-        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
-        
-        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
-      ]);
-      $('.menu-item').velocity('transition.slideDownIn', {display: null});
-    }
-
-
-    function backToTopMotion () {
-      var b2top = $('.back-to-top');
-      b2top.on('click', function () {
-        body.velocity('scroll');
-      });
-    }
-
-    function sidebarShowMotion () {
-
-      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
-      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
-      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
-
-      sidebar.velocity({width: SIDEBAR_WIDTH}, {
-        display: 'block',
-        duration: SIDEBAR_DISPLAY_DURATION,
-        complete: function () {
-          sidebar.addClass('sidebar-active');
-          sidebar.trigger('sidebar.didShow');
-        }
-      });
-      sidebar.trigger('sidebar.isShowing');
-    }
-
-    function sidebarHideMotion () {
-      isDesktop() && body.velocity({paddingRight: 0});
-      sidebar.velocity('reverse');
-
-      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
-      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
-      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
-
-      sidebar.removeClass('sidebar-active');
-      sidebar.trigger('sidebar.isHiding');
-    };
-
-    function sidebarContentMotion () {
-      $('.sidebar .motion-element').velocity(
-        'transition.slideRightIn',
-        {stagger: 50, drag: true}
-      );
-    }
-
-    function postsListMotion () {
-      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
-      $('.post').velocity('transition.slideDownIn', postMotionOptions);
-    }
-
-    function sidebatToggleMotion () {
-      sidebarToggle.on('click', function () {
-        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
-        isSidebarVisible = !isSidebarVisible;
-      });
-
-      sidebarToggle.hover(function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
-      }, function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
-      });
-    }
-  });
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
 
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-    
-  
-  
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sumory"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-  
+  </div>
 </body>
 </html>
