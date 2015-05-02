@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>写一个Q | Sumory.Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="起因最近一个项目中使用mq做多节点间消息的路由和转发，要求实时性比较强，包括pull和push两种模式，并且同一个topic需要支持多个业务线或者子功能调用。当前的选型和问题如下：
+
+希望对这个模块有完全的掌控力，不懂erlang，所以直接排除了目前生产使用的rabbitmq
+目前项目中使用的是rocketmq，对于使用项目和团队来说的优缺点：
+优点：
+基于java，方面随时查看源代码
+接口定义清">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写一个Q">
+<meta property="og:url" content="http://sumory.com/2015/04/11/make-a-queue/index.html">
+<meta property="og:site_name" content="Sumory.Notes">
+<meta property="og:description" content="起因最近一个项目中使用mq做多节点间消息的路由和转发，要求实时性比较强，包括pull和push两种模式，并且同一个topic需要支持多个业务线或者子功能调用。当前的选型和问题如下：
+
+希望对这个模块有完全的掌控力，不懂erlang，所以直接排除了目前生产使用的rabbitmq
+目前项目中使用的是rocketmq，对于使用项目和团队来说的优缺点：
+优点：
+基于java，方面随时查看源代码
+接口定义清">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写一个Q">
+<meta name="twitter:description" content="起因最近一个项目中使用mq做多节点间消息的路由和转发，要求实时性比较强，包括pull和push两种模式，并且同一个topic需要支持多个业务线或者子功能调用。当前的选型和问题如下：
+
+希望对这个模块有完全的掌控力，不懂erlang，所以直接排除了目前生产使用的rabbitmq
+目前项目中使用的是rocketmq，对于使用项目和团队来说的优缺点：
+优点：
+基于java，方面随时查看源代码
+接口定义清">
+  
+    <link rel="alternative" href="/atom.xml" title="Sumory.Notes" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Sumory Wu</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+							<li><a href="/tags/">标签</a></li>
+				        
+							<li><a href="/projects/">项目</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a><a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a><a href="/tags/NAT/" style="font-size: 10px;">NAT</a><a href="/tags/Thrift/" style="font-size: 10px;">Thrift</a><a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a><a href="/tags/Zookeeper/" style="font-size: 10px;">Zookeeper</a><a href="/tags/ant/" style="font-size: 10px;">ant</a><a href="/tags/btrace/" style="font-size: 10px;">btrace</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/build/" style="font-size: 10px;">build</a><a href="/tags/cloud/" style="font-size: 10px;">cloud</a><a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a><a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a><a href="/tags/editor/" style="font-size: 12.5px;">editor</a><a href="/tags/exception/" style="font-size: 10px;">exception</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/go/" style="font-size: 10px;">go</a><a href="/tags/https/" style="font-size: 10px;">https</a><a href="/tags/iOS/" style="font-size: 10px;">iOS</a><a href="/tags/iphone/" style="font-size: 10px;">iphone</a><a href="/tags/java/" style="font-size: 20px;">java</a><a href="/tags/linux/" style="font-size: 15px;">linux</a><a href="/tags/mingw/" style="font-size: 10px;">mingw</a><a href="/tags/mq/" style="font-size: 10px;">mq</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/node-js/" style="font-size: 17.5px;">node.js</a><a href="/tags/openssl/" style="font-size: 10px;">openssl</a><a href="/tags/oracle/" style="font-size: 12.5px;">oracle</a><a href="/tags/redis/" style="font-size: 12.5px;">redis</a><a href="/tags/rest-api/" style="font-size: 10px;">rest api</a><a href="/tags/socket-io/" style="font-size: 10px;">socket.io</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/svn/" style="font-size: 10px;">svn</a><a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a><a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a><a href="/tags/分布式/" style="font-size: 12.5px;">分布式</a><a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a><a href="/tags/安全/" style="font-size: 10px;">安全</a><a href="/tags/持久化/" style="font-size: 10px;">持久化</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">读过书、创过业、挖过矿、务过农，现在正在做一名“光荣的人民教师”</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Sumory Wu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/default_avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Sumory Wu</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+					<li><a href="/tags/">标签</a></li>
+		        
+					<li><a href="/projects/">项目</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sumory" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/mytreas" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-make-a-queue" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/11/make-a-queue/" class="article-date">
+  	<time datetime="2015-04-11T13:14:05.000Z" itemprop="datePublished">2015-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      写一个Q
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mq/">mq</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持久化/">持久化</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="起因">起因</h3><p>最近一个项目中使用<code>mq</code>做多节点间消息的路由和转发，要求实时性比较强，包括pull和push两种模式，并且同一个topic需要支持多个业务线或者子功能调用。当前的选型和问题如下：</p>
+<ul>
+<li>希望对这个模块有完全的掌控力，不懂erlang，所以直接排除了目前生产使用的rabbitmq</li>
+<li>目前项目中使用的是rocketmq，对于使用项目和团队来说的优缺点：<ul>
+<li>优点：<ul>
+<li>基于java，方面随时查看源代码</li>
+<li>接口定义清晰</li>
+<li>消息堆积能力很强</li>
+<li>社区较活跃，有官方开发者长期维护和答疑</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>rocketmq对于这个应用来说占用资源太多，谁用谁知道</li>
+<li>管理和运维都比较重，比如rocketmq严重依赖文件系统，需要配置vm参数（比如由于一个参数忘记打开导致压力测试的时候频繁崩溃），相关的监控工具也只有rocket-console，而且不够好用。</li>
+<li>基于rocketmq二次开发或者定制一套工具类更重，而且由于是非广泛通用需求，多半不会被官方合并。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="其它选择">其它选择</h3><p>业界有大量的mq产品可供选择，但对我来说或多或少用着都不太舒服。</p>
+<ul>
+<li>activemq，java系，也是广泛使用的一个mq，一个字，太重</li>
+<li>memcacheQ，微博用的比较多，是c系的，更像一个kv，不满足我的需求</li>
+<li><a href="http://nsq.io/" target="_blank" rel="external">nsq</a>，golang编写，不保证消息严格有序（大部分mq其实都是这样做的，目前采用的roketmq也是如此），无单点，看上去很美好，但短时间内想做到细节可控不太容易</li>
+<li><a href="http://blog.buaa.us/talk-about-mq/" target="_blank" rel="external">uq</a>，搜索memcacheQ时搜到的，<a href="http://weibo.com/819880808" target="_blank" rel="external">@招牌疯子</a>作品。据说用于部分替代微博内部广泛使用的memcacheQ，但作者开源出来的也只是简化后的版本，在给uq贡献了一个<a href="https://github.com/buaazp/libuq" target="_blank" rel="external">java库</a>后通读了一遍uq的代码，发现还是没有我想要的功能。</li>
+</ul>
+<p>除此之外还有其它好多个mq可供选择，比如redis作者刚推出的disque。目前调研的产品，总而言之，要么太重难以动刀，而轻量级的几个又不满足我需要的几种场景。于是萌生了另造一个轮子的想法。</p>
+<h3 id="造个轮子">造个轮子</h3><p>这个轮子应该是这样的：</p>
+<ol>
+<li>语言方面： 不采用java，略看了下rocketmq的代码，想实现我要的功能用java写起来实在是个折磨。基于golang，最终编译成一个文件，方便运维等，同时利用语言模型带来的红利（如goroutine、channel）简化这个mq轮子的制造过程。</li>
+<li>它应该满足的要求：<ul>
+<li>消息的存储应支持内存和磁盘</li>
+<li>应该具备较高的性能和较低的延迟，以替换当前的rocketmq</li>
+<li>如文章伊始所说，一个topic或是queue应该可以被多个消费者消费，消息应支持回溯</li>
+<li>有比较全面的客户端支持，应优先支持java、go、node.js</li>
+<li>应支持多个协议，但优先级最高的应该是tcp和http，之后是redis等</li>
+<li>应该有一个好用的web ui以支持监控和管理</li>
+</ul>
+</li>
+</ol>
+<h3 id="进展">进展</h3><p>参考其他几个框架，已实现了一个简陋的网络传输库，即一个简单的server/client模型，包括一个简单的重连和超时控制逻辑。  </p>
+<p>下一步着重实现消息协议设计，可参考以前使用java实现的一个rpc系统里的协议设计，即包头+定长消息体。序列化采用约定好的原生序列化来实现，也有可能采用protobuf。</p>
+<p>待续。。。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/02/03/btrace-case/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Btrace简单使用</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/04/11/make-a-queue/" data-title="写一个Q" data-url="http://sumory.com/2015/04/11/make-a-queue/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"sumory"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Sumory Wu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
