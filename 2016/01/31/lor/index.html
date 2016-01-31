@@ -4,17 +4,35 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Sumory&#39;s Lab</title>
+  <title>一个运行在OpenResty上的基于Lua编写的Web框架Lor Framework | Sumory&#39;s Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sumory's Lab">
-<meta property="og:url" content="http://sumory.com/index.html">
+  <meta name="description" content="Lor是一个运行在OpenResty上的基于Lua编写的Web框架. 
+Github: https://github.com/sumory/lor
+特性
+路由采用Sinatra风格，Sinatra是Ruby小而精的web框架.
+API基本采用了Express的思路和设计，Node.js跨界开发者可以很快上手.
+支持插件(middleware)，路由可分组，路由匹配支持string/正则模式.
+lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个运行在OpenResty上的基于Lua编写的Web框架Lor Framework">
+<meta property="og:url" content="http://sumory.com/2016/01/31/lor/index.html">
 <meta property="og:site_name" content="Sumory's Lab">
-<meta property="og:description">
+<meta property="og:description" content="Lor是一个运行在OpenResty上的基于Lua编写的Web框架. 
+Github: https://github.com/sumory/lor
+特性
+路由采用Sinatra风格，Sinatra是Ruby小而精的web框架.
+API基本采用了Express的思路和设计，Node.js跨界开发者可以很快上手.
+支持插件(middleware)，路由可分组，路由匹配支持string/正则模式.
+lo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sumory's Lab">
-<meta name="twitter:description">
+<meta name="twitter:title" content="一个运行在OpenResty上的基于Lua编写的Web框架Lor Framework">
+<meta name="twitter:description" content="Lor是一个运行在OpenResty上的基于Lua编写的Web框架. 
+Github: https://github.com/sumory/lor
+特性
+路由采用Sinatra风格，Sinatra是Ruby小而精的web框架.
+API基本采用了Express的思路和设计，Node.js跨界开发者可以很快上手.
+支持插件(middleware)，路由可分组，路由匹配支持string/正则模式.
+lo">
   
     <link rel="alternative" href="/atom.xml" title="Sumory&#39;s Lab" type="application/atom+xml">
   
@@ -71,9 +89,7 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-    <article id="post-lor" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-lor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/31/lor/" class="article-date">
   <time datetime="2016-01-31T13:39:39.000Z" itemprop="datePublished">2016-01-31</time>
@@ -86,8 +102,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/31/lor/">一个运行在OpenResty上的基于Lua编写的Web框架Lor Framework</a>
+    <h1 class="article-title" itemprop="name">
+      一个运行在OpenResty上的基于Lua编写的Web框架Lor Framework
     </h1>
   
 
@@ -141,566 +157,24 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-confd" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/10/confd/" class="article-date">
-  <time datetime="2016-01-10T09:13:11.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/confd/">一个统一配置管理工具-confd</a>
-    </h1>
+    <a href="/2016/01/10/confd/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">一个统一配置管理工具-confd</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>confd是一个统一配置管理工具，目前仍在开发中，基于本地文件存储的部署方式已经可以用于生产环境中。</p>
-<h5 id="Features">Features</h5><ul>
-<li>[x] 基础解析：配置文件使用toml格式，模板数据分离</li>
-<li>[x] 多种存储支持：local file、redis、zookeeper</li>
-<li>[x] 两种运行模式：Debug或Daemon</li>
-<li>[x] cli工具：修改store，批量更新配置</li>
-<li>[ ] 更友好的交互方式，比如通过web界面</li>
-<li>[ ] 分离server和client，提供客户端cli或API供拉取指定配置</li>
-<li>[ ] 加密支持：store中存储的配置可加密，防止泄露</li>
-</ul>
-<h5 id="Usage">Usage</h5><p><strong>安装</strong></p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#假设安装路径为/data/server/confd</span></span><br><span class="line"><span class="preprocessor">#go get获取依赖的第三方库 </span></span><br><span class="line"></span><br><span class="line"><span class="title">sh</span> build.sh linux /<span class="typedef"><span class="keyword">data</span>/server/confd</span></span><br><span class="line"><span class="preprocessor">#执行以上构建脚本后，在docs目录下生成了安装所需的文件</span></span><br><span class="line"><span class="preprocessor">#若build.sh增加了参数$2，则默认加载$2/data/config.toml作为confd运行所需的配置文件</span></span><br><span class="line"></span><br><span class="line"><span class="title">cd</span> docs</span><br><span class="line"><span class="title">sh</span> install.sh /<span class="typedef"><span class="keyword">data</span>/server/confd</span></span><br><span class="line"><span class="title">cd</span> /<span class="typedef"><span class="keyword">data</span>/server/confd </span></span><br><span class="line"><span class="preprocessor">#注意修改$&#123;path&#125;/data/config.toml里的ConfDir和ConnectAddr，前缀为/data/server/confd</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#然后使用confd、confd-cli即可</span></span><br></pre></td></tr></table></figure>
-<p><strong>使用</strong></p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── confd</span><br><span class="line">├── confd-cli</span><br><span class="line">├── data</span><br><span class="line">│   ├── config<span class="class">.toml</span></span><br><span class="line">│   └── filestore<span class="class">.toml</span></span><br><span class="line">├── meta</span><br><span class="line">│   ├── example_1<span class="class">.toml</span></span><br><span class="line">│   └── example_2<span class="class">.toml</span></span><br><span class="line">└── templates</span><br><span class="line">    └── example.tmpl</span><br></pre></td></tr></table></figure>
-<h3 id="confd的使用："><strong>confd</strong>的使用：</h3><ul>
-<li>首先了解：<ul>
-<li>confd的配置可参看<a href="./docs/files/config.toml">config.toml</a>, config.toml里的配置均可通过运行时指定flag来覆盖默认配置。</li>
-<li>confd.toml中指定的配置数据存储为“file”形式，即数据存储在同目录下filestore.toml文件中。</li>
-<li>根据需要编辑模板，参考<a href="docs/files/example.tmpl">example.tmpl</a>，模板中使用的变量目前只支持k/v形式。</li>
-<li>根据需要编辑meta文件，参考<a href="docs/files/example_1.toml">example_1.toml</a>，meta文件指定了生成最终配置文件时需要的模板文件、数据、最终文件地址等。</li>
-</ul>
-</li>
-<li>命令<ul>
-<li><code>./confd</code>, 在各个meta文件指定的目的地址生成了需要的配置文件</li>
-<li><code>./confd --debug=false</code>, 默认confd在后台运行，每10分钟重新生成一次全部的配置文件</li>
-</ul>
-</li>
-</ul>
-<h3 id="confd-cli的使用："><strong>confd-cli</strong>的使用：</h3><ul>
-<li><code>confd-cli</code>是操作confd的命令行程序</li>
-<li><p>目前支持的子命令</p>
-<p>  <code>./confd-cli getall</code> 获取当前所有配置需要的数据<br>  <code>./confd-cli get key1</code> 获取key1现在的值<br>  <code>./confd-cli set key1</code> value1 设置key1值为value1<br>  <code>./confd-cli delete key1</code> 删除key1</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2016/01/10/confd/" data-id="cik2ltlu50038ryk9a02pxqqq" class="article-share-link" data-share="baidu" data-title="一个统一配置管理工具-confd">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2016/01/10/confd/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置管理/">配置管理</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-  
-    <article id="post-moklr" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/30/moklr/" class="article-date">
-  <time datetime="2015-08-30T09:34:32.000Z" itemprop="datePublished">2015-08-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/30/moklr/">【Moklr】一个HTTP API测试和监控工具</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Moklr">Moklr</h2><p>moklr定位于http请求代码生成，自动化测试，API status服务等test/development辅助功能，此外还可能集成文档服务，目前仍在持续开发中。</p>
-<h3 id="Github">Github</h3><p><a href="https://github.com/sumory/moklr" target="_blank" rel="external">https://github.com/sumory/moklr</a></p>
-<h3 id="Demo">Demo</h3><p><a href="https://still-peak-9538.herokuapp.com" target="_blank" rel="external">heroku moklr</a>,  账号：test/123456</p>
-<h3 id="Screenshots">Screenshots</h3><p><img src="http://7vih7p.com1.z0.glb.clouddn.com/postman.png-new" alt=""></p>
-<p><img src="http://7vih7p.com1.z0.glb.clouddn.com/status.png-new" alt=""></p>
-<p><img src="http://7vih7p.com1.z0.glb.clouddn.com/gen.png-new" alt=""></p>
-<h3 id="Features">Features</h3><ul>
-<li>[X] postman替代品，支持postaman数据(collection级别)直接导入</li>
-<li>[X] http请求代码生成，支持常见的多种语言(js/java/go/python/shell/ruby等等)</li>
-<li>[X] API status检查(需<a href="https://github.com/sumory/runbot" target="_blank" rel="external">runbot</a>支持)</li>
-<li>[ ] 批量测试case</li>
-<li>[ ] 测试文档和API文档生成</li>
-</ul>
-<h3 id="Usage">Usage</h3><ol>
-<li>依赖于mongodb，需提前安装</li>
-<li><p>运行</p>
- <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/sumory/moklr.git</span></span><br><span class="line">cd moklr</span><br><span class="line">npm install .</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#根据具体情况修改config配置,配置位于config目录下</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#选择config目录下的test.js这个配置启动</span></span><br><span class="line">NODE_ENV=test node index.js</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#访问http://localhost:8001</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2015/08/30/moklr/" data-id="cik2ltltc001aryk9i3zdslxd" class="article-share-link" data-share="baidu" data-title="【Moklr】一个HTTP API测试和监控工具">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2015/08/30/moklr/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Http/">Http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Status-server/">Status server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-make-a-queue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/11/make-a-queue/" class="article-date">
-  <time datetime="2015-04-11T13:14:05.000Z" itemprop="datePublished">2015-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/11/make-a-queue/">写一个Q</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="起因">起因</h3><p>最近一个项目中使用<code>mq</code>做多节点间消息的路由和转发，要求实时性比较强，包括pull和push两种模式，并且同一个topic需要支持多个业务线或者子功能调用。当前的选型和问题如下：</p>
-<ul>
-<li>希望对这个模块有完全的掌控力，不懂erlang，所以直接排除了目前生产使用的rabbitmq</li>
-<li>目前项目中使用的是rocketmq，对于使用项目和团队来说的优缺点：<ul>
-<li>优点：<ul>
-<li>基于java，方面随时查看源代码</li>
-<li>接口定义清晰</li>
-<li>消息堆积能力很强</li>
-<li>社区较活跃，有官方开发者长期维护和答疑</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>rocketmq对于这个应用来说占用资源太多，谁用谁知道</li>
-<li>管理和运维都比较重，比如rocketmq严重依赖文件系统，需要配置vm参数（比如由于一个参数忘记打开导致压力测试的时候频繁崩溃），相关的监控工具也只有rocket-console，而且不够好用。</li>
-<li>基于rocketmq二次开发或者定制一套工具类更重，而且由于是非广泛通用需求，多半不会被官方合并。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/04/11/make-a-queue/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2015/04/11/make-a-queue/" data-id="cik2ltltg001mryk954urbg25" class="article-share-link" data-share="baidu" data-title="写一个Q">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2015/04/11/make-a-queue/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mq/">mq</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持久化/">持久化</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-btrace-case" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/02/03/btrace-case/" class="article-date">
-  <time datetime="2015-02-03T05:53:59.000Z" itemprop="datePublished">2015-02-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/03/btrace-case/">Btrace简单使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="介绍">介绍</h3><p><a href="https://kenai.com/projects/btrace/downloads/directory/releases/release-1.2.5.1">Btrace</a>是什么，能做什么，这里不予介绍，网上一搜一大片。本文只介绍Btrace的基本用法和示例，用作备忘。</p>
-<p>目前最新的版本为1.2.5.1，除了单独使用（支持mac、windows和linux）之外，还可以在jvisualvm上安装插件，通过GUI使用。</p>
-<p>下载linux版本，解压后，主要目录如下，bin是命令目录，build中是实现btrace的jara包，samples目录下有大量脚本示例可供参考：</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/02/03/btrace-case/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2015/02/03/btrace-case/" data-id="cik2ltluc003nryk9l8b2jc22" class="article-share-link" data-share="baidu" data-title="Btrace简单使用">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2015/02/03/btrace-case/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btrace/">btrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring-redis-sentinel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/15/spring-redis-sentinel/" class="article-date">
-  <time datetime="2014-08-15T06:43:23.000Z" itemprop="datePublished">2014-08-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/15/spring-redis-sentinel/">Redis的sentinel使用及spring集成</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-_senital-conf文件">1. senital.conf文件</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">port <span class="number">26379</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#sentinel监控的redis的名字、IP和端口，最后一个数字是sentinel做决策的时候需要投赞同票的最少的sentinel的数量。</span></span><br><span class="line">sentinel monitor mymaster <span class="number">127.0</span>.0.1 <span class="number">6379</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#如果多久没联系上redis-servevr，认为这个redis-server进入到失效（SDOWN）状态。</span></span><br><span class="line">sentinel down-after-milliseconds mymaster <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#可选的安全连接密码</span></span><br><span class="line"><span class="preprocessor">#sentinel auth-pass mymaster xxx</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover（提升一个slave成为master）过期时间，如果超过这个时间没触发成功failover，sentinel会认为failover失败。</span></span><br><span class="line">sentinel failover-timeout mymaster <span class="number">30000</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#选项指定了在执行故障转移时， 最多可以有多少个从服务器同时对新的主服务器进行同步， 这个数字越小， 完成故障转移所需的时间就越长。</span></span><br><span class="line">sentinel config-epoch mymaster <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#当failover时，可以指定一个“通知”脚本用来告知当前集群的情况。</span></span><br><span class="line"><span class="preprocessor">#脚本被允许执行的最大时间为60秒，如果超时，脚本将会被终止(KILL)</span></span><br><span class="line"><span class="preprocessor">#sentinel notification-script mymaster /var/redis/notify.sh</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#failover之后重配置客户端</span></span><br><span class="line"><span class="preprocessor"># sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></span><br><span class="line"><span class="preprocessor"># Generated by CONFIG REWRITE</span></span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2014/08/15/spring-redis-sentinel/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2014/08/15/spring-redis-sentinel/" data-id="cik2ltlsx000kryk9z7h4qjo2" class="article-share-link" data-share="baidu" data-title="Redis的sentinel使用及spring集成">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2014/08/15/spring-redis-sentinel/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cocoapods-guide" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/14/cocoapods-guide/" class="article-date">
-  <time datetime="2014-07-14T04:03:34.000Z" itemprop="datePublished">2014-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/14/cocoapods-guide/">OSX 10.9使用cocoapods遇到的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://cocoapods.org/">cocoapods</a>用于管理iOS项目库依赖，类似于nodejs的npm、java的maven、python的pip等工具，它基于ruby（ruby的配置和库管理向来让我很头痛）。</p>
-<h3 id="修改ruby源">修改ruby源</h3><p>要使用ruby，第一件事是更改ruby源，在国内，rubygems.org镜像基本处于不可用状态。这里改为淘宝提供的免费ruby镜像：</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources --remove https://rubygems.org/</span><br><span class="line">$ gem sources -a https://ruby.taobao.org/</span><br><span class="line">$ gem sources -l</span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span> CURRENT SOURCES <span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"></span><br><span class="line">https://ruby.taobao.org</span><br></pre></td></tr></table></figure>
-<h3 id="安装cocoapods">安装cocoapods</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> cocoapods</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2014/07/14/cocoapods-guide/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2014/07/14/cocoapods-guide/" data-id="cik2ltlu7003dryk93zdpijw0" class="article-share-link" data-share="baidu" data-title="OSX 10.9使用cocoapods遇到的问题">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2014/07/14/cocoapods-guide/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cocoapods/">cocoapods</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iphone/">iphone</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nat" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/09/nat/" class="article-date">
-  <time datetime="2014-05-09T09:37:53.000Z" itemprop="datePublished">2014-05-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/09/nat/">NAT穿透的详细讲解及分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前几天在做一个网络视频应用的原型，选来选去，决定采用WebRTC作为临时方案先顶着，优点是连接建立后不需要服务端转发流量，方案实现相对简单。缺点是该技术还不成熟，表现在浏览器API完善程度、浏览器版本支持、硬件资源支持等方面有较多限制。期间遇到了<code>NAT</code>和<code>STUN</code>相关的问题，这里转载了一篇对<code>NAT</code>详细通俗介绍的一篇文章。</p>
-<p>以下内容转自<a href="http://bbs.pediy.com/showthread.php?t=131961">NAT穿透的详细讲解及分析</a>，这里只做了重新排版，让易读性更好一点。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/05/09/nat/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2014/05/09/nat/" data-id="cik2ltlt80010ryk9htts9gpn" class="article-share-link" data-share="baidu" data-title="NAT穿透的详细讲解及分析">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2014/05/09/nat/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NAT/">NAT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebRTC/">WebRTC</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-loopback" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/20/loopback/" class="article-date">
-  <time datetime="2014-04-20T14:24:21.000Z" itemprop="datePublished">2014-04-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/20/loopback/">LoopBack</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>LoopBack</strong>是<a href="http://strongloop.com/" target="_blank" rel="external">Strongloop</a>推出的可在远端和本地部署的用于手机后端开发的node.js框架。</p>
-<p>它包含：</p>
-<ul>
-<li>一个node.js库，用于连接web或是手机端到数据源，比如REST APIs和数据库。</li>
-<li>一个cli工具，用于建立和管理LoopBack应用。</li>
-<li>客户端SDK，原生或是基于web的手机客户端。</li>
-</ul>
-<p>每个LoopBack应用包含三个组件：</p>
-<ul>
-<li>呈现业务数据和场景的models。</li>
-<li>数据源和连接器。数据源比如数据库或者后端服务（REST APIs, SOAP web services, 或是其他存储服务），连接器指的是企业级的数据源如Oracle、MySQL、MongoDB。</li>
-<li>使用LoopBack客户端SDK的手机端。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2014/04/20/loopback/" data-id="cik2ltltm0021ryk9a4w2ml1e" class="article-share-link" data-share="baidu" data-title="LoopBack">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2014/04/20/loopback/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest-api/">rest api</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cloud-intro" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/13/cloud-intro/" class="article-date">
-  <time datetime="2014-04-13T08:42:51.000Z" itemprop="datePublished">2014-04-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/13/cloud-intro/">云计算初探</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="云计算概念">云计算概念</h3><p>技术领域的”云“发展到现在已经是人云亦云，网上充斥着大量的或偏概念或偏实用或标准或偏激的各种关于”云“的论调。笔者个人观点是，云并没有想象中的那么遥远那么神秘，需要我们用多么专业装逼的词汇去描述，其实我们生活中或多或少的都在享受”云“的服务，它的本质就是”按需供给“、”弹性扩展“。</p>
-<h3 id="云计算分类及典型代表">云计算分类及典型代表</h3><p>云计算发展到目前，已涌现大量的国内外公司，他们提供的产品不一而足、种类繁多。甚至不能简单的将其归为IaaS/PaaS/SaaS中的一种，往往是各种服务有所交杂，各有优势。这里我调研了几个比较典型的服务提供商，略作总结。</p>
-<h4 id="1-_IaaS">1. IaaS</h4><p>Infrastructure-as-a-Service， 即基础设施即服务。IaaS提供服务器，存储和网络硬件、带宽等等基础设施。可以在这之上构建操作系统、运行时、中间件等等，对这些基础设施的使用可按需实现弹性扩展。</p>
-<p>这个领域比较大的国外公司有Amazon, Microsoft, VMWare, Rackspace和Red Hat等、国内诸如阿里云、百度云等。整体层面上可以认为它处于云的最底层，提供云计算基石，再形象简陋一点，可以把它理解为一台台机器、一条条网线等这些硬件或虚拟设施。</p>
-<p>我试用过的：</p>
-<ul>
-<li><a href="http://www.aliyun.com/" target="_blank" rel="external">阿里云</a> IO性能偏弱（据说有在改善），半夜三更网络会瞬断，优点是各种周边服务齐全</li>
-<li><a href="http://www.mos.meituan.com" target="_blank" rel="external">美团云</a> 便宜、网速好，缺点是还不够成熟，简陋</li>
-</ul>
-<h4 id="2-_PaaS">2. PaaS</h4><p>Platform-as-a-Service， 即平台即服务。关注于开发而不是基础设施管理层面。这一层为开发者提供了具体的操作系统、运行时环境、各种中间件，使用者只需要关注具体应用的设计实现部署即可。典型代表有老牌的GAE，Azure，国内有BAE、新浪云、京东云计算等。</p>
-<p>收集的几个小而美的PaaS服务：</p>
-<ul>
-<li><a href="https://www.appfog.com" target="_blank" rel="external">appfog</a> 有免费方案可用</li>
-<li><a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a> 基于ruby</li>
-<li><a href="http://www.cloudfoundry.org/" target="_blank" rel="external">cloudfoundry</a> 开源的PaaS，<a href="http://appengine.jd.com/" target="_blank" rel="external">京东云</a>内核即是cloud foundry</li>
-</ul>
-<h4 id="3-_SaaS">3. SaaS</h4><p>software as a service，即软件即服务。</p>
-<ul>
-<li>七牛云存储 <a href="http://www.qiniu.com/" target="_blank" rel="external">qiniu</a></li>
-<li>云日志系统 <a href="http://www.logstack.cn" target="_blank" rel="external">logstack</a></li>
-<li>又拍云存储 <a href="https://www.upyun.com" target="_blank" rel="external">upyun</a></li>
-<li>邮件发送服务 <a href="http://sendcloud.sohu.com" target="_blank" rel="external">sendcloud</a></li>
-<li>云推送 <a href="http://developer.baidu.com/cloud/push" target="_blank" rel="external">百度云推送</a></li>
-<li>队列、k/v存储 <a href="https://hud.iron.io" target="_blank" rel="external">Iron.io</a></li>
-<li>专注移动开发 <a href="https://cn.avoscloud.com/" target="_blank" rel="external">AVOS Cloud</a></li>
-</ul>
-<h4 id="4-_其它">4. 其它</h4><p>前面提到很多云计算服务提供商提供的服务往往不止一种模式，如大而全的阿里云、专注存储和CDN的又拍云，这再推荐几个国内外做的不错的：</p>
-<ul>
-<li><a href="http://www.ucloud.cn/" target="_blank" rel="external">ucloud</a> 涉及计算、存储、CDN、小部分SaaS</li>
-<li><a href="https://www.qingcloud.com" target="_blank" rel="external">青云</a> 计算、存储、网络</li>
-<li><a href="http://www.speedycloud.cn/" target="_blank" rel="external">迅达云</a> 设备租赁、云主机、存储、应用商店</li>
-<li><a href="https://koding.com/" target="_blank" rel="external">koding</a> 提供基于浏览器的开发环境，PaaS/Saas</li>
-</ul>
-<h3 id="云计算解决方案">云计算解决方案</h3><ul>
-<li>Openstack 社区庞大、开源</li>
-<li>Cloudstack Apache开源</li>
-<li>Cloudfoundry</li>
-<li>VMWare 商业成熟</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2014/04/13/cloud-intro/" data-id="cik2ltlu9003kryk92fvovk61" class="article-share-link" data-share="baidu" data-title="云计算初探">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2014/04/13/cloud-intro/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloud/">cloud</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/01/31/lor/" data-title="一个运行在OpenResty上的基于Lua编写的Web框架Lor Framework" data-url="http://sumory.com/2016/01/31/lor/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">

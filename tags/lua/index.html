@@ -4,25 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Btrace简单使用 | Sumory&#39;s Lab</title>
+  <title>Tag: lua | Sumory&#39;s Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍Btrace是什么，能做什么，这里不予介绍，网上一搜一大片。本文只介绍Btrace的基本用法和示例，用作备忘。
-目前最新的版本为1.2.5.1，除了单独使用（支持mac、windows和linux）之外，还可以在jvisualvm上安装插件，通过GUI使用。
-下载linux版本，解压后，主要目录如下，bin是命令目录，build中是实现btrace的jara包，samples目录下有大量脚本示">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Btrace简单使用">
-<meta property="og:url" content="http://sumory.com/2015/02/03/btrace-case/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sumory's Lab">
+<meta property="og:url" content="http://sumory.com/tags/lua/index.html">
 <meta property="og:site_name" content="Sumory's Lab">
-<meta property="og:description" content="介绍Btrace是什么，能做什么，这里不予介绍，网上一搜一大片。本文只介绍Btrace的基本用法和示例，用作备忘。
-目前最新的版本为1.2.5.1，除了单独使用（支持mac、windows和linux）之外，还可以在jvisualvm上安装插件，通过GUI使用。
-下载linux版本，解压后，主要目录如下，bin是命令目录，build中是实现btrace的jara包，samples目录下有大量脚本示">
-<meta property="og:image" content="http://7vih7p.com1.z0.glb.clouddn.com/jvisualvm-btrace.png-690v1000v50">
-<meta property="og:image" content="http://7vih7p.com1.z0.glb.clouddn.com/jvisualvm-btrace-result.png-690v1000v50">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Btrace简单使用">
-<meta name="twitter:description" content="介绍Btrace是什么，能做什么，这里不予介绍，网上一搜一大片。本文只介绍Btrace的基本用法和示例，用作备忘。
-目前最新的版本为1.2.5.1，除了单独使用（支持mac、windows和linux）之外，还可以在jvisualvm上安装插件，通过GUI使用。
-下载linux版本，解压后，主要目录如下，bin是命令目录，build中是实现btrace的jara包，samples目录下有大量脚本示">
+<meta name="twitter:title" content="Sumory's Lab">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="Sumory&#39;s Lab" type="application/atom+xml">
   
@@ -79,88 +71,39 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-btrace-case" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/02/03/btrace-case/" class="article-date">
-  <time datetime="2015-02-03T05:53:59.000Z" itemprop="datePublished">2015-02-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Btrace简单使用
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/01/31/lor/" class="archive-article-date">
+  <time datetime="2016-01-31T13:39:39.000Z" itemprop="datePublished">1月 31</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/01/31/lor/">一个运行在OpenResty上的基于Lua编写的Web框架Lor Framework</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="介绍">介绍</h3><p><a href="https://kenai.com/projects/btrace/downloads/directory/releases/release-1.2.5.1" target="_blank" rel="external">Btrace</a>是什么，能做什么，这里不予介绍，网上一搜一大片。本文只介绍Btrace的基本用法和示例，用作备忘。</p>
-<p>目前最新的版本为1.2.5.1，除了单独使用（支持mac、windows和linux）之外，还可以在jvisualvm上安装插件，通过GUI使用。</p>
-<p>下载linux版本，解压后，主要目录如下，bin是命令目录，build中是实现btrace的jara包，samples目录下有大量脚本示例可供参考：</p>
-<a id="more"></a>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">├── bin</span><br><span class="line">│   ├── btrace</span><br><span class="line">│   ├── btrace<span class="class">.bat</span></span><br><span class="line">│   ├── btracec</span><br><span class="line">│   ├── btracec<span class="class">.bat</span></span><br><span class="line">│   ├── btracer</span><br><span class="line">│   └── btracer<span class="class">.bat</span></span><br><span class="line">├── build</span><br><span class="line">│   ├── btrace-agent<span class="class">.jar</span></span><br><span class="line">│   ├── btrace-boot<span class="class">.jar</span></span><br><span class="line">│   └── btrace-client<span class="class">.jar</span></span><br><span class="line">└── samples</span><br><span class="line">    ├── AWTEventTracer<span class="class">.java</span></span><br><span class="line">    ├── AllCalls1<span class="class">.java</span></span><br><span class="line">    ├── AllCalls2<span class="class">.java</span></span><br><span class="line">    ├── AllCalls3<span class="class">.java</span></span><br><span class="line">    ├── AllLines<span class="class">.java</span></span><br><span class="line">    ├── AllMethods<span class="class">.java</span></span><br><span class="line">    ├── AllSync<span class="class">.java</span></span><br><span class="line">    ├── ArgArray<span class="class">.java</span></span><br><span class="line">    ├── Classload<span class="class">.java</span></span><br><span class="line">    ├── CommandArg<span class="class">.java</span></span><br><span class="line">    ├── DTraceInline<span class="class">.java</span></span><br><span class="line">    ├── DTraceRefDemo<span class="class">.java</span></span><br><span class="line">    ├── Deadlock<span class="class">.java</span></span><br><span class="line">    ...</span><br><span class="line">    └── syscalls.d</span><br></pre></td></tr></table></figure>
-<h3 id="使用示例">使用示例</h3><p>示例java代码：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tmp;</span><br><span class="line"><span class="keyword">public</span> class Test &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"abcde"</span>);</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="built_in">print</span>(<span class="keyword">String</span> abc) &#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(abc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>btrace脚本：</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.sun.btrace.annotations.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> com.sun.btrace.<span class="type">BTraceUtils</span>.*;</span><br><span class="line"></span><br><span class="line">@<span class="type">BTrace</span></span><br><span class="line">public class <span class="type">TracingScript</span> &#123;</span><br><span class="line">	/* put your code here */</span><br><span class="line">    @<span class="type">TLS</span></span><br><span class="line">    <span class="keyword">static</span> long beginTime;</span><br><span class="line"></span><br><span class="line">    @<span class="type">OnMethod</span>(clazz=<span class="string">"tmp.Test"</span>,<span class="keyword">method</span>=<span class="string">"print"</span>)</span><br><span class="line">    public <span class="keyword">static</span> <span class="type">void</span> begin()&#123;</span><br><span class="line">        println(<span class="string">"start"</span>);</span><br><span class="line">        beginTime = timeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="type">OnMethod</span>(clazz=<span class="string">"tmp.Test"</span>,<span class="keyword">method</span>=<span class="string">"print"</span>,location=@<span class="type">Location</span>(<span class="type">Kind</span>.<span class="type">RETURN</span>))</span><br><span class="line">    public <span class="keyword">static</span> <span class="type">void</span> after()&#123;</span><br><span class="line">        jstack();//打印方法栈</span><br><span class="line">        println(<span class="string">"done"</span>);</span><br><span class="line">        println(strcat(strcat(<span class="string">"Test Execute Time:"</span>, str(timeMillis() - beginTime)), <span class="string">"ms"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="使用jvisualvm">使用jvisualvm</h4><p>安装btrace插件，使用jvisualvm插件管理器安装或者直接从kenai.com下载安装，右键单击选择<code>Trace application</code>，即可。</p>
-<p><img src="http://7vih7p.com1.z0.glb.clouddn.com/jvisualvm-btrace.png-690v1000v50" alt=""></p>
-<p>启动java示例代码，点击<code>start</code>启动btrace脚本，观察输出如下：</p>
-<p><img src="http://7vih7p.com1.z0.glb.clouddn.com/jvisualvm-btrace-result.png-690v1000v50" alt=""></p>
-<h4 id="服务端使用">服务端使用</h4><p>上传btrace脚本文件，然后<code>btrace &lt;pid&gt; 脚本文件</code>，观察输出即可。</p>
-<p>更多高级特性参看btrace示例脚本。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://sumory.com/2015/02/03/btrace-case/" data-id="cik2ltluc003nryk9l8b2jc22" class="article-share-link" data-share="baidu" data-title="Btrace简单使用">分享到</a>
-      
-
-      
-        <a href="http://sumory.com/2015/02/03/btrace-case/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btrace/">btrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2015/04/11/make-a-queue/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          写一个Q
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/08/15/spring-redis-sentinel/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Redis的sentinel使用及spring集成</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/02/03/btrace-case/" data-title="Btrace简单使用" data-url="http://sumory.com/2015/02/03/btrace-case/"></div>
-  </section>
+  
+  
+    </div></section>
+  
 </section>
       
       <aside id="sidebar">
